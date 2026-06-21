@@ -1,7 +1,7 @@
 import { Mail, Phone, Clock, MapPin } from 'lucide-react';
 
 interface FooterProps {
-  onPageChange: (page: 'home' | 'products' | 'about' | 'contact' | 'portal') => void;
+  onPageChange: (page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail') => void;
   onRequestQuote: () => void;
 }
 
@@ -66,14 +66,6 @@ export default function Footer({ onPageChange, onRequestQuote }: FooterProps) {
               </li>
               <li>
                 <button
-                  onClick={() => onPageChange('about')}
-                  className="hover:text-[#2c8fa0] text-white/80 transition-colors hover:underline underline-offset-4 cursor-pointer text-left font-medium"
-                >
-                  About Us
-                </button>
-              </li>
-              <li>
-                <button
                   onClick={() => onPageChange('products')}
                   className="hover:text-[#2c8fa0] text-white/80 transition-colors hover:underline underline-offset-4 cursor-pointer text-left font-medium"
                 >
@@ -82,10 +74,18 @@ export default function Footer({ onPageChange, onRequestQuote }: FooterProps) {
               </li>
               <li>
                 <button
+                  onClick={() => onPageChange('about')}
+                  className="hover:text-[#2c8fa0] text-white/80 transition-colors hover:underline underline-offset-4 cursor-pointer text-left font-medium"
+                >
+                  About Us
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={() => onPageChange('contact')}
                   className="hover:text-[#2c8fa0] text-white/80 transition-colors hover:underline underline-offset-4 cursor-pointer text-left font-medium"
                 >
-                  Contact
+                  Contact Us
                 </button>
               </li>
               <li>
@@ -93,7 +93,7 @@ export default function Footer({ onPageChange, onRequestQuote }: FooterProps) {
                   onClick={() => onPageChange('portal')}
                   className="hover:text-[#2c8fa0] text-white/80 transition-colors hover:underline underline-offset-4 cursor-pointer text-left font-medium"
                 >
-                  Portal / Admin Workspace
+                  Admin
                 </button>
               </li>
               <li>

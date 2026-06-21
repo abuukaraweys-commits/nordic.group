@@ -24,6 +24,7 @@ export default function Header({
 }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -128,20 +129,6 @@ export default function Header({
             )}
           </button>
 
-          <button
-            onClick={() => navigateToPage('about')}
-            className={`font-sans text-sm font-semibold tracking-wide transition-colors py-2 relative cursor-pointer ${
-              currentPage === 'about'
-                ? 'text-[#2c8fa0]'
-                : 'text-white hover:text-[#2c8fa0]'
-            }`}
-          >
-            About Us
-            {currentPage === 'about' && (
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#2c8fa0] rounded-full" />
-            )}
-          </button>
-
           {/* Products Dropdown Trigger */}
           <div
             id="products-dropdown-container"
@@ -202,6 +189,20 @@ export default function Header({
           </div>
 
           <button
+            onClick={() => navigateToPage('about')}
+            className={`font-sans text-sm font-semibold tracking-wide transition-colors py-2 relative cursor-pointer ${
+              currentPage === 'about'
+                ? 'text-[#2c8fa0]'
+                : 'text-white hover:text-[#2c8fa0]'
+            }`}
+          >
+            About Us
+            {currentPage === 'about' && (
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#2c8fa0] rounded-full" />
+            )}
+          </button>
+
+          <button
             onClick={() => navigateToPage('contact')}
             className={`font-sans text-sm font-semibold tracking-wide transition-colors py-2 relative cursor-pointer ${
               currentPage === 'contact'
@@ -209,13 +210,13 @@ export default function Header({
                 : 'text-white hover:text-[#2c8fa0]'
             }`}
           >
-            Contact
+            Contact Us
             {currentPage === 'contact' && (
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#2c8fa0] rounded-full" />
             )}
           </button>
 
-          {/* New Portal navigation link */}
+          {/* New Portal navigation link as Admin */}
           <button
             onClick={() => navigateToPage('portal')}
             className={`font-sans text-sm font-semibold tracking-wide transition-colors py-2 relative cursor-pointer ${
@@ -224,7 +225,7 @@ export default function Header({
                 : 'text-white hover:text-[#2c8fa0]'
             }`}
           >
-            Portal / Admin
+            Admin
             {currentPage === 'portal' && (
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#2c8fa0] rounded-full" />
             )}
@@ -339,6 +340,8 @@ export default function Header({
               {/* Nav links */}
               <div className="flex flex-col gap-4">
                 <span className="text-[10px] bg-[#f0f8fa] text-[#2c8fa0] w-max px-2 py-0.5 rounded font-bold uppercase tracking-widest">Navigation</span>
+                
+                {/* Home */}
                 <button
                   onClick={() => navigateToPage('home')}
                   className={`text-left text-sm font-bold py-1 transition-colors cursor-pointer ${
@@ -347,6 +350,48 @@ export default function Header({
                 >
                   Home
                 </button>
+
+                {/* Products with Collapsible Panel */}
+                <div className="flex flex-col">
+                  <button
+                    onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
+                    className={`text-left text-sm font-bold py-1 transition-colors flex items-center justify-between cursor-pointer ${
+                      currentPage === 'products' ? 'text-[#2c8fa0]' : 'text-[#6b8f96] hover:text-[#2c8fa0]'
+                    }`}
+                  >
+                    <span>Products</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isMobileProductsOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {isMobileProductsOpen && (
+                    <div className="pl-4 flex flex-col gap-2.5 mt-2 border-l-2 border-[#2c8fa0]/30 py-1">
+                      <button
+                        onClick={handleAllProductsClick}
+                        className={`text-left text-xs font-semibold transition-colors cursor-pointer ${
+                          currentPage === 'products' && activeCategory === null
+                            ? 'text-[#2c8fa0]'
+                            : 'text-[#6b8f96] hover:text-[#2c8fa0]'
+                        }`}
+                      >
+                        View All Products
+                      </button>
+                      {CATEGORIES.map((cat) => (
+                        <button
+                          key={cat.key}
+                          onClick={() => handleCategoryClick(cat.key)}
+                          className={`text-left text-xs transition-colors cursor-pointer ${
+                            currentPage === 'products' && activeCategory === cat.key
+                              ? 'text-[#2c8fa0] font-bold'
+                              : 'text-[#1a3a42] hover:text-[#2c8fa0]'
+                          }`}
+                        >
+                          {cat.title}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* About Us */}
                 <button
                   onClick={() => navigateToPage('about')}
                   className={`text-left text-sm font-bold py-1 transition-colors cursor-pointer ${
@@ -355,52 +400,26 @@ export default function Header({
                 >
                   About Us
                 </button>
+
+                {/* Contact Us */}
                 <button
                   onClick={() => navigateToPage('contact')}
                   className={`text-left text-sm font-bold py-1 transition-colors cursor-pointer ${
                     currentPage === 'contact' ? 'text-[#2c8fa0]' : 'text-[#6b8f96] hover:text-[#2c8fa0]'
                   }`}
                 >
-                  Contact
+                  Contact Us
                 </button>
+
+                {/* Admin */}
                 <button
                   onClick={() => navigateToPage('portal')}
                   className={`text-left text-sm font-bold py-1 transition-colors cursor-pointer ${
                     currentPage === 'portal' ? 'text-[#2c8fa0]' : 'text-[#6b8f96] hover:text-[#2c8fa0]'
                   }`}
                 >
-                  Portal / Admin
+                  Admin
                 </button>
-              </div>
-
-              {/* Category selection */}
-              <div className="flex flex-col gap-3 pt-5 mt-5 border-t border-[#bfc8ca]/20">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Our Products</span>
-                <button
-                  onClick={handleAllProductsClick}
-                  className={`text-left text-xs font-semibold py-1 transition-colors cursor-pointer ${
-                    currentPage === 'products' && activeCategory === null
-                      ? 'text-[#2c8fa0] underline decoration-2'
-                      : 'text-[#6b8f96] hover:text-[#2c8fa0]'
-                  }`}
-                >
-                  View all products
-                </button>
-                <div className="flex flex-col gap-2 mt-1">
-                  {CATEGORIES.map((cat) => (
-                    <button
-                      key={cat.key}
-                      onClick={() => handleCategoryClick(cat.key)}
-                      className={`text-left px-3 py-2 rounded-lg text-xs transition-all border cursor-pointer ${
-                        currentPage === 'products' && activeCategory === cat.key
-                          ? 'bg-[#f0f8fa] text-[#2c8fa0] border-[#2c8fa0]/50 font-bold'
-                          : 'text-[#1a3a42] border-[#bfc8ca]/20 bg-[#f0f8fa] hover:border-[#bfc8ca]/40'
-                      }`}
-                    >
-                      {cat.title}
-                    </button>
-                  ))}
-                </div>
               </div>
             </div>
 
