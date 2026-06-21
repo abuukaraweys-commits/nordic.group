@@ -63,8 +63,6 @@ export default function Header({
     switch (key) {
       case 'composites': return 'NG-FM';
       case 'tools': return 'NG-UT';
-      case 'imaging': return 'NG-RO';
-      case 'collections': return 'NG-CO';
       default: return 'NG-CA';
     }
   };

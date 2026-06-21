@@ -59,8 +59,6 @@ export default function ProductCatalog({
     switch (key) {
       case 'composites': return 'NG-FM';
       case 'tools': return 'NG-UT';
-      case 'imaging': return 'NG-RO';
-      case 'collections': return 'NG-CO';
       default: return 'NG-CA';
     }
   };
@@ -270,10 +268,6 @@ export default function ProductCatalog({
                           {CATEGORIES.find((c) => c.key === product.category)?.title}
                         </span>
                         <div className="flex items-center gap-1.5">
-                          <span className="text-[9px] font-extrabold text-[#1a5a5c] bg-[#eff7f8] border border-[#358082]/15 px-2 py-0.5 rounded flex items-center gap-1">
-                            <MapPin className="w-3 h-3 text-[#0e7490]" />
-                            {product.origin}
-                          </span>
                           <span className="text-[9px] font-bold font-mono text-[#0e7490] bg-[#eff7f8] border border-[#358082]/15 px-2 py-0.5 rounded">
                             {product.catalogRef}
                           </span>
@@ -398,10 +392,9 @@ export default function ProductCatalog({
 
               {/* Sourcing credentials */}
               <div className="bg-[#eff7f8] rounded-xl p-3 border border-[#41808F]/15 flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-[#41808F]" />
                 <div className="text-xs">
-                  <p className="font-bold text-[#191c1d]">Scandinavian Origin</p>
-                  <p className="text-gray-500 mt-0.5">Verified and sourced in {selectedProductDetails.origin}. Fully meets EU specifications for medical biosecurity.</p>
+                  <p className="font-bold text-[#191c1d]">Scandinavian Distribution</p>
+                  <p className="text-gray-500 mt-0.5">Fully meets EU specifications for medical biosecurity.</p>
                 </div>
               </div>
 
@@ -423,9 +416,9 @@ export default function ProductCatalog({
                 <span className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2.5">Technical Datasheet</span>
                 <div className="border border-[#e1e3e4] rounded-xl overflow-hidden divide-y divide-[#e1e3e4] text-xs">
                   {Object.entries(selectedProductDetails.specifications).map(([key, value]) => (
-                    <div key={key} className="flex p-3 justify-between font-medium bg-white">
-                      <span className="text-gray-500 font-bold">{key}</span>
-                      <span className="text-[#191c1d]">{value}</span>
+                    <div key={key} className="flex flex-col sm:flex-row sm:items-center p-3 gap-2 justify-between font-medium bg-white">
+                      <span className="text-gray-500 font-bold shrink-0">{key}</span>
+                      <span className="text-[#191c1d] text-left sm:text-right">{value}</span>
                     </div>
                   ))}
                 </div>

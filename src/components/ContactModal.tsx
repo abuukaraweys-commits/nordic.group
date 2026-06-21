@@ -175,7 +175,7 @@ ${message}`);
                     <div key={item.product.id} className="pt-2 first:pt-0 flex justify-between items-center gap-2 text-xs">
                       <div className="min-w-0 flex-1">
                         <p className="font-bold text-[#1a3a42] truncate">{item.product.name}</p>
-                        <p className="text-[10px] text-gray-400 font-mono mt-0.5">{item.product.catalogRef} • <span className="text-[#2c8fa0]">{item.product.origin}</span></p>
+                        <p className="text-[10px] text-gray-400 font-mono mt-0.5">{item.product.catalogRef}</p>
                       </div>
                       <span className="shrink-0 font-extrabold bg-white text-[#2c8fa0] px-2.5 py-0.5 rounded-md border border-[#2c8fa0]/20 font-mono text-xs">
                         Qty: {item.quantity}

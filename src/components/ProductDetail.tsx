@@ -134,11 +134,6 @@ export default function ProductDetail({
                 <span className="text-[10px] font-black bg-[#eef5f6] text-[#2c8fa0] px-3 py-1 rounded border border-[#2c8fa0]/25 uppercase tracking-widest">
                   {categoryInfo?.title}
                 </span>
-                
-                <span className="text-[10px] font-black text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded uppercase tracking-widest inline-flex items-center gap-1">
-                  <MapPin className="w-3 h-3" />
-                  Sourced in {product.origin}
-                </span>
               </div>
 
               {/* Title & Description */}
@@ -169,9 +164,9 @@ export default function ProductDetail({
                 <span className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-3">Technical Specifications Matrix</span>
                 <div className="border border-[#e1e3e4] rounded-xl overflow-hidden divide-y divide-[#e1e3e4] text-xs">
                   {Object.entries(product.specifications).map(([key, value]) => (
-                    <div key={key} className="flex p-3 justify-between font-medium bg-white hover:bg-slate-50/50 transition-colors">
-                      <span className="text-gray-500 font-bold">{key}</span>
-                      <span className="text-[#191c1d] font-semibold">{value}</span>
+                    <div key={key} className="flex flex-col sm:flex-row sm:items-center p-3 gap-2 justify-between font-medium bg-white hover:bg-slate-50/50 transition-colors">
+                      <span className="text-gray-500 font-bold shrink-0">{key}</span>
+                      <span className="text-[#191c1d] font-semibold text-left sm:text-right">{value}</span>
                     </div>
                   ))}
                 </div>

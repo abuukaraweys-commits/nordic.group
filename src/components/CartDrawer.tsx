@@ -315,8 +315,6 @@ Sent via Nordic Group Dental online portal.`;
 
                           <div className="flex gap-2 text-[9px] font-bold text-gray-400 font-mono mt-0.5">
                             <span>{item.product.catalogRef}</span>
-                            <span>•</span>
-                            <span className="text-[#2c8fa0] uppercase tracking-wider">{item.product.origin}</span>
                           </div>
 
                           {/* Modifiers */}
