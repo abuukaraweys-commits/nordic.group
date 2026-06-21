@@ -59,6 +59,7 @@ export default function ProductCatalog({
     switch (key) {
       case 'composites': return 'NG-FM';
       case 'tools': return 'NG-UT';
+      case 'imaging': return 'NG-RO';
       default: return 'NG-CA';
     }
   };

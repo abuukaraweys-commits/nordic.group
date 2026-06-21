@@ -16,6 +16,14 @@ export const CATEGORIES: CategoryInfo[] = [
     fullDescription: 'High-performance diagnostic hand instruments, turbines, autoclaves, dental delivery carts, and precision clinical tools engineered for advanced dental procedures.',
     iconName: 'Activity',
     imagePlaceholder: 'BG-C'
+  },
+  {
+    key: 'imaging',
+    title: 'X-Ray & Imaging',
+    shortDescription: 'Intraoral radiography sensors and handheld portable x-ray systems.',
+    fullDescription: 'Modern diagnostic imaging components providing low radiation dosages alongside ultra-high-resolution sensors for accurate instant clinical diagnostics and analysis.',
+    iconName: 'Layers',
+    imagePlaceholder: 'BG-D'
   }
 ];
 
@@ -166,7 +174,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'inst-01',
     name: 'Professional Diagnostic Instrument Set',
-    category: 'tools',
+    category: 'composites',
     description: 'A premium-grade surgical stainless steel explorer and diagnostic probe kit. Features rattle-free hollow handles designed to optimize tactile sensations when searching for structural enamel weaknesses. Coated in an anti-glare satin finish to eliminate visual stress under modern high-powered LED clinical illumination.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1gB950I26y7XrFUASxw7k23HcAr3sxVLA&sz=w1000',
     features: [
@@ -190,7 +198,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'inst-02',
     name: 'Orthodontic Distal Wire Cutter',
-    category: 'tools',
+    category: 'composites',
     description: 'Precision surgical pliers with hard Tungsten Carbide cutting edges capable of easily slicing thick braces wires. Features an active holding mechanism to retain cut wire tails safely so they do not fall into the mouth. Designed with a matte coating that avoids direct light reflection.',
     imageUrl: 'https://drive.google.com/thumbnail?id=16Q0XDBb0cLesm6flC99Ukp4Jc1a9Olgo&sz=w1000',
     features: [
@@ -212,7 +220,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'inst-03',
     name: 'Stainless Steel Dental Root Elevator Set',
-    category: 'tools',
+    category: 'composites',
     description: 'An essential collection of surgical luxative elevators engineered to safely luxate tooth roots. Thin, sharp-pointed blades easily separate periodontal attachment fibers around the roots. The ergonomic hexagonal handle allows clinicians to apply controlled mechanical leverage with minimal stress.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1sr4XMgjjj9OouLkTTUX2dq9QDwQv6nf_&sz=w1000',
     features: [
@@ -234,7 +242,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'inst-04',
     name: 'Precision Orthodontic Wire Bender Pliers',
-    category: 'tools',
+    category: 'composites',
     description: 'Orthodontic loop bender pliers fitted with high-durability Tungsten Carbide inserts to provide reliable wire bending. The box-joint hinge keeps the jaws aligned under heavy grip pressures. Smooth tips block wire scoring, protecting the braces archwire integrity.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1UVghtTG5Eiv5PYZjEPhjG-w5ThWSbPpb&sz=w1000',
     features: [
@@ -258,7 +266,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'equip-01',
     name: 'Fiber-Optic High-Speed Handpiece',
-    category: 'tools',
+    category: 'composites',
     description: 'A surgical rotary turbine featuring robust daylite LED optics emitting a full 25,000 Lux of daylight. Ceramic ball bearings provide steady, whisper-quiet performance with low micro-vibrations. High-performance 4-port sprays suppress heat buildup to protect pulpal vitality.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1pDrazSjVvFGHqnnhcDW1b6cu7L0Tx500&sz=w1000',
     features: [
@@ -282,7 +290,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'equip-02',
     name: 'ProCart Mobile Dental Delivery Trolley',
-    category: 'tools',
+    category: 'composites',
     description: 'A versatile mobile work station structured with easy-cleaning shelves to accommodate clinical tools. Features heavy silent caster wheels with individual brake locks for easy repositioning. Outfitted with multiple internal power sockets to simplify power distribution.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1nHpHMhPVKjG3Ze7hDEQ9oEW23z-IK-na&sz=w1000',
     features: [
@@ -304,7 +312,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'equip-03',
     name: 'Classic High-Speed Dental Turbine',
-    category: 'tools',
+    category: 'composites',
     description: 'An efficient, durable dental turbine designed to deliver reliable rotation speeds up to 380,000 RPM with low mechanical vibrations. An integrated anti-suction design helps control cross-contamination. Built with single-port water cooling for everyday clinical procedures.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1MOWqIy9S5TdcD3e6SB4YL-ucbR163rRh&sz=w1000',
     features: [
@@ -326,7 +334,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'equip-04',
     name: 'ProCart Standard Dental Utility Workstation',
-    category: 'tools',
+    category: 'composites',
     description: 'A clinical trolley system constructed from carbon steel with a powder-coated antimicrobial finish. Features three spacious shelves with high protective rims to hold diagnostic and therapeutic setup boxes. Provides lockable silent caster rollers for easy operatory movement.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1S_QfOKhkLthRKwKbhS7uJ7I9u2fAsIbI&sz=w1000',
     features: [
@@ -350,7 +358,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'img-01',
     name: 'NordicScan USB Intraoral Sensor',
-    category: 'tools',
+    category: 'composites',
     description: 'An advanced CMOS-driven radiography sensor providing crystal-clear 25 lp/mm resolution imaging. The waterproof IP68 housing stands up to complete clinical decontamination. Its rounded corner shape is comfortable for patients during intraoral exposures.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1DGcpo1pCuz3CjQufwy6T1hjXKAzwLU93&sz=w1000',
     features: [
@@ -374,7 +382,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'img-02',
     name: 'DentalScan Portable Handheld X-Ray',
-    category: 'tools',
+    category: 'composites',
     description: 'A lightweight portable handheld radiography device with a localized exposure focus that yields high-resolution images. Features thick internal lead linings to fully exclude scatter radiation for clinician protection. Equipped with a lithium battery supporting up to 150 exposures per charge.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1Ytpabs5_z9yeHcBLcoRnU8xdJXU2ceV4&sz=w1000',
     features: [
@@ -397,7 +405,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'img-03',
     name: 'Elite HD Digital Imaging Sensor',
-    category: 'tools',
+    category: 'composites',
     description: 'A thin, titanium-framed intraoral radiography sensor with supreme CMOS micro-pixel sensors. Carbon-fiber backplates prevent bending and mechanical cracking. Works securely over standard high-volume diagnostic loads.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1LhKmvkCE_68gJyLAY2P1zJCIQtFM3JN2&sz=w1000',
     features: [
@@ -419,7 +427,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'img-04',
     name: 'DentalScan Pro Handheld Radiography System',
-    category: 'tools',
+    category: 'composites',
     description: 'An advanced handheld dental X-ray camera system featuring a high penetration 65 kV tube voltage. Features thick internal lead-shield walls to keep operator exposure at zero. Highly recommended for endodontic monitoring, implant seating checks, and caries discovery.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1LEYjkgthKafhVlUvIyR0ViGMtL5K9btV&sz=w1000',
     features: [
@@ -438,12 +446,166 @@ export const PRODUCTS: Product[] = [
     isFeatured: false,
     origin: 'Lund, Sweden'
   },
+  {
+    id: 'img-05',
+    name: 'Nordic Orthopantomograph OPG-3D',
+    category: 'imaging',
+    description: 'State-of-the-art extraoral 3D OPG system. Panoramic radiographic machine featuring multi-slice Tomosynthesis for razor-sharp dental arch scans and minimal radiation dosage.',
+    imageUrl: 'https://drive.google.com/thumbnail?id=1R2y3IPcrcgXduyvT--EZaBiT8gko6eFz&sz=w1000',
+    features: [
+      'Multi-layer Panomatic technology',
+      'Adaptive focal trough alignment',
+      'Low-dose clinical scanning profiles'
+    ],
+    specifications: {
+      'Sensor Type': 'Direct-conversion CMOS panoramic',
+      'Scan Program': 'Standard panoramic, TMJ, child-pantomography',
+      'Expose Duration': '8 - 14 seconds',
+      'What It Is Used For': 'Complete radiographic examination of teeth, alveolar bone, and jaw structures',
+      'For Dental Professional': 'Maxillofacial surgeons, Orthodontists, and general clinical practices'
+    },
+    catalogRef: 'NG-OPG-101',
+    isFeatured: true,
+    origin: 'Stuttgart, Germany'
+  },
+  {
+    id: 'img-06',
+    name: 'NordicScan Dental Phosphor Plate System',
+    category: 'imaging',
+    description: 'Ultra-thin phosphor plate (PSP) reader. Turns high-fidelity analog radiograph plates into digital files in under 10 seconds. Completely covers patients requiring variable dental imaging dimensions.',
+    imageUrl: 'https://drive.google.com/thumbnail?id=1SuCIVjrfmUZiLGGDvqH-C5o7RfNosSaA&sz=w1000',
+    features: [
+      'Compatible with plate size 0 to 4',
+      'Rapid diagnostic scan processing',
+      'Flexible plates optimized for patient comfort'
+    ],
+    specifications: {
+      'Plate Handling': 'Automatic insertion & erasing loop',
+      'Scanner Resolution': 'Up to 40 lp/mm',
+      'Scan Process Speed': '6.8 seconds average processing time',
+      'What It Is Used For': 'Converting intraoral radiography phosphor plates into high-resolution digital files',
+      'For Dental Professional': 'Dental Radiographers, Orthodontists, and General Clinicians'
+    },
+    catalogRef: 'NG-PSP-202',
+    isFeatured: false,
+    origin: 'Gothenburg, Sweden'
+  },
+  {
+    id: 'img-07',
+    name: 'DentalScan HD Intraoral Camera System',
+    category: 'imaging',
+    description: 'Ergonomic intraoral wand camera with precise autofocus, built-in glare-free LED illumination, and digital capture integration. Excellent tool for interactive diagnostics and patient treatment walkthroughs.',
+    imageUrl: 'https://drive.google.com/thumbnail?id=1Ieo-zaHsXR80V9PaJ2WffvwXNya2yvQv&sz=w1000',
+    features: [
+      'High Definition 1080p sensor resolution',
+      '8-point surgical LED visual glow rings',
+      'Micro-focus lens resolving 1.0mm-to-infinity details'
+    ],
+    specifications: {
+      'Interface Connect': 'USB 3.0 digital throughput',
+      'Wand Grip Design': '95g featherlight ergonomic medical polymer',
+      'Resolution Ratio': '1920 x 1080 Active Pixels',
+      'What It Is Used For': 'Interactive high-definition intraoral patient diagnosis and case documentation',
+      'For Dental Professional': 'Aesthetic Clinicians, General Dentists, and Hygienists'
+    },
+    catalogRef: 'NG-IC-303',
+    isFeatured: false,
+    origin: 'Lund, Sweden'
+  },
+  {
+    id: 'img-08',
+    name: 'Elite3D Cone Beam Computed Tomography (CBCT)',
+    category: 'imaging',
+    description: 'Multi-field-of-view clinical CBCT scanner providing true high-resolution isotropic 3D scans. Ideal for precision planning in dental implant placements, endodontic therapy, and orthodontic analysis.',
+    imageUrl: 'https://drive.google.com/thumbnail?id=1ElXYjGENHCQj7g_FTZv3WtK3dudc6cAe&sz=w1000',
+    features: [
+      'Multi FOV capability (up to 12x10cm)',
+      'Pulsed-beam x-ray mechanism for ultra-low dose',
+      'Interactive DICOM visual reconstruction module'
+    ],
+    specifications: {
+      'Voxel Dimensions': 'Down to 75 micrometers (isotropic)',
+      'Scan Duration': '11 seconds quick-scan phase',
+      'Compliance Code': 'Certified medical device EN 60601-1',
+      'What It Is Used For': 'High-precision 3D diagnostic scanning of dentomaxillofacial anatomy',
+      'For Dental Professional': 'Implantologists, Oral Surgeons, and Maxillofacial Radiologists'
+    },
+    catalogRef: 'NG-CBCT-404',
+    isFeatured: true,
+    origin: 'Gothenburg, Sweden'
+  },
+  {
+    id: 'img-09',
+    name: 'NordicScan Mobile Cart Imaging Workstation',
+    category: 'imaging',
+    description: 'Fully integrated clinic-grade mobile imaging console. Unites flat-panel displays, x-ray sensors, and secure diagnostic software onto a chemical-resistant mobile platform.',
+    imageUrl: 'https://drive.google.com/thumbnail?id=1o3Zfh9C_SFH_yFQAkulHL7yQsEiXL9PQ&sz=w1000',
+    features: [
+      'Lockable anti-static wheels with full movement',
+      'Adjustable clinical desktop ergonomics',
+      'Sealed control panels with touch interaction support'
+    ],
+    specifications: {
+      'Terminal Module': 'Fanless dustproof medical computer',
+      'Power Station': 'Integrated battery backup system (UPS)',
+      'Chassis Construct': 'High-performance steel with anti-microbial paint',
+      'What It Is Used For': 'Centralizing, transporting, and executing chairside dental radiologic imaging',
+      'For Dental Professional': 'Dental Assistants, Hygienists, and General Clinicians'
+    },
+    catalogRef: 'NG-MWS-505',
+    isFeatured: false,
+    origin: 'Uppsala, Sweden'
+  },
+  {
+    id: 'img-10',
+    name: 'DentalScan Cephalometric Attachment Module',
+    category: 'imaging',
+    description: 'Dedicated cephalometric scanning arm designed for panoramic machines. Delivers ultra-sharp skull radiographs for orthodontic tracing, craniomandibular diagnostics, and treatment planning.',
+    imageUrl: 'https://drive.google.com/thumbnail?id=1CmK6j0oAqSoELIuEWFWzgfVKQQdzKhXI&sz=w1000',
+    features: [
+      'One-touch soft-tissue profiling filters',
+      'Extremely stable head fixation clamps',
+      'Rapid lateral skull capture under 3 seconds'
+    ],
+    specifications: {
+      'Scan Programs': 'Lateral, AP/PA, Waters, and carpus scanning',
+      'Focal Spot Setup': '0.5 mm micro-focus',
+      'Scan Capture Speed': '2.6 to 4.2 seconds range',
+      'What It Is Used For': 'Acquiring lateral and sagittal cranial radiographs for orthodontic skeletal tracing',
+      'For Dental Professional': 'Orthodontists and Oral-Maxillofacial Surgeons'
+    },
+    catalogRef: 'NG-CEP-606',
+    isFeatured: false,
+    origin: 'Gothenburg, Sweden'
+  },
+  {
+    id: 'img-11',
+    name: 'NordicScan Digital Dental Arch Scanner',
+    category: 'imaging',
+    description: 'High-precision intraoral digital scanner delivering flawless powder-free three-dimensional teeth modeling. Accelerates restorative cycles and enhances clinical workflow productivity.',
+    imageUrl: 'https://drive.google.com/thumbnail?id=1b5Pp4vxyjgiYy4Kx79nLEk_pBoNXZa62&sz=w1000',
+    features: [
+      'Real-time visual rendering showing true dental coloring',
+      'Lightweight compact body with autoclavable ends',
+      'Full system integration supporting standard CAD/CAM export'
+    ],
+    specifications: {
+      'Scanner Tech': 'High-speed continuous video scanning',
+      'CAD Export': 'Direct export of STL, PLY, and OBJ data models',
+      'Weight Profile': '210g featherlight handheld wand',
+      'What It Is Used For': 'Direct powderless digital impression modeling for CAD/CAM restorations',
+      'For Dental Professional': 'Prosthodontists, Orthodontists, and Cosmetic Surgeons'
+    },
+    catalogRef: 'NG-IOS-707',
+    isFeatured: true,
+    origin: 'Lund, Sweden'
+  },
 
   // Sterilization
   {
     id: 'ster-01',
     name: 'NordicClave Class B Steam Sterilizer (22L)',
-    category: 'tools',
+    category: 'composites',
     description: 'An exceptional-capacity Class B pre-vacuum steam sterilizer that meets the highest EN13060 European standards. Equipped with three fractionated vacuum phases to guarantee steam penetration in complex hollow hand instruments. Includes an integrated thermal printer to log biosecurity compliance.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1_JlaYTM3D12meYgEIv_9DaJFYRym5iE_&sz=w1000',
     features: [
@@ -467,7 +629,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'ster-02',
     name: 'NordicClave Eco Steam Autoclave (18L)',
-    category: 'tools',
+    category: 'composites',
     description: 'A compact Class B vacuum steam autoclave engineered with eco cycles to sterilize everyday hand tools in only 22 minutes. Features electronic water sensors to guard against structural dry overheating. Fits three standard instrument trays comfortably, saving clinical countertop space.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1Sn3Wzkb8RSk5PaXneZ-if216IKPx4s0z&sz=w1000',
     features: [

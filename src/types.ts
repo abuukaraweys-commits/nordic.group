@@ -1,7 +1,7 @@
 export interface Product {
   id: string;
   name: string;
-  category: 'composites' | 'tools';
+  category: 'composites' | 'tools' | 'imaging';
   description: string;
   features: string[];
   specifications: Record<string, string>;
@@ -11,7 +11,7 @@ export interface Product {
   origin: string;
 }
 
-export type CategoryKey = 'composites' | 'tools';
+export type CategoryKey = 'composites' | 'tools' | 'imaging';
 
 export interface CategoryInfo {
   key: CategoryKey;
