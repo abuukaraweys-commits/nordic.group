@@ -1,0 +1,6 @@
+{
+  "name": "Nordic Group",
+  "description": "Premium dental supply catalog delivering clinical-grade products to Scandinavia and East Africa.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
