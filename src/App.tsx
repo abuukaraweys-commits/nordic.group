@@ -19,9 +19,11 @@ import ContactPage from './components/ContactPage';
 import ContactModal from './components/ContactModal';
 import Portal from './components/Portal';
 import CartDrawer from './components/CartDrawer';
+import ProductDetail from './components/ProductDetail';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'products' | 'about' | 'contact' | 'portal'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail'>('home');
+  const [selectedProductForDetail, setSelectedProductForDetail] = useState<Product | null>(null);
   const [activeCategory, setActiveCategory] = useState<CategoryKey | null>(null);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [modalSelectedProduct, setModalSelectedProduct] = useState<Product | null>(null);
@@ -63,7 +65,7 @@ export default function App() {
   }, [cart]);
 
   // Scroll to top helper on switches
-  const navigateToPage = (page: 'home' | 'products' | 'about' | 'contact' | 'portal') => {
+  const navigateToPage = (page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail') => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -79,18 +81,18 @@ export default function App() {
     setIsContactModalOpen(true);
   };
 
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = (product: Product, quantityToAdd: number = 1) => {
     setCart((prevCart) => {
       const existingIndex = prevCart.findIndex((item) => item.product.id === product.id);
       if (existingIndex > -1) {
         const updated = [...prevCart];
         updated[existingIndex] = {
           ...updated[existingIndex],
-          quantity: updated[existingIndex].quantity + 1
+          quantity: updated[existingIndex].quantity + quantityToAdd
         };
         return updated;
       }
-      return [...prevCart, { product, quantity: 1 }];
+      return [...prevCart, { product, quantity: quantityToAdd }];
     });
     // Auto-open the cart drawer so the user immediately sees it worked
     setIsCartOpen(true);
@@ -296,6 +298,20 @@ export default function App() {
             initialCategory={activeCategory}
             onContactProduct={handleContactProduct}
             onNavigateToContact={() => navigateToPage('contact')}
+            onAddToCart={handleAddToCart}
+            cartItems={cart}
+            onSelectProduct={(product) => {
+              setSelectedProductForDetail(product);
+              navigateToPage('product-detail');
+            }}
+          />
+        )}
+
+        {/* PRODUCT DETAIL VIEW */}
+        {currentPage === 'product-detail' && selectedProductForDetail && (
+          <ProductDetail
+            product={selectedProductForDetail}
+            onBack={() => navigateToPage('products')}
             onAddToCart={handleAddToCart}
             cartItems={cart}
           />

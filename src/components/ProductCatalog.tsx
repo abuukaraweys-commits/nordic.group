@@ -10,6 +10,7 @@ interface ProductCatalogProps {
   products?: Product[];
   onAddToCart?: (product: Product) => void;
   cartItems?: { product: Product; quantity: number }[];
+  onSelectProduct?: (product: Product) => void;
 }
 
 export default function ProductCatalog({ 
@@ -18,7 +19,8 @@ export default function ProductCatalog({
   onNavigateToContact,
   products = PRODUCTS,
   onAddToCart,
-  cartItems = []
+  cartItems = [],
+  onSelectProduct
 }: ProductCatalogProps) {
   const [selectedCategory, setSelectedCategory] = useState<CategoryKey | 'all'>(
     initialCategory || 'all'
@@ -197,7 +199,10 @@ export default function ProductCatalog({
                   className="overflow-hidden hover:shadow-lg hover:border-[#1a5a5c]/40 transition-all duration-300 flex flex-col h-full group bg-white bg-opacity-40"
                 >
                   {/* Image Wrapper */}
-                  <div className="relative aspect-[4/3] bg-white border-b border-[#358082]/15 flex items-center justify-center p-4 overflow-hidden">
+                  <div 
+                    onClick={() => onSelectProduct?.(product)}
+                    className="relative aspect-[4/3] bg-white border-b border-[#358082]/15 flex items-center justify-center p-4 overflow-hidden cursor-pointer"
+                  >
                     {product.imageUrl ? (
                       <img
                         src={product.imageUrl}
@@ -274,7 +279,10 @@ export default function ProductCatalog({
                           </span>
                         </div>
                       </div>
-                      <h4 className="text-base font-bold text-[#1a5a5c] tracking-tight group-hover:text-[#0e7490] transition-colors line-clamp-1">
+                      <h4 
+                        onClick={() => onSelectProduct?.(product)}
+                        className="text-base font-bold text-[#1a5a5c] tracking-tight group-hover:text-[#0e7490] transition-colors line-clamp-1 cursor-pointer hover:underline"
+                      >
                         {product.name}
                       </h4>
                       <p 
@@ -298,7 +306,13 @@ export default function ProductCatalog({
                     {/* Actions with custom layout metrics matching user styles */}
                     <div className="mt-6 pt-5 border-t border-[#358082]/15 flex items-center gap-3">
                       <button
-                        onClick={() => setSelectedProductDetails(product)}
+                        onClick={() => {
+                          if (onSelectProduct) {
+                            onSelectProduct(product);
+                          } else {
+                            setSelectedProductDetails(product);
+                          }
+                        }}
                         style={{
                           backgroundColor: 'rgba(6,182,212,0.12)',
                           color: '#0e7490',
@@ -308,7 +322,7 @@ export default function ProductCatalog({
                         className="flex-1 py-2.5 text-xs font-bold uppercase transition-all flex items-center justify-center gap-1.5 cursor-pointer hover:bg-[rgba(6,182,212,0.22)] hover:-translate-y-0.5"
                       >
                         <FileText className="w-4 h-4" />
-                        Specs
+                        Specs & Info
                       </button>
                       <button
                         onClick={() => {
