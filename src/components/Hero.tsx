@@ -23,7 +23,7 @@ const DEFAULT_SLIDES: Slide[] = [
     desc: 'Universal light-curing hybrid composite. Syringe Assortment 4×4g. Microglass II, radio-opaque.',
     tag: 'Precision Restorations',
     tagsub: 'with Confidence',
-    url: '/images/products/Charisma__E4SY.png',
+    url: '/images/products/Charisma%C2%AE%20E4SY.png',
     alt: 'Charisma E4SY Composite',
     glow: 'rgba(180,40,40,0.12)'
   },
@@ -33,18 +33,18 @@ const DEFAULT_SLIDES: Slide[] = [
     desc: 'Light Cure Color Pastes — Real Color system with 7 shades, brushes and accessories included.',
     tag: 'Artistic Dental Aesthetics',
     tagsub: 'with Precision',
-    url: '/images/products/DX__Flow-Color.png',
+    url: '/images/products/DX.%20Flow-Color.png',
     alt: 'DX Flow Color Pastes',
     glow: 'rgba(65,200,100,0.12)'
   },
   {
-    brand: 'SY8068 / Nordic Group',
-    name: 'Dental Unit SY8068',
+    brand: 'SY / Nordic Group',
+    name: 'Dental Unit QL2028 II',
     desc: 'Premium dental treatment chair with integrated LED light, instrument tray and ergonomic design.',
     tag: 'Complete Clinic Setup',
     tagsub: 'with Comfort',
-    url: '/images/products/Dental_Unit_SY8068.png',
-    alt: 'Dental Unit SY8068',
+    url: '/images/products/Dental%20Unit%20QL2028%20II.png',
+    alt: 'Dental Unit QL2028 II',
     glow: 'rgba(120,160,180,0.15)'
   }
 ];
