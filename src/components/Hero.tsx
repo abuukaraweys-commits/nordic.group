@@ -13,35 +13,39 @@ interface Slide {
   tagsub: string;
   url: string;
   alt: string;
+  glow: string;
 }
 
 const DEFAULT_SLIDES: Slide[] = [
   {
     brand: 'Kulzer / Nordic Group',
-    name: 'Clinik Composite',
-    desc: 'Universal Nano-Hybrid Composite with excellent polishability and natural opalescence.',
-    tag: 'High Performance Restoration',
-    tagsub: 'with Precision',
-    url: 'https://drive.google.com/thumbnail?id=1JCd6R_9VUTQleuzRULkBPbs99sVPaXWQ&sz=w1000',
-    alt: 'Clinik Universal Nano-Hybrid Composite'
-  },
-  {
-    brand: 'Nordic Prime / Nordic Group',
-    name: 'Prime Bond',
-    desc: 'Light-cure, single-component dental adhesive engineered for highly reliable clinical restorations.',
-    tag: 'Superior Bond Strength',
+    name: 'Charisma E4SY',
+    desc: 'Universal light-curing hybrid composite. Syringe Assortment 4×4g. Microglass II, radio-opaque.',
+    tag: 'Precision Restorations',
     tagsub: 'with Confidence',
-    url: 'https://drive.google.com/thumbnail?id=1D5Vu8BdLkWWAvm8al8TfCTkB0FAFILkr&sz=w1000',
-    alt: 'Nordic Prime Bond & Adhesive System'
+    url: '/images/products/Charisma__E4SY.png',
+    alt: 'Charisma E4SY Composite',
+    glow: 'rgba(180,40,40,0.12)'
   },
   {
-    brand: 'Nordic Ortho / Nordic Group',
-    name: 'Ceramic Brackets',
-    desc: 'Premium monocrystalline sapphire brackets with a transparent chassis that blends with enamel.',
-    tag: 'Invisible Orthodontics',
-    tagsub: 'with Elegance',
-    url: 'https://drive.google.com/thumbnail?id=1IMAR_U3hqsf4mdiL-OAlkX1AVoC61mNg&sz=w1000',
-    alt: 'Nordic Translucent Ceramic Brackets'
+    brand: 'Dentex / Nordic Group',
+    name: 'DX Flow Color',
+    desc: 'Light Cure Color Pastes — Real Color system with 7 shades, brushes and accessories included.',
+    tag: 'Artistic Dental Aesthetics',
+    tagsub: 'with Precision',
+    url: '/images/products/DX__Flow-Color.png',
+    alt: 'DX Flow Color Pastes',
+    glow: 'rgba(65,200,100,0.12)'
+  },
+  {
+    brand: 'SY8068 / Nordic Group',
+    name: 'Dental Unit SY8068',
+    desc: 'Premium dental treatment chair with integrated LED light, instrument tray and ergonomic design.',
+    tag: 'Complete Clinic Setup',
+    tagsub: 'with Comfort',
+    url: '/images/products/Dental_Unit_SY8068.png',
+    alt: 'Dental Unit SY8068',
+    glow: 'rgba(120,160,180,0.15)'
   }
 ];
 
@@ -66,40 +70,39 @@ export default function Hero({ onViewProducts }: HeroProps) {
         background: 'linear-gradient(120deg, #e8f0f2 0%, #c8dde2 40%, #d4e8ed 70%, #b8d4da 100%)'
       }}
     >
-      {/* Glow effect behind image */}
+      {/* Glow behind image */}
       <div
-        className="absolute right-[10%] top-[10%] w-72 h-72 rounded-full pointer-events-none z-0"
-        style={{ background: 'radial-gradient(circle, rgba(65,128,143,0.2) 0%, transparent 70%)' }}
+        className="absolute right-[8%] top-[8%] w-64 h-64 rounded-full pointer-events-none z-0"
+        style={{ background: `radial-gradient(circle, ${s.glow} 0%, transparent 70%)` }}
       />
 
       {/* LEFT — Text */}
-      <div className="absolute left-0 top-0 h-full z-10 flex flex-col justify-center pl-10 sm:pl-14 lg:pl-20" style={{ width: '52%' }}>
-        
-        {/* Brand label */}
-        <p className="text-sm font-bold italic text-[#1a3a42] mb-1 tracking-wide">
+      <div className="absolute left-0 top-0 h-full z-10 flex flex-col justify-center pl-10 sm:pl-14 lg:pl-20" style={{ width: '50%' }}>
+
+        <p className="text-xs font-bold italic text-[#1a3a42] mb-1.5 tracking-wide">
           {s.brand}
         </p>
 
-        {/* Product name — large teal */}
-        <h1 className="font-extrabold text-[#41808F] leading-tight mb-3"
-          style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}>
+        <h1
+          className="font-extrabold text-[#41808F] leading-tight mb-3"
+          style={{ fontSize: 'clamp(26px, 3.5vw, 44px)' }}
+        >
           {s.name}
         </h1>
 
-        {/* Description */}
-        <p className="text-[#2a4a52] leading-relaxed mb-4 max-w-sm"
-          style={{ fontSize: 'clamp(13px, 1.4vw, 16px)' }}>
+        <p
+          className="text-[#2a4a52] leading-relaxed mb-3 max-w-xs"
+          style={{ fontSize: 'clamp(12px, 1.3vw, 14px)' }}
+        >
           {s.desc}
         </p>
 
-        {/* Tagline */}
         <p className="font-bold text-[#1a3a42] text-sm mb-0.5">{s.tag}</p>
         <p className="text-[#4a6a72] text-xs mb-6">{s.tagsub}</p>
 
-        {/* CTA Button */}
         <button
           onClick={onViewProducts}
-          className="inline-flex items-center gap-2 bg-[#41808F] hover:bg-[#2c5b66] text-white font-bold uppercase tracking-wider text-xs px-6 py-3 rounded-lg transition-all duration-200 w-max cursor-pointer group"
+          className="inline-flex items-center gap-2 bg-[#41808F] hover:bg-[#2c5b66] text-white font-bold uppercase tracking-wider text-xs px-6 py-3 rounded-lg transition-all duration-200 w-max cursor-pointer group border-none"
         >
           <span>View Our Products</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -107,34 +110,36 @@ export default function Hero({ onViewProducts }: HeroProps) {
       </div>
 
       {/* RIGHT — Product image */}
-      <div className="absolute right-0 top-0 h-full z-[1] flex items-center justify-center" style={{ width: '52%' }}>
+      <div
+        className="absolute right-0 top-0 h-full z-[1] flex items-center justify-center"
+        style={{ width: '52%' }}
+      >
         <img
           key={currentSlide}
           src={s.url}
           alt={s.alt}
-          referrerPolicy="no-referrer"
           className="object-contain"
           style={{
-            maxWidth: '105%',
-            maxHeight: '105%',
-            filter: 'drop-shadow(0 12px 40px rgba(0,0,0,0.18))'
+            width: '88%',
+            height: '88%',
+            filter: 'drop-shadow(0 10px 32px rgba(0,0,0,0.15))'
           }}
         />
       </div>
 
-      {/* CE Badge — top right */}
-      <div className="absolute top-5 right-16 z-20 bg-[#1a3a42] text-white text-center px-4 py-2 rounded text-xs font-bold uppercase tracking-wide leading-tight">
+      {/* CE Badge */}
+      <div className="absolute top-5 right-12 z-20 bg-[#1a3a42] text-white text-center px-3 py-2 rounded text-[10px] font-bold uppercase tracking-wide leading-tight">
         CE<br />Certified
       </div>
 
-      {/* Dots — right side vertical */}
-      <div className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-2">
+      {/* Dots — vertical right side */}
+      <div className="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-2 items-center">
         {DEFAULT_SLIDES.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrentSlide(i)}
             aria-label={`Slide ${i + 1}`}
-            className="w-1.5 rounded-full border-none cursor-pointer transition-all duration-300"
+            className="w-1.5 rounded-full border-none cursor-pointer transition-all duration-300 p-0"
             style={{
               height: currentSlide === i ? '20px' : '6px',
               background: currentSlide === i ? '#41808F' : 'rgba(26,58,66,0.25)'
