@@ -6,30 +6,42 @@ interface HeroProps {
 }
 
 interface Slide {
+  brand: string;
+  name: string;
+  desc: string;
+  tag: string;
+  tagsub: string;
   url: string;
   alt: string;
-  title: string;
-  subtitle: string;
 }
 
 const DEFAULT_SLIDES: Slide[] = [
   {
+    brand: 'Kulzer / Nordic Group',
+    name: 'Clinik Composite',
+    desc: 'Universal Nano-Hybrid Composite with excellent polishability and natural opalescence.',
+    tag: 'High Performance Restoration',
+    tagsub: 'with Precision',
     url: 'https://drive.google.com/thumbnail?id=1JCd6R_9VUTQleuzRULkBPbs99sVPaXWQ&sz=w1000',
-    alt: 'Clinik Universal Nano-Hybrid Composite',
-    title: 'Clinik Universal Nano-Hybrid Composite',
-    subtitle: 'High-performance restorative composite with excellent polishability and natural opalescence.'
+    alt: 'Clinik Universal Nano-Hybrid Composite'
   },
   {
+    brand: 'Nordic Prime / Nordic Group',
+    name: 'Prime Bond',
+    desc: 'Light-cure, single-component dental adhesive engineered for highly reliable clinical restorations.',
+    tag: 'Superior Bond Strength',
+    tagsub: 'with Confidence',
     url: 'https://drive.google.com/thumbnail?id=1D5Vu8BdLkWWAvm8al8TfCTkB0FAFILkr&sz=w1000',
-    alt: 'Nordic Prime Bond & Adhesive System',
-    title: 'Nordic Prime Bond & Adhesive System',
-    subtitle: 'Light-cure, single-component dental adhesive engineered for highly reliable clinical restorations.'
+    alt: 'Nordic Prime Bond & Adhesive System'
   },
   {
+    brand: 'Nordic Ortho / Nordic Group',
+    name: 'Ceramic Brackets',
+    desc: 'Premium monocrystalline sapphire brackets with a transparent chassis that blends with enamel.',
+    tag: 'Invisible Orthodontics',
+    tagsub: 'with Elegance',
     url: 'https://drive.google.com/thumbnail?id=1IMAR_U3hqsf4mdiL-OAlkX1AVoC61mNg&sz=w1000',
-    alt: 'Nordic Translucent Ceramic Brackets',
-    title: 'Nordic Translucent Ceramic Brackets',
-    subtitle: 'Premium monocrystalline sapphire brackets with a completely transparent chassis that blends with enamel.'
+    alt: 'Nordic Translucent Ceramic Brackets'
   }
 ];
 
@@ -39,63 +51,96 @@ export default function Hero({ onViewProducts }: HeroProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % DEFAULT_SLIDES.length);
-    }, 6000);
+    }, 5500);
     return () => clearInterval(interval);
   }, []);
 
-  const activeSlide = DEFAULT_SLIDES[currentSlide];
+  const s = DEFAULT_SLIDES[currentSlide];
 
   return (
-    <div 
-      id="homepage-hero-redesign" 
-      className="relative w-full h-[400px] sm:h-[450px] lg:h-[500px] bg-[#f8fafb] overflow-hidden flex items-end justify-start border-b border-[#bfc8ca]/25"
+    <div
+      id="homepage-hero"
+      className="relative w-full overflow-hidden border-b border-[#bfc8ca]/25"
+      style={{
+        height: '420px',
+        background: 'linear-gradient(120deg, #e8f0f2 0%, #c8dde2 40%, #d4e8ed 70%, #b8d4da 100%)'
+      }}
     >
-      {/* BACKGROUND SLIDESHOW - beautifully centered product presentation */}
-      <div className="absolute inset-0 w-full h-full z-0 p-8 sm:p-12 lg:p-16 flex items-center justify-center">
-        {DEFAULT_SLIDES.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 w-full h-full flex items-center justify-center transition-all duration-1000 ease-in-out ${
-              index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
-            }`}
-          >
-            <img
-              src={slide.url}
-              alt={slide.alt}
-              referrerPolicy="no-referrer"
-              className="max-w-[85%] max-h-[80%] sm:max-h-[85%] sm:max-w-[80%] object-contain object-center transition-transform duration-500 hover:scale-[1.02]"
-            />
-          </div>
-        ))}
+      {/* Glow effect behind image */}
+      <div
+        className="absolute right-[10%] top-[10%] w-72 h-72 rounded-full pointer-events-none z-0"
+        style={{ background: 'radial-gradient(circle, rgba(65,128,143,0.2) 0%, transparent 70%)' }}
+      />
+
+      {/* LEFT — Text */}
+      <div className="absolute left-0 top-0 h-full z-10 flex flex-col justify-center pl-10 sm:pl-14 lg:pl-20" style={{ width: '52%' }}>
+        
+        {/* Brand label */}
+        <p className="text-sm font-bold italic text-[#1a3a42] mb-1 tracking-wide">
+          {s.brand}
+        </p>
+
+        {/* Product name — large teal */}
+        <h1 className="font-extrabold text-[#41808F] leading-tight mb-3"
+          style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}>
+          {s.name}
+        </h1>
+
+        {/* Description */}
+        <p className="text-[#2a4a52] leading-relaxed mb-4 max-w-sm"
+          style={{ fontSize: 'clamp(13px, 1.4vw, 16px)' }}>
+          {s.desc}
+        </p>
+
+        {/* Tagline */}
+        <p className="font-bold text-[#1a3a42] text-sm mb-0.5">{s.tag}</p>
+        <p className="text-[#4a6a72] text-xs mb-6">{s.tagsub}</p>
+
+        {/* CTA Button */}
+        <button
+          onClick={onViewProducts}
+          className="inline-flex items-center gap-2 bg-[#41808F] hover:bg-[#2c5b66] text-white font-bold uppercase tracking-wider text-xs px-6 py-3 rounded-lg transition-all duration-200 w-max cursor-pointer group"
+        >
+          <span>View Our Products</span>
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </button>
       </div>
 
-      {/* Hero content - only the prominent "View Our Products" button at the bottom */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-20 pb-8 sm:pb-12 lg:pb-14 flex items-end justify-start">
-        <div className="animate-in fade-in slide-in-from-bottom-6 duration-500 pointer-events-auto">
+      {/* RIGHT — Product image */}
+      <div className="absolute right-0 top-0 h-full z-[1] flex items-center justify-center" style={{ width: '52%' }}>
+        <img
+          key={currentSlide}
+          src={s.url}
+          alt={s.alt}
+          referrerPolicy="no-referrer"
+          className="object-contain"
+          style={{
+            maxWidth: '92%',
+            maxHeight: '90%',
+            filter: 'drop-shadow(0 12px 40px rgba(0,0,0,0.18))'
+          }}
+        />
+      </div>
+
+      {/* CE Badge — top right */}
+      <div className="absolute top-5 right-16 z-20 bg-[#1a3a42] text-white text-center px-4 py-2 rounded text-xs font-bold uppercase tracking-wide leading-tight">
+        CE<br />Certified
+      </div>
+
+      {/* Dots — right side vertical */}
+      <div className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-2">
+        {DEFAULT_SLIDES.map((_, i) => (
           <button
-            onClick={onViewProducts}
-            className="px-8 py-4 bg-[#41808F] hover:bg-[#2c5b66] text-white rounded-xl font-sans text-xs sm:text-sm font-bold tracking-wider uppercase shadow-2xl transition-all duration-200 transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer group border border-white/20"
-          >
-            <span>View Our Products</span>
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1.5" />
-          </button>
-        </div>
-      </div>
-
-      {/* Position indicators */}
-      <div className="absolute bottom-6 right-6 z-30 flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-2.5 rounded-xl border border-black/5 shadow-md">
-        <div className="flex gap-1.5">
-          {DEFAULT_SLIDES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentSlide(i)}
-              className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer ${
-                currentSlide === i ? 'w-5 bg-[#41808F]' : 'w-1.5 bg-[#41808F]/25 hover:bg-[#41808F]/50'
-              }`}
-              aria-label={`Image ${i + 1}`}
-            />
-          ))}
-        </div>
+            key={i}
+            onClick={() => setCurrentSlide(i)}
+            aria-label={`Slide ${i + 1}`}
+            className="w-1.5 rounded-full border-none cursor-pointer transition-all duration-300"
+            style={{
+              height: currentSlide === i ? '20px' : '6px',
+              background: currentSlide === i ? '#41808F' : 'rgba(26,58,66,0.25)'
+            }}
+          />
+        ))}
       </div>
     </div>
   );
