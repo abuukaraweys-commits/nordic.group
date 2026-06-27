@@ -115,8 +115,8 @@ export default function Hero({ onViewProducts }: HeroProps) {
           referrerPolicy="no-referrer"
           className="object-contain"
           style={{
-            maxWidth: '92%',
-            maxHeight: '90%',
+            maxWidth: '105%',
+            maxHeight: '105%',
             filter: 'drop-shadow(0 12px 40px rgba(0,0,0,0.18))'
           }}
         />
@@ -145,3 +145,4 @@ export default function Hero({ onViewProducts }: HeroProps) {
     </div>
   );
 }
+
