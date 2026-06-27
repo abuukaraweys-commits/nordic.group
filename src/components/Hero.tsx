@@ -122,7 +122,7 @@ export default function Hero({ onViewProducts }: HeroProps) {
           style={{
             width: '88%',
             height: '88%',
-            filter: 'drop-shadow(0 10px 32px rgba(0,0,0,0.15))'
+            mixBlendMode: 'multiply'
           }}
         />
       </div>
@@ -150,4 +150,3 @@ export default function Hero({ onViewProducts }: HeroProps) {
     </div>
   );
 }
-
