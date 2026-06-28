@@ -31,11 +31,11 @@ export function resolveImageUrl(url: string | undefined): string {
   // Clean leading dots and slashes, and replace spaces with %20
   const cleanPath = url.replace(/^\.?\/+/, '').replace(/ /g, '%20');
   
-  // Return the relative path. It works perfectly on:
-  // 1. Local development (http://localhost:3000/images/products/...)
-  // 2. Vercel / Custom Domain (https://nordic-group.com/images/products/...)
-  // 3. GitHub Pages subpaths (https://username.github.io/repo-name/images/products/...)
-  // Since this is a single-page app (SPA) with hash routing (#), the base directory path never changes.
-  return cleanPath;
+  // Retrieve Vite's base URL (e.g., '/' or '/repo-name/' or './')
+  const base = import.meta.env.BASE_URL || '/';
+  
+  // Ensure base and path join correctly without double slashes
+  const cleanBase = base.endsWith('/') ? base : `${base}/`;
+  return `${cleanBase}${cleanPath}`;
 }
 
