@@ -10,7 +10,7 @@ import {
   CheckCircle2, 
   FileCheck 
 } from 'lucide-react';
-import { Product } from '../types';
+import { Product, resolveImageUrl } from '../types';
 
 interface CartItem {
   product: Product;
@@ -259,7 +259,7 @@ Sent via Nordic Group Dental online portal.`;
                         <div className="w-14 h-14 bg-white rounded-lg border border-[#e1e3e4] overflow-hidden shrink-0 flex items-center justify-center p-1">
                           {item.product.imageUrl ? (
                             <img
-                              src={item.product.imageUrl}
+                              src={resolveImageUrl(item.product.imageUrl)}
                               alt={item.product.name}
                               referrerPolicy="no-referrer"
                               className="max-w-full max-h-full object-contain"

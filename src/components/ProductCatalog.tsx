@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { Product, CategoryKey } from '../types';
+import { Product, CategoryKey, resolveImageUrl } from '../types';
 import { PRODUCTS, CATEGORIES } from '../data';
 import { Search, MapPin, BadgeCheck, FileText, X, ChevronRight } from 'lucide-react';
 
@@ -213,7 +213,7 @@ export default function ProductCatalog({
                   >
                     {product.imageUrl ? (
                       <img
-                        src={product.imageUrl}
+                        src={resolveImageUrl(product.imageUrl)}
                         alt={product.name}
                         referrerPolicy="no-referrer"
                         onError={(e) => {

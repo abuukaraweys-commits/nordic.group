@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Product, CategoryKey } from '../types';
+import { Product, CategoryKey, resolveImageUrl } from '../types';
 import { CATEGORIES } from '../data';
 import { 
   ArrowLeft, 
@@ -72,7 +72,7 @@ export default function ProductDetail({
         return `https://drive.google.com/thumbnail?id=${idMatch[1]}&sz=w1000`;
       }
     }
-    return product.imageUrl;
+    return resolveImageUrl(product.imageUrl);
   };
 
   const currentlyInCart = getCartItemQty(product.id);

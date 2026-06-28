@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { resolveImageUrl } from '../types';
 
 interface HeroProps {
   onViewProducts: () => void;
@@ -101,7 +102,7 @@ export default function Hero({ onViewProducts }: HeroProps) {
 
         {/* RIGHT — Image */}
         <div className="absolute right-0 top-0 h-full z-[1] flex items-center justify-center" style={{ width: '64%' }}>
-          <img key={currentSlide} src={s.url} alt={s.alt} className="object-contain" style={{ width: '100%', height: '100%' }} />
+          <img key={currentSlide} src={resolveImageUrl(s.url)} alt={s.alt} className="object-contain" style={{ width: '100%', height: '100%' }} />
         </div>
 
         {/* CE Badge */}
