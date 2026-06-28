@@ -1,47 +1,47 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 
-import dentalChairImg from '../assets/images/dental_unit_chair_1782572921699.jpg';
-import charismaImg from '../assets/images/charisma_composite_1782572937466.jpg';
-import realColorImg from '../assets/images/real_color_pastes_1782572953921.jpg';
-
 interface HeroProps {
   onViewProducts: () => void;
 }
 
 interface Slide {
+  brand: string;
+  name: string;
+  desc: string;
+  tag: string;
+  tagsub: string;
   url: string;
   alt: string;
-  title: string;
-  subtitle: string;
-  background: string;
-  buttonColor: string;
 }
 
 const DEFAULT_SLIDES: Slide[] = [
   {
-    url: dentalChairImg,
-    alt: 'Premium Ergonomic Dental Unit Chair',
-    title: 'Premium Ergonomic Dental Unit Chair',
-    subtitle: 'Fully integrated clinical workstation designed for patient comfort and professional treatment precision.',
-    background: 'linear-gradient(135deg, #0B2545 0%, #1a6e7e 100%)', // Clinical deep blue/teal gradient matching dental equipment catalogs
-    buttonColor: '#41808F'
+    brand: 'Kulzer / Nordic Group',
+    name: 'Charisma E4SY',
+    desc: 'Universal light-curing hybrid composite. Syringe Assortment 4×4g. Microglass II, radio-opaque.',
+    tag: 'Precision Restorations',
+    tagsub: 'with Confidence',
+    url: '/images/products/Charisma%C2%AE%20E4SY.png',
+    alt: 'Charisma E4SY Composite'
   },
   {
-    url: charismaImg,
-    alt: 'Kulzer Charisma Dental Composite Syringes',
-    title: 'Kulzer Charisma Dental Composite Syringes',
-    subtitle: 'Easy-handling hybrid restorative composite with lifelike enamel-matching aesthetics.',
-    background: 'linear-gradient(135deg, #0A0A0A 0%, #7E1C1E 100%)', // Matches the original black & red geometric box of Kulzer Charisma E4SY
-    buttonColor: '#C1272D'
+    brand: 'Dentex / Nordic Group',
+    name: 'DX Flow Color',
+    desc: 'Light Cure Color Pastes — Real Color system with 7 shades, brushes and accessories included.',
+    tag: 'Artistic Dental Aesthetics',
+    tagsub: 'with Precision',
+    url: '/images/products/DX.%20Flow-Color.png',
+    alt: 'DX Flow Color Pastes'
   },
   {
-    url: realColorImg,
-    alt: 'Dentex Real Color Light Cure Color Pastes',
-    title: 'Dentex Real Color Light Cure Color Pastes',
-    subtitle: 'Premium light-cure resin characterization kit for custom aesthetic dental restorations.',
-    background: 'linear-gradient(135deg, #0C071C 0%, #4C1D63 100%)', // Matches the rich artistic violet & rainbow accents of the Dentex Real Color packaging
-    buttonColor: '#7C3AED'
+    brand: 'SY / Nordic Group',
+    name: 'Dental Unit QL2028 II',
+    desc: 'Premium dental treatment chair with integrated LED light, instrument tray and ergonomic design.',
+    tag: 'Complete Clinic Setup',
+    tagsub: 'with Comfort',
+    url: '/images/products/Dental%20Unit%20QL2028%20II.png',
+    alt: 'Dental Unit QL2028 II'
   }
 ];
 
@@ -51,103 +51,95 @@ export default function Hero({ onViewProducts }: HeroProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % DEFAULT_SLIDES.length);
-    }, 6000);
+    }, 5500);
     return () => clearInterval(interval);
   }, []);
 
-  const activeSlide = DEFAULT_SLIDES[currentSlide];
+  const s = DEFAULT_SLIDES[currentSlide];
 
   return (
-    <div 
-      id="homepage-hero-redesign" 
-      className="relative w-full h-[480px] sm:h-[540px] lg:h-[600px] overflow-hidden flex items-center border-b border-[#bfc8ca]/25"
+    <div
+      id="homepage-hero"
+      className="relative w-full overflow-hidden border-b border-[#bfc8ca]/25"
+      style={{
+        height: '440px',
+        /* Lighter toward the right (near white) so the white product
+           background blends seamlessly with mix-blend-mode: multiply */
+        background: 'linear-gradient(100deg, #d4e4e8 0%, #deeaed 35%, #eef5f6 60%, #f4f9fa 100%)'
+      }}
     >
-      {/* BACKGROUND SLIDESHOW - smooth crossfade of packaging-matched gradients */}
-      <div className="absolute inset-0 w-full h-full z-0 transition-all duration-1000">
-        {DEFAULT_SLIDES.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{ background: slide.background }}
+      {/* LEFT — Text */}
+      <div
+        className="absolute left-0 top-0 h-full z-30 flex flex-col justify-center pl-10 sm:pl-14 lg:pl-20"
+        style={{ width: '40%' }}
+      >
+        <p className="text-xs font-bold italic text-[#1a3a42] mb-1.5 tracking-wide">
+          {s.brand}
+        </p>
+
+        <h1
+          className="font-extrabold text-[#41808F] leading-tight mb-3"
+          style={{ fontSize: 'clamp(24px, 3.2vw, 40px)' }}
+        >
+          {s.name}
+        </h1>
+
+        <p
+          className="text-[#2a4a52] leading-relaxed mb-3"
+          style={{ fontSize: 'clamp(12px, 1.2vw, 14px)', maxWidth: '290px' }}
+        >
+          {s.desc}
+        </p>
+
+        <p className="font-bold text-[#1a3a42] text-sm mb-0.5">{s.tag}</p>
+        <p className="text-[#4a6a72] text-xs mb-6">{s.tagsub}</p>
+
+        <button
+          onClick={onViewProducts}
+          className="inline-flex items-center gap-2 bg-[#41808F] hover:bg-[#2c5b66] text-white font-bold uppercase tracking-wider text-xs px-6 py-3 rounded-lg transition-all duration-200 w-max cursor-pointer group border-none"
+        >
+          <span>View Our Products</span>
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </button>
+      </div>
+
+      {/* RIGHT — Wide product image */}
+      <div
+        className="absolute right-0 top-0 h-full z-[1] flex items-center justify-center"
+        style={{ width: '64%' }}
+      >
+        <img
+          key={currentSlide}
+          src={s.url}
+          alt={s.alt}
+          className="object-contain"
+          style={{
+            width: '100%',
+            height: '100%',
+            mixBlendMode: 'multiply'
+          }}
+        />
+      </div>
+
+      {/* CE Badge */}
+      <div className="absolute top-5 right-12 z-40 bg-[#1a3a42] text-white text-center px-3 py-2 rounded text-[10px] font-bold uppercase tracking-wide leading-tight">
+        CE<br />Certified
+      </div>
+
+      {/* Dots — vertical right side */}
+      <div className="absolute right-3 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2 items-center">
+        {DEFAULT_SLIDES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentSlide(i)}
+            aria-label={`Slide ${i + 1}`}
+            className="w-1.5 rounded-full border-none cursor-pointer transition-all duration-300 p-0"
+            style={{
+              height: currentSlide === i ? '20px' : '6px',
+              background: currentSlide === i ? '#41808F' : 'rgba(26,58,66,0.25)'
+            }}
           />
         ))}
-      </div>
-
-      {/* Decorative subtle background overlay to add depth */}
-      <div className="absolute inset-0 bg-black/15 z-0 pointer-events-none" />
-
-      {/* Content layout: Left-side text and button, Right-side image */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col md:flex-row items-center justify-between z-10 py-8 md:py-0 gap-6 md:gap-12">
-        
-        {/* TEXT COLUMN - LEFT SIDE */}
-        <div className="flex-1 text-left flex flex-col justify-center items-start h-full max-w-xl w-full">
-          <div className="relative w-full min-h-[140px] sm:min-h-[160px] md:min-h-[220px]">
-            {DEFAULT_SLIDES.map((slide, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 w-full flex flex-col gap-3 justify-center transition-all duration-1000 ease-in-out ${
-                  index === currentSlide ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4 pointer-events-none'
-                }`}
-              >
-                <h1 className="text-2xl sm:text-3.5xl md:text-4xl lg:text-5xl font-sans font-bold text-white tracking-tight leading-tight">
-                  {slide.title}
-                </h1>
-                <p className="text-xs sm:text-sm md:text-base text-white/90 font-sans leading-relaxed">
-                  {slide.subtitle}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 sm:mt-8">
-            <button
-              onClick={onViewProducts}
-              style={{ backgroundColor: activeSlide.buttonColor }}
-              className="px-8 py-4 text-white rounded-xl font-sans text-xs sm:text-sm font-bold tracking-wider uppercase shadow-2xl transition-all duration-500 transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer group border border-white/20 hover:brightness-110"
-            >
-              <span>View Our Products</span>
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1.5" />
-            </button>
-          </div>
-        </div>
-
-        {/* IMAGE COLUMN - RIGHT SIDE */}
-        <div className="flex-1 w-full h-[180px] sm:h-[240px] md:h-full flex items-center justify-center relative">
-          {DEFAULT_SLIDES.map((slide, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 w-full h-full flex items-center justify-center transition-all duration-1000 ease-in-out ${
-                index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
-              }`}
-            >
-              <img
-                src={slide.url}
-                alt={slide.alt}
-                referrerPolicy="no-referrer"
-                className="max-w-[90%] max-h-[90%] md:max-h-[80%] object-contain object-center drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-transform duration-500 hover:scale-[1.02]"
-              />
-            </div>
-          ))}
-        </div>
-
-      </div>
-
-      {/* Position indicators - white dot indicators at the bottom right */}
-      <div className="absolute bottom-6 right-6 z-30 flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/15 shadow-lg">
-        <div className="flex gap-1.5">
-          {DEFAULT_SLIDES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentSlide(i)}
-              className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer ${
-                currentSlide === i ? 'w-5 bg-white' : 'w-1.5 bg-white/40 hover:bg-white/65'
-              }`}
-              aria-label={`Image ${i + 1}`}
-            />
-          ))}
-        </div>
       </div>
     </div>
   );
