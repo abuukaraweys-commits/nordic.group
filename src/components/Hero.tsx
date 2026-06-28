@@ -32,7 +32,7 @@ const DEFAULT_SLIDES: Slide[] = [
     desc: 'Universal light-curing hybrid composite. Syringe Assortment 4×4g. Microglass II, radio-opaque.',
     tag: 'Precision Restorations',
     tagsub: 'with Confidence',
-    url: '/images/products/charisma.png',
+    url: '/images/products/chrisma transparent image.png',
     alt: 'Charisma E4SY Composite'
   },
   {
@@ -41,7 +41,7 @@ const DEFAULT_SLIDES: Slide[] = [
     desc: 'Porcelain Fracture Repair Kit with MZ Primer, DX Bond, PC Primer and DX Flow etch system.',
     tag: 'Complete Repair System',
     tagsub: 'with Precision',
-    url: '/images/products/den-link.png',
+    url: '/images/products/Den Link kit transparent.png',
     alt: 'Den Link Porcelain Repair Kit'
   },
   {
@@ -50,7 +50,7 @@ const DEFAULT_SLIDES: Slide[] = [
     desc: 'Premium dental treatment chair with integrated LED light, instrument tray and ergonomic design.',
     tag: 'Complete Clinic Setup',
     tagsub: 'with Comfort',
-    url: '/images/products/dental-chair.png',
+    url: '/images/products/transparent dentalstol.png',
     alt: 'Dental Unit QL2028 II'
   }
 ];
