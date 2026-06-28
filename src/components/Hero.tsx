@@ -15,6 +15,16 @@ interface Slide {
   alt: string;
 }
 
+/*
+  IMPORTANT — image filenames:
+  Upload your 3 transparent PNGs to  public/images/products/  with these
+  EXACT simple names (no spaces, no ® . characters):
+     den-link.png
+     dental-chair.png
+     charisma.png
+  Make sure all 3 are TRUE transparent PNGs (use remove.bg for the
+  dental chair and charisma images, which currently have black backgrounds).
+*/
 const DEFAULT_SLIDES: Slide[] = [
   {
     brand: 'Kulzer / Nordic Group',
@@ -22,17 +32,17 @@ const DEFAULT_SLIDES: Slide[] = [
     desc: 'Universal light-curing hybrid composite. Syringe Assortment 4×4g. Microglass II, radio-opaque.',
     tag: 'Precision Restorations',
     tagsub: 'with Confidence',
-    url: '/images/products/Charisma%C2%AE%20E4SY.png',
+    url: '/images/products/charisma.png',
     alt: 'Charisma E4SY Composite'
   },
   {
     brand: 'Dentex / Nordic Group',
-    name: 'DX Flow Color',
-    desc: 'Light Cure Color Pastes — Real Color system with 7 shades, brushes and accessories included.',
-    tag: 'Artistic Dental Aesthetics',
+    name: 'Den Link Kit',
+    desc: 'Porcelain Fracture Repair Kit with MZ Primer, DX Bond, PC Primer and DX Flow etch system.',
+    tag: 'Complete Repair System',
     tagsub: 'with Precision',
-    url: '/images/products/DX.%20Flow-Color.png',
-    alt: 'DX Flow Color Pastes'
+    url: '/images/products/den-link.png',
+    alt: 'Den Link Porcelain Repair Kit'
   },
   {
     brand: 'SY / Nordic Group',
@@ -40,7 +50,7 @@ const DEFAULT_SLIDES: Slide[] = [
     desc: 'Premium dental treatment chair with integrated LED light, instrument tray and ergonomic design.',
     tag: 'Complete Clinic Setup',
     tagsub: 'with Comfort',
-    url: '/images/products/Dental%20Unit%20QL2028%20II.png',
+    url: '/images/products/dental-chair.png',
     alt: 'Dental Unit QL2028 II'
   }
 ];
@@ -63,8 +73,6 @@ export default function Hero({ onViewProducts }: HeroProps) {
       className="relative w-full overflow-hidden border-b border-[#bfc8ca]/25"
       style={{
         height: '440px',
-        /* Lighter toward the right (near white) so the white product
-           background blends seamlessly with mix-blend-mode: multiply */
         background: 'linear-gradient(100deg, #d4e4e8 0%, #deeaed 35%, #eef5f6 60%, #f4f9fa 100%)'
       }}
     >
@@ -103,7 +111,7 @@ export default function Hero({ onViewProducts }: HeroProps) {
         </button>
       </div>
 
-      {/* RIGHT — Wide product image */}
+      {/* RIGHT — Wide transparent product image */}
       <div
         className="absolute right-0 top-0 h-full z-[1] flex items-center justify-center"
         style={{ width: '64%' }}
@@ -113,11 +121,7 @@ export default function Hero({ onViewProducts }: HeroProps) {
           src={s.url}
           alt={s.alt}
           className="object-contain"
-          style={{
-            width: '100%',
-            height: '100%',
-            mixBlendMode: 'multiply'
-          }}
+          style={{ width: '100%', height: '100%' }}
         />
       </div>
 
@@ -144,3 +148,4 @@ export default function Hero({ onViewProducts }: HeroProps) {
     </div>
   );
 }
+
