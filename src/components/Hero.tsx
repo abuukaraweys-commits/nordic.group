@@ -17,9 +17,9 @@ interface Slide {
 
 /*
   Image filenames in public/images/products/ :
-     chrisma transparent image.png
-     Den Link kit transparent.png
-     transparent dentalstol.png
+     charisma.png
+     den-link.png
+     dental-chair.png
   (true transparent PNGs)
 */
 const DEFAULT_SLIDES: Slide[] = [
@@ -29,7 +29,7 @@ const DEFAULT_SLIDES: Slide[] = [
     desc: 'Universal light-curing hybrid composite. Syringe Assortment 4×4g. Microglass II, radio-opaque.',
     tag: 'Precision Restorations',
     tagsub: 'with Confidence',
-    url: '/images/products/chrisma%20transparent%20image.png',
+    url: '/images/products/charisma.png',
     alt: 'Charisma E4SY Composite'
   },
   {
@@ -38,7 +38,7 @@ const DEFAULT_SLIDES: Slide[] = [
     desc: 'Porcelain Fracture Repair Kit with MZ Primer, DX Bond, PC Primer and DX Flow etch system.',
     tag: 'Complete Repair System',
     tagsub: 'with Precision',
-    url: '/images/products/Den%20Link%20kit%20transparent.png',
+    url: '/images/products/den-link.png',
     alt: 'Den Link Porcelain Repair Kit'
   },
   {
@@ -47,7 +47,7 @@ const DEFAULT_SLIDES: Slide[] = [
     desc: 'Premium dental treatment chair with integrated LED light, instrument tray and ergonomic design.',
     tag: 'Complete Clinic Setup',
     tagsub: 'with Comfort',
-    url: '/images/products/transparent%20dentalstol.png',
+    url: '/images/products/dental-chair.png',
     alt: 'Dental Unit QL2028 II'
   }
 ];
