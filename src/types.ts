@@ -31,17 +31,11 @@ export function resolveImageUrl(url: string | undefined): string {
   // Clean leading dots and slashes, and replace spaces with %20
   const cleanPath = url.replace(/^\.?\/+/, '').replace(/ /g, '%20');
   
-  // Check if running on GitHub Pages: hostname contains 'github.io'
-  const isGitHubPages = typeof window !== 'undefined' && window.location.hostname.endsWith('github.io');
-  if (isGitHubPages) {
-    const pathname = window.location.pathname;
-    const parts = pathname.split('/').filter(Boolean);
-    // If the first segment is not 'images' or 'assets', it is likely the repo name
-    if (parts.length > 0 && parts[0] !== 'images' && parts[0] !== 'assets') {
-      return `/${parts[0]}/${cleanPath}`;
-    }
-  }
-  
-  return `/${cleanPath}`;
+  // Return the relative path. It works perfectly on:
+  // 1. Local development (http://localhost:3000/images/products/...)
+  // 2. Vercel / Custom Domain (https://nordic-group.com/images/products/...)
+  // 3. GitHub Pages subpaths (https://username.github.io/repo-name/images/products/...)
+  // Since this is a single-page app (SPA) with hash routing (#), the base directory path never changes.
+  return cleanPath;
 }
 
