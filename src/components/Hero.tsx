@@ -13,7 +13,6 @@ interface Slide {
   tagsub: string;
   url: string;
   alt: string;
-  glow: string;
 }
 
 const DEFAULT_SLIDES: Slide[] = [
@@ -24,8 +23,7 @@ const DEFAULT_SLIDES: Slide[] = [
     tag: 'Precision Restorations',
     tagsub: 'with Confidence',
     url: '/images/products/Charisma%C2%AE%20E4SY.png',
-    alt: 'Charisma E4SY Composite',
-    glow: 'rgba(180,40,40,0.10)'
+    alt: 'Charisma E4SY Composite'
   },
   {
     brand: 'Dentex / Nordic Group',
@@ -34,8 +32,7 @@ const DEFAULT_SLIDES: Slide[] = [
     tag: 'Artistic Dental Aesthetics',
     tagsub: 'with Precision',
     url: '/images/products/DX.%20Flow-Color.png',
-    alt: 'DX Flow Color Pastes',
-    glow: 'rgba(65,200,100,0.10)'
+    alt: 'DX Flow Color Pastes'
   },
   {
     brand: 'SY / Nordic Group',
@@ -44,8 +41,7 @@ const DEFAULT_SLIDES: Slide[] = [
     tag: 'Complete Clinic Setup',
     tagsub: 'with Comfort',
     url: '/images/products/Dental%20Unit%20QL2028%20II.png',
-    alt: 'Dental Unit QL2028 II',
-    glow: 'rgba(120,160,180,0.12)'
+    alt: 'Dental Unit QL2028 II'
   }
 ];
 
@@ -67,24 +63,15 @@ export default function Hero({ onViewProducts }: HeroProps) {
       className="relative w-full overflow-hidden border-b border-[#bfc8ca]/25"
       style={{
         height: '440px',
-        background: 'linear-gradient(115deg, #dce9ec 0%, #cfe2e7 45%, #c4dbe1 100%)'
+        /* Lighter toward the right (near white) so the white product
+           background blends seamlessly with mix-blend-mode: multiply */
+        background: 'linear-gradient(100deg, #d4e4e8 0%, #deeaed 35%, #eef5f6 60%, #f4f9fa 100%)'
       }}
     >
-      {/* Soft glow behind the product */}
-      <div
-        className="absolute top-1/2 -translate-y-1/2 rounded-full pointer-events-none z-0"
-        style={{
-          right: '18%',
-          width: '360px',
-          height: '360px',
-          background: `radial-gradient(circle, ${s.glow} 0%, transparent 70%)`
-        }}
-      />
-
       {/* LEFT — Text */}
       <div
         className="absolute left-0 top-0 h-full z-30 flex flex-col justify-center pl-10 sm:pl-14 lg:pl-20"
-        style={{ width: '46%' }}
+        style={{ width: '40%' }}
       >
         <p className="text-xs font-bold italic text-[#1a3a42] mb-1.5 tracking-wide">
           {s.brand}
@@ -92,14 +79,14 @@ export default function Hero({ onViewProducts }: HeroProps) {
 
         <h1
           className="font-extrabold text-[#41808F] leading-tight mb-3"
-          style={{ fontSize: 'clamp(26px, 3.4vw, 42px)' }}
+          style={{ fontSize: 'clamp(24px, 3.2vw, 40px)' }}
         >
           {s.name}
         </h1>
 
         <p
-          className="text-[#2a4a52] leading-relaxed mb-3 max-w-xs"
-          style={{ fontSize: 'clamp(12px, 1.3vw, 14px)' }}
+          className="text-[#2a4a52] leading-relaxed mb-3"
+          style={{ fontSize: 'clamp(12px, 1.2vw, 14px)', maxWidth: '290px' }}
         >
           {s.desc}
         </p>
@@ -116,10 +103,10 @@ export default function Hero({ onViewProducts }: HeroProps) {
         </button>
       </div>
 
-      {/* RIGHT — Big product image */}
+      {/* RIGHT — Wide product image */}
       <div
         className="absolute right-0 top-0 h-full z-[1] flex items-center justify-center"
-        style={{ width: '58%' }}
+        style={{ width: '64%' }}
       >
         <img
           key={currentSlide}
