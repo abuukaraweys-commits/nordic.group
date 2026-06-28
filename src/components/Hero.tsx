@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { resolveImageUrl } from '../types';
 
 interface HeroProps {
   onViewProducts: () => void;
@@ -18,19 +17,19 @@ interface Slide {
 
 /*
   Image filenames in public/images/products/ :
-     charisma.png
-     den-link.png
-     dental-chair.png
+     chrisma transparent image.png
+     Den Link kit transparent.png
+     transparent dentalstol.png
   (true transparent PNGs)
 */
 const DEFAULT_SLIDES: Slide[] = [
   {
     brand: 'Kulzer / Nordic Group',
     name: 'Charisma E4SY',
-    desc: 'Universal light-cure hybrid composite. Syringe Assortment 4×4g. Microglass II, radio-opaque.',
+    desc: 'Universal light-curing hybrid composite. Syringe Assortment 4×4g. Microglass II, radio-opaque.',
     tag: 'Precision Restorations',
     tagsub: 'with Confidence',
-    url: './images/products/chrisma transparent image.png',
+    url: '/images/products/chrisma%20transparent%20image.png',
     alt: 'Charisma E4SY Composite'
   },
   {
@@ -39,7 +38,7 @@ const DEFAULT_SLIDES: Slide[] = [
     desc: 'Porcelain Fracture Repair Kit with MZ Primer, DX Bond, PC Primer and DX Flow etch system.',
     tag: 'Complete Repair System',
     tagsub: 'with Precision',
-    url: './images/products/Den Link kit transparent.png',
+    url: '/images/products/Den%20Link%20kit%20transparent.png',
     alt: 'Den Link Porcelain Repair Kit'
   },
   {
@@ -48,7 +47,7 @@ const DEFAULT_SLIDES: Slide[] = [
     desc: 'Premium dental treatment chair with integrated LED light, instrument tray and ergonomic design.',
     tag: 'Complete Clinic Setup',
     tagsub: 'with Comfort',
-    url: './images/products/transparent dentalstol.png',
+    url: '/images/products/transparent%20dentalstol.png',
     alt: 'Dental Unit QL2028 II'
   }
 ];
@@ -73,9 +72,9 @@ export default function Hero({ onViewProducts }: HeroProps) {
         background: 'linear-gradient(100deg, #d4e4e8 0%, #deeaed 35%, #eef5f6 60%, #f4f9fa 100%)'
       }}
     >
-      {/* ========================================= */}
-      {/* DESKTOP LAYOUT (lg and up) — unchanged side-by-side         */}
-      {/* ========================================= */}
+      {/* ============================================================ */}
+      {/* DESKTOP LAYOUT (lg and up) — unchanged side-by-side          */}
+      {/* ============================================================ */}
       <div className="hidden lg:block relative" style={{ height: '440px' }}>
         {/* LEFT — Text */}
         <div
@@ -93,7 +92,7 @@ export default function Hero({ onViewProducts }: HeroProps) {
           <p className="text-[#4a6a72] text-xs mb-6">{s.tagsub}</p>
           <button
             onClick={onViewProducts}
-            className="inline-flex items-center gap-2 bg-[#41808F] hover:bg-[#2c5b66] text-white font-bold uppercase tracking-wider text-xs px-6 py-3 rounded-lg transition-all duration-200 w-max cursor-pointer border-none"
+            className="inline-flex items-center gap-2 bg-[#41808F] hover:bg-[#2c5b66] text-white font-bold uppercase tracking-wider text-xs px-6 py-3 rounded-lg transition-all duration-200 w-max cursor-pointer group border-none"
           >
             <span>View Our Products</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -102,7 +101,7 @@ export default function Hero({ onViewProducts }: HeroProps) {
 
         {/* RIGHT — Image */}
         <div className="absolute right-0 top-0 h-full z-[1] flex items-center justify-center" style={{ width: '64%' }}>
-          <img key={currentSlide} src={resolveImageUrl(s.url)} alt={s.alt} className="object-contain" style={{ width: '100%', height: '100%' }} />
+          <img key={currentSlide} src={s.url} alt={s.alt} className="object-contain" style={{ width: '100%', height: '100%' }} />
         </div>
 
         {/* CE Badge */}
@@ -124,9 +123,9 @@ export default function Hero({ onViewProducts }: HeroProps) {
         </div>
       </div>
 
-      {/* ========================================= */}
+      {/* ============================================================ */}
       {/* MOBILE LAYOUT (below lg) — big image on top, text below      */}
-      {/* ========================================= */}
+      {/* ============================================================ */}
       <div className="lg:hidden flex flex-col">
         {/* Image — large, takes most of the space */}
         <div className="relative w-full flex items-center justify-center" style={{ height: '300px' }}>
@@ -152,7 +151,7 @@ export default function Hero({ onViewProducts }: HeroProps) {
           <p className="text-[#2a4a52] leading-relaxed mb-3 text-[13px]">{s.desc}</p>
           <button
             onClick={onViewProducts}
-            className="inline-flex items-center gap-2 bg-[#41808F] hover:bg-[#2c5b66] text-white font-bold uppercase tracking-wider text-xs px-5 py-2.5 rounded-lg transition-all duration-200 w-max cursor-pointer border-none"
+            className="inline-flex items-center gap-2 bg-[#41808F] hover:bg-[#2c5b66] text-white font-bold uppercase tracking-wider text-xs px-5 py-2.5 rounded-lg transition-all duration-200 w-max cursor-pointer group border-none"
           >
             <span>View Our Products</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -175,3 +174,4 @@ export default function Hero({ onViewProducts }: HeroProps) {
     </div>
   );
 }
+
