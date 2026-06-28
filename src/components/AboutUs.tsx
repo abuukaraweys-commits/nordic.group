@@ -68,6 +68,53 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
           </p>
         </div>
 
+        {/* Who We Are Section */}
+        <section id="who-we-are" className="mb-16 py-12 px-8 bg-white border border-[#e1e3e4] border-t-[3px] border-t-[#2c8fa0] shadow-[0_2px_12px_rgba(0,0,0,0.07)] rounded-2xl text-center">
+          <div className="max-w-3xl mx-auto">
+            <span className="text-[10px] bg-[#f0f8fa] border border-[#2c8fa0]/20 text-[#2c8fa0] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest inline-block mb-4">
+              Sourcing & Direct Route from Dubai to Somalia
+            </span>
+            <h2 className="font-sans font-extrabold text-2xl text-[#1a3a42] tracking-tight">
+              Who We Are
+            </h2>
+            <p className="text-xs sm:text-sm text-[#6b8f96] mt-4 leading-relaxed max-w-2xl mx-auto">
+              Nordic Group is a dental distribution company founded in 2022, operating directly from Dubai to Somalia. We provide dental professionals in emerging markets with access to certified, high-quality products at competitive prices, directly from leading global manufacturers.
+            </p>
+            
+            {/* Shipping route schema graphic preview */}
+            <div className="bg-[#f0f8fa] border border-[#2c8fa0]/15 rounded-xl p-6 mt-8 max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 text-center md:text-left">
+              <div className="flex-1">
+                <p className="font-bold text-[#1a3a42] text-sm md:text-xs lg:text-sm">Dubai Sourcing</p>
+                <p className="text-[#6b8f96] mt-1 text-xs font-medium">Global Sourcing & Trade Hub</p>
+              </div>
+              
+              <div className="hidden md:flex flex-col items-center flex-1">
+                <div className="w-full h-px relative flex justify-center">
+                  <div className="absolute w-full border-t border-dashed border-[#2c8fa0]/40 -top-0.5"></div>
+                  <span className="absolute -top-3 text-[9px] bg-[#f0f8fa] text-[#2c8fa0] border border-[#2c8fa0]/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider scale-90">Logistics</span>
+                </div>
+              </div>
+
+              <div className="flex-1 bg-white border border-[#2c8fa0]/20 rounded-lg py-3 px-4 shadow-[0_2px_10px_rgba(0,0,0,0.05)]">
+                <p className="font-bold text-[#2c8fa0] text-sm md:text-xs lg:text-sm">Mogadishu Depot</p>
+                <p className="text-[#1a3a42] mt-0.5 text-xs font-semibold">Customs Clearing & Local Hub</p>
+              </div>
+
+              <div className="hidden md:flex flex-col items-center flex-1">
+                <div className="w-full h-px relative flex justify-center">
+                  <div className="absolute w-full border-t border-dashed border-[#2c8fa0]/40 -top-0.5"></div>
+                  <span className="absolute -top-3 text-[9px] bg-[#f0f8fa] text-[#2c8fa0] border border-[#2c8fa0]/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider scale-90">Sourcing</span>
+                </div>
+              </div>
+
+              <div className="flex-1 text-center md:text-right">
+                <p className="font-bold text-[#1a3a42] text-sm md:text-xs lg:text-sm">Somalia Clinics</p>
+                <p className="text-[#6b8f96] mt-1 text-xs font-medium">Direct Local Distribution</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Vår historia */}
         <section id="our-history" className="mb-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7 space-y-6">

@@ -6,7 +6,9 @@ import {
   PhoneCall,
   Mail,
   MapPin,
-  MessageSquare
+  MessageSquare,
+  ChevronRight,
+  FileText
 } from 'lucide-react';
 import { CategoryKey, Product } from './types';
 import { PRODUCTS } from './data';
@@ -60,9 +62,106 @@ export default function App() {
   });
   const [isCartOpen, setIsCartOpen] = useState(false);
 
+  // Curated list of New Arrival products
+  const newArrivalIds = ['cons-01', 'tool-01', 'equip-01', 'img-11'];
+  const newArrivals = newArrivalIds
+    .map(id => productsList.find(p => p.id === id))
+    .filter((p): p is Product => !!p);
+
+  // Curated list of Most Sold products
+  const mostSoldIds = ['best-01', 'best-02', 'equip-04', 'img-04'];
+  const mostSoldProducts = mostSoldIds
+    .map(id => productsList.find(p => p.id === id))
+    .filter((p): p is Product => !!p);
+
   useEffect(() => {
     localStorage.setItem('nordic_cart', JSON.stringify(cart));
   }, [cart]);
+
+  // Helper to parse the hash and synchronize React state
+  const syncStateFromHash = () => {
+    const hash = window.location.hash || '#home';
+    
+    let page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail' = 'home';
+    let category: CategoryKey | null = null;
+    let productId: string | null = null;
+
+    if (hash.startsWith('#products')) {
+      page = 'products';
+      if (hash.includes('?')) {
+        const queryStr = hash.split('?')[1];
+        const params = new URLSearchParams(queryStr);
+        category = params.get('category') as CategoryKey | null;
+      }
+    } else if (hash.startsWith('#product-detail')) {
+      page = 'product-detail';
+      if (hash.includes('?')) {
+        const queryStr = hash.split('?')[1];
+        const params = new URLSearchParams(queryStr);
+        productId = params.get('id');
+      }
+    } else if (hash === '#about') {
+      page = 'about';
+    } else if (hash === '#contact') {
+      page = 'contact';
+    } else if (hash === '#portal') {
+      page = 'portal';
+    }
+
+    setCurrentPage(page);
+    setActiveCategory(category);
+    if (productId) {
+      const foundProduct = productsList.find(p => p.id === productId);
+      if (foundProduct) {
+        setSelectedProductForDetail(foundProduct);
+      }
+    } else {
+      setSelectedProductForDetail(null);
+    }
+  };
+
+  // Listen to browser forward/back buttons (popstate and hashchange)
+  useEffect(() => {
+    if (!window.location.hash) {
+      window.history.replaceState(null, '', '#home');
+    }
+    syncStateFromHash();
+
+    const handlePopState = () => {
+      syncStateFromHash();
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handlePopState);
+    };
+  }, [productsList]);
+
+  // Synchronize React state changes back to the browser's URL hash (without firing redundant popstates)
+  useEffect(() => {
+    let targetHash = '#home';
+    if (currentPage === 'products') {
+      targetHash = activeCategory ? `#products?category=${activeCategory}` : '#products';
+    } else if (currentPage === 'product-detail') {
+      targetHash = selectedProductForDetail ? `#product-detail?id=${selectedProductForDetail.id}` : '#products';
+    } else if (currentPage === 'about') {
+      targetHash = '#about';
+    } else if (currentPage === 'contact') {
+      targetHash = '#contact';
+    } else if (currentPage === 'portal') {
+      targetHash = '#portal';
+    }
+
+    if (window.location.hash !== targetHash) {
+      if (targetHash === '#home' && !window.location.hash) {
+        return;
+      }
+      window.history.pushState(null, '', targetHash);
+    }
+  }, [currentPage, activeCategory, selectedProductForDetail]);
 
   // Scroll to top helper on switches
   const navigateToPage = (page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail') => {
@@ -163,60 +262,237 @@ export default function App() {
               </div>
             </section>
 
-            {/* Vilka vi är (Kort text: 2–3 meningar) */}
-            <section id="who-we-are" className="py-20 bg-white">
-              <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-                <span className="text-[10px] bg-[#f0f8fa] border border-[#2c8fa0]/20 text-[#2c8fa0] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest inline-block mb-4">
-                  Sourcing & Direct Route from Dubai to Somalia
-                </span>
-                <h2 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#1a3a42] tracking-tight">
-                  Who We Are
-                </h2>
-                <div className="text-sm sm:text-base text-[#6b8f96] max-w-3xl mx-auto mt-6 leading-relaxed font-normal space-y-4">
-                  <p>
-                    Nordic Group is a dental distribution company founded in 2022 with one belief: dental professionals in emerging markets deserve access to the same certified products as clinics in Europe — at prices that make sense.
-                  </p>
-                  <p>
-                    Our business operates directly from Dubai to Somalia.
-                  </p>
-                  <p>
-                    Our range covers everything a clinic needs — impression materials, composites, bonding agents, orthodontic products, disposables, endodontics, cements, disinfection, polishing, and surgical accessories — from trusted brands including Kulzer, 3M, Dentex, Dengen, Atbio, and Jen Dental, all certified to EN-ISO 9001 and EN-ISO 13485.
-                  </p>
-                  <p className="font-medium text-[#1a3a42]">
-                    We are not the biggest. We aim to be the most reliable — the right product, to the right professional, on time, at a price that works.
+            {/* New Arrival Products Section instead of Who We Are */}
+            <section id="new-arrivals" className="py-20 bg-white">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center max-w-3xl mx-auto mb-12">
+                  <span className="text-[10px] bg-[#f0f8fa] border border-[#2c8fa0]/20 text-[#2c8fa0] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest inline-block mb-4">
+                    Just Arrived in Our Catalog
+                  </span>
+                  <h2 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#1a3a42] tracking-tight">
+                    New Arrival Products
+                  </h2>
+                  <p className="text-sm text-[#6b8f96] mt-3 leading-relaxed">
+                    Explore our latest additions of CE-certified dental materials, state-of-the-art diagnostic instruments, and digital imaging solutions sourced directly from Sweden and leading clinical hubs.
                   </p>
                 </div>
 
-                {/* Shipping route schema graphic preview */}
-                <div className="bg-[#f0f8fa] border border-[#2c8fa0]/15 rounded-xl p-6 mt-10 max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 text-center md:text-left">
-                  <div className="flex-1">
-                    <p className="font-bold text-[#1a3a42] text-sm md:text-xs lg:text-sm">Dubai Sourcing</p>
-                    <p className="text-[#6b8f96] mt-1 text-xs font-medium">Global Sourcing & Trade Hub</p>
-                  </div>
-                  
-                  <div className="hidden md:flex flex-col items-center flex-1">
-                    <div className="w-full h-px relative flex justify-center">
-                      <div className="absolute w-full border-t border-dashed border-[#2c8fa0]/40 -top-0.5"></div>
-                      <span className="absolute -top-3 text-[9px] bg-[#f0f8fa] text-[#2c8fa0] border border-[#2c8fa0]/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider scale-90">Logistics</span>
-                    </div>
-                  </div>
+                {/* Grid of New Arrivals */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {newArrivals.map((product) => {
+                    const inCartQty = cart.find(item => item.product.id === product.id)?.quantity || 0;
+                    return (
+                      <div
+                        key={product.id}
+                        className="bg-white border border-[#2c8fa0]/15 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col h-full group"
+                      >
+                        {/* Image wrapper */}
+                        <div
+                          onClick={() => {
+                            setSelectedProductForDetail(product);
+                            navigateToPage('product-detail');
+                          }}
+                          className="relative aspect-square bg-[#f0f8fa]/50 border-b border-[#2c8fa0]/10 flex items-center justify-center p-4 cursor-pointer overflow-hidden"
+                        >
+                          <img
+                            src={product.imageUrl}
+                            alt={product.name}
+                            referrerPolicy="no-referrer"
+                            className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              const currentUrl = target.src;
+                              let driveId: string | null = null;
+                              const idMatch = currentUrl.match(/(?:id=|\/d\/|d\/)([a-zA-Z0-9_-]{25,50})/);
+                              if (idMatch) {
+                                driveId = idMatch[1];
+                              }
+                              if (driveId) {
+                                if (!currentUrl.includes('drive.google.com/thumbnail')) {
+                                  target.src = `https://drive.google.com/thumbnail?id=${driveId}&sz=w800`;
+                                  return;
+                                }
+                              }
+                              // Fallback images matching categories
+                              target.onerror = null;
+                              let fallbackUrl = 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80';
+                              if (product.category === 'composites') {
+                                fallbackUrl = 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80';
+                              } else if (product.category === 'tools') {
+                                fallbackUrl = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80';
+                              } else if (product.category === 'imaging') {
+                                fallbackUrl = 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80';
+                              }
+                              target.src = fallbackUrl;
+                            }}
+                          />
+                        </div>
 
-                  <div className="flex-1 bg-white border border-[#2c8fa0]/20 rounded-lg py-3 px-4 shadow-[0_2px_10px_rgba(0,0,0,0.05)]">
-                    <p className="font-bold text-[#2c8fa0] text-sm md:text-xs lg:text-sm">Mogadishu Depot</p>
-                    <p className="text-[#1a3a42] mt-0.5 text-xs font-semibold">Customs Clearing & Local Hub</p>
-                  </div>
+                        {/* Product details */}
+                        <div className="p-5 flex-1 flex flex-col justify-between">
+                          <div>
+                            <div className="flex items-center justify-between gap-2 mb-2">
+                              <span className="text-[9px] font-extrabold text-[#2c8fa0] uppercase tracking-wider">
+                                {product.category === 'composites' ? 'Composites' : product.category === 'tools' ? 'Tools' : 'X-Ray & Imaging'}
+                              </span>
+                              <span className="text-[9px] font-mono font-bold text-[#6b8f96] bg-[#f0f8fa] border border-[#2c8fa0]/10 px-1.5 py-0.5 rounded">
+                                {product.catalogRef}
+                              </span>
+                            </div>
+                            <h3
+                              onClick={() => {
+                                setSelectedProductForDetail(product);
+                                navigateToPage('product-detail');
+                              }}
+                              className="text-sm font-bold text-[#1a3a42] tracking-tight hover:text-[#2c8fa0] transition-colors cursor-pointer line-clamp-1 hover:underline text-left"
+                            >
+                              {product.name}
+                            </h3>
+                            <p className="text-xs text-[#6b8f96] mt-1.5 line-clamp-2 leading-relaxed text-left">
+                              {product.description}
+                            </p>
+                          </div>
 
-                  <div className="hidden md:flex flex-col items-center flex-1">
-                    <div className="w-full h-px relative flex justify-center">
-                      <div className="absolute w-full border-t border-dashed border-[#2c8fa0]/40 -top-0.5"></div>
-                      <span className="absolute -top-3 text-[9px] bg-[#f0f8fa] text-[#2c8fa0] border border-[#2c8fa0]/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider scale-90">Sourcing</span>
-                    </div>
-                  </div>
+                          {/* Actions */}
+                          <div className="mt-4 pt-4 border-t border-[#f0f8fa]">
+                            <button
+                              onClick={() => {
+                                setSelectedProductForDetail(product);
+                                navigateToPage('product-detail');
+                              }}
+                              className="w-full py-2 bg-[#f0f8fa] hover:bg-[#e0eff2] text-[#2c8fa0] border border-[#2c8fa0]/15 text-[10px] font-bold uppercase rounded-md tracking-wider transition-all flex items-center justify-center gap-1 cursor-pointer"
+                            >
+                              <FileText className="w-3.5 h-3.5" />
+                              <span>More Details</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
 
-                  <div className="flex-1 text-center md:text-right">
-                    <p className="font-bold text-[#1a3a42] text-sm md:text-xs lg:text-sm">Somalia Clinics</p>
-                    <p className="text-[#6b8f96] mt-1 text-xs font-medium">Direct Local Distribution</p>
-                  </div>
+                {/* Link to view whole catalog */}
+                <div className="text-center mt-12">
+                  <button
+                    onClick={() => navigateToPage('products')}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#2c8fa0] hover:bg-[#1a6e7e] text-white text-xs font-bold uppercase tracking-wider transition-all rounded-[6px] shadow-sm cursor-pointer"
+                  >
+                    <span>View Full Product Catalog</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            {/* Most Sold Products Section */}
+            <section id="most-sold" className="py-20 bg-[#f4f9fa]/50 border-t border-[#2c8fa0]/15">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center max-w-3xl mx-auto mb-12">
+                  <span className="text-[10px] bg-[#e2f1f4] border border-[#2c8fa0]/25 text-[#2c8fa0] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest inline-block mb-4">
+                    Trusted Clinical Favorites
+                  </span>
+                  <h2 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#1a3a42] tracking-tight">
+                    Most Sold Products
+                  </h2>
+                  <p className="text-sm text-[#6b8f96] mt-3 leading-relaxed">
+                    Our top-selling clinical essentials, highly recommended by leading dental professionals and clinics for their reliable performance and CE-certified quality.
+                  </p>
+                </div>
+
+                {/* Grid of Most Sold Products */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {mostSoldProducts.map((product) => {
+                    const inCartQty = cart.find(item => item.product.id === product.id)?.quantity || 0;
+                    return (
+                      <div
+                        key={product.id}
+                        className="bg-white border border-[#2c8fa0]/15 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col h-full group"
+                      >
+                        {/* Image wrapper */}
+                        <div
+                          onClick={() => {
+                            setSelectedProductForDetail(product);
+                            navigateToPage('product-detail');
+                          }}
+                          className="relative aspect-square bg-[#f0f8fa]/50 border-b border-[#2c8fa0]/10 flex items-center justify-center p-4 cursor-pointer overflow-hidden"
+                        >
+                          <img
+                            src={product.imageUrl}
+                            alt={product.name}
+                            referrerPolicy="no-referrer"
+                            className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              const currentUrl = target.src;
+                              let driveId: string | null = null;
+                              const idMatch = currentUrl.match(/(?:id=|\/d\/|d\/)([a-zA-Z0-9_-]{25,50})/);
+                              if (idMatch) {
+                                driveId = idMatch[1];
+                              }
+                              if (driveId) {
+                                if (!currentUrl.includes('drive.google.com/thumbnail')) {
+                                  target.src = `https://drive.google.com/thumbnail?id=${driveId}&sz=w800`;
+                                  return;
+                                }
+                              }
+                              // Fallback images matching categories
+                              target.onerror = null;
+                              let fallbackUrl = 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80';
+                              if (product.category === 'composites') {
+                                fallbackUrl = 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80';
+                              } else if (product.category === 'tools') {
+                                fallbackUrl = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80';
+                              } else if (product.category === 'imaging') {
+                                fallbackUrl = 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80';
+                              }
+                              target.src = fallbackUrl;
+                            }}
+                          />
+                        </div>
+
+                        {/* Product details */}
+                        <div className="p-5 flex-1 flex flex-col justify-between">
+                          <div>
+                            <div className="flex items-center justify-between gap-2 mb-2">
+                              <span className="text-[9px] font-extrabold text-[#2c8fa0] uppercase tracking-wider">
+                                {product.category === 'composites' ? 'Composites' : product.category === 'tools' ? 'Tools' : 'X-Ray & Imaging'}
+                              </span>
+                              <span className="text-[9px] font-mono font-bold text-[#6b8f96] bg-[#f0f8fa] border border-[#2c8fa0]/10 px-1.5 py-0.5 rounded">
+                                {product.catalogRef}
+                              </span>
+                            </div>
+                            <h3
+                              onClick={() => {
+                                setSelectedProductForDetail(product);
+                                navigateToPage('product-detail');
+                              }}
+                              className="text-sm font-bold text-[#1a3a42] tracking-tight hover:text-[#2c8fa0] transition-colors cursor-pointer line-clamp-1 hover:underline text-left text-ellipsis"
+                            >
+                              {product.name}
+                            </h3>
+                            <p className="text-xs text-[#6b8f96] mt-1.5 line-clamp-2 leading-relaxed text-left">
+                              {product.description}
+                            </p>
+                          </div>
+
+                          {/* Actions */}
+                          <div className="mt-4 pt-4 border-t border-[#f0f8fa]">
+                            <button
+                              onClick={() => {
+                                setSelectedProductForDetail(product);
+                                navigateToPage('product-detail');
+                              }}
+                              className="w-full py-2 bg-[#f0f8fa] hover:bg-[#e0eff2] text-[#2c8fa0] border border-[#2c8fa0]/15 text-[10px] font-bold uppercase rounded-md tracking-wider transition-all flex items-center justify-center gap-1 cursor-pointer"
+                            >
+                              <FileText className="w-3.5 h-3.5" />
+                              <span>More Details</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </section>
@@ -304,6 +580,7 @@ export default function App() {
               setSelectedProductForDetail(product);
               navigateToPage('product-detail');
             }}
+            onCategoryChange={setActiveCategory}
           />
         )}
 
@@ -311,7 +588,13 @@ export default function App() {
         {currentPage === 'product-detail' && selectedProductForDetail && (
           <ProductDetail
             product={selectedProductForDetail}
-            onBack={() => navigateToPage('products')}
+            onBack={() => {
+              if (window.history.length > 1) {
+                window.history.back();
+              } else {
+                navigateToPage('products');
+              }
+            }}
             onAddToCart={handleAddToCart}
             cartItems={cart}
           />

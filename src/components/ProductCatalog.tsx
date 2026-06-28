@@ -11,6 +11,7 @@ interface ProductCatalogProps {
   onAddToCart?: (product: Product) => void;
   cartItems?: { product: Product; quantity: number }[];
   onSelectProduct?: (product: Product) => void;
+  onCategoryChange?: (category: CategoryKey | null) => void;
 }
 
 export default function ProductCatalog({ 
@@ -20,7 +21,8 @@ export default function ProductCatalog({
   products = PRODUCTS,
   onAddToCart,
   cartItems = [],
-  onSelectProduct
+  onSelectProduct,
+  onCategoryChange
 }: ProductCatalogProps) {
   const [selectedCategory, setSelectedCategory] = useState<CategoryKey | 'all'>(
     initialCategory || 'all'
@@ -36,6 +38,13 @@ export default function ProductCatalog({
   useEffect(() => {
     setSelectedCategory(initialCategory || 'all');
   }, [initialCategory]);
+
+  const handleCategorySelect = (category: CategoryKey | 'all') => {
+    setSelectedCategory(category);
+    if (onCategoryChange) {
+      onCategoryChange(category === 'all' ? null : category);
+    }
+  };
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
@@ -95,7 +104,7 @@ export default function ProductCatalog({
           {/* Filterknappar */}
           <div className="flex flex-wrap gap-2">
             <button
-              onClick={() => setSelectedCategory('all')}
+              onClick={() => handleCategorySelect('all')}
               className={`px-4 py-2.5 rounded-lg text-xs font-bold uppercase transition-all tracking-wider border cursor-pointer ${
                 selectedCategory === 'all'
                   ? 'bg-[#41808F] border-transparent text-white shadow-sm'
@@ -109,7 +118,7 @@ export default function ProductCatalog({
               return (
                 <button
                   key={cat.key}
-                  onClick={() => setSelectedCategory(cat.key)}
+                  onClick={() => handleCategorySelect(cat.key)}
                   className={`px-4 py-2.5 rounded-lg text-xs font-bold uppercase transition-all tracking-wider border cursor-pointer ${
                     selectedCategory === cat.key
                       ? 'bg-[#41808F] border-transparent text-white shadow-sm'
@@ -299,7 +308,7 @@ export default function ProductCatalog({
                     </div>
 
                     {/* Actions with custom layout metrics matching user styles */}
-                    <div className="mt-6 pt-5 border-t border-[#358082]/15 flex items-center gap-3">
+                    <div className="mt-6 pt-5 border-t border-[#358082]/15">
                       <button
                         onClick={() => {
                           if (onSelectProduct) {
@@ -314,28 +323,10 @@ export default function ProductCatalog({
                           border: '1px solid rgba(6,182,212,0.35)',
                           borderRadius: '6px'
                         }}
-                        className="flex-1 py-2.5 text-xs font-bold uppercase transition-all flex items-center justify-center gap-1.5 cursor-pointer hover:bg-[rgba(6,182,212,0.22)] hover:-translate-y-0.5"
+                        className="w-full py-2.5 text-xs font-bold uppercase transition-all flex items-center justify-center gap-1.5 cursor-pointer hover:bg-[rgba(6,182,212,0.22)] hover:-translate-y-0.5"
                       >
                         <FileText className="w-4 h-4" />
-                        Specs & Info
-                      </button>
-                      <button
-                        onClick={() => {
-                          if (onAddToCart) {
-                            onAddToCart(product);
-                          } else {
-                            onContactProduct(product);
-                          }
-                        }}
-                        style={{
-                          backgroundColor: getCartItemQty(product.id) > 0 ? '#1a5a5c' : 'rgba(6,182,212,0.12)',
-                          color: getCartItemQty(product.id) > 0 ? '#ffffff' : '#0e7490',
-                          border: getCartItemQty(product.id) > 0 ? '1px solid #1a5a5c' : '1px solid rgba(6,182,212,0.35)',
-                          borderRadius: '6px'
-                        }}
-                        className="flex-1 py-2.5 text-xs font-bold uppercase transition-all tracking-wider cursor-pointer text-center hover:opacity-95 hover:-translate-y-0.5 flex items-center justify-center gap-1"
-                      >
-                        {getCartItemQty(product.id) > 0 ? `In Cart (${getCartItemQty(product.id)})` : 'Add to Cart'}
+                        More Details
                       </button>
                     </div>
                   </div>

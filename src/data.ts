@@ -1113,5 +1113,104 @@ export const PRODUCTS: Product[] = [
     catalogRef: 'NG-UT-718',
     isFeatured: true,
     origin: 'Uppsala, Sweden'
+  },
+  {
+    id: 'best-01',
+    name: 'Kulzer Charisma E4SY Composite',
+    category: 'composites',
+    description: 'Universal light-cure hybrid composite by Kulzer. Syringe Assortment 4×4g. Highly polishable, easy handling, and exceptional color matching thanks to Microglass II technology.',
+    imageUrl: '/images/products/chrisma transparent image.png',
+    features: [
+      'Microglass II filler technology for outstanding shade matching',
+      'Excellent polishability to a high, natural gloss',
+      'Minimal polymerization shrinkage and high wear resistance',
+      'Optimal clinical handling - non-slumping, easy sculptability'
+    ],
+    specifications: {
+      'Brand': 'Kulzer',
+      'Type': 'Microglass II Restorative Composite',
+      'Pack Size': '4 syringes × 4g (Shades A1, A2, A3, B2)',
+      'Compressive Strength': '390 MPa',
+      'Cure Time': '20 seconds',
+      'What It Is Used For': 'Direct restorations of Class I-V cavities, splinting of teeth, and aesthetic veneers',
+      'For Dental Professional': 'Restorative Clinicians, Prosthodontists and General Dentists'
+    },
+    catalogRef: 'NG-KZ-101',
+    isFeatured: true,
+    origin: 'Hanau, Germany'
+  },
+  {
+    id: 'best-02',
+    name: 'Dentex Den Link Kit',
+    category: 'composites',
+    description: 'A complete porcelain fracture repair kit including MZ Primer, DX.Bond, PC Primer, and DX.Flow phosphoric etch system. Designed to deliver strong, durable bond interfaces between resins and dental porcelain.',
+    imageUrl: '/images/products/Den Link kit transparent.png',
+    features: [
+      'Comprehensive system for chairside porcelain fracture repair',
+      'Contains specialized silane and metal primers for high bond strength',
+      'Includes DX.Bond 5th-generation adhesive and flowable resin layers',
+      'Compatible with all modern light-curing restorative composites'
+    ],
+    specifications: {
+      'Brand': 'Dentex',
+      'Type': 'Porcelain Fracture Repair Kit',
+      'Contents': '1 x MZ Primer (5ml), 1 x DX.Bond (5ml), 1 x PC Primer (5ml), 1 x DX.Flow Etch, accessories',
+      'Bond Strength': 'Up to 32.5 MPa on clinical porcelain',
+      'What It Is Used For': 'Clinical repair of fractured ceramic-fused-to-metal crowns, bridge units, and all-ceramic restorations',
+      'For Dental Professional': 'Prosthodontists, Restorative Specialists, and General Dentists'
+    },
+    catalogRef: 'NG-DX-102',
+    isFeatured: true,
+    origin: 'Dubai, UAE'
+  },
+  {
+    id: 'best-03',
+    name: 'Dentex DX.Bond Adhesive',
+    category: 'composites',
+    description: 'A highly reliable, single-component, fifth-generation light-cure bonding agent developed to achieve a long-lasting, micro-mechanical bond to both enamel and dentin. Fully compatible with total-etch techniques.',
+    imageUrl: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80',
+    features: [
+      'High bond strength (up to 30 MPa) to dentin and etched enamel',
+      'Low film thickness prevents visual bonding lines at margins',
+      'Reduces post-operative sensitivity by completely sealing open tubules',
+      'Excellent wetting and penetration into micro-etched tooth structures'
+    ],
+    specifications: {
+      'Brand': 'Dentex',
+      'Type': '5th Generation Light-Cure Adhesive',
+      'Volume': '5ml bottle',
+      'Shear Strength': '29.8 MPa',
+      'Cure Method': 'Light-cured (10 seconds)',
+      'What It Is Used For': 'Direct composite restorations, bonding of porcelain/ceramic veneers, and crown core build-ups',
+      'For Dental Professional': 'General Practitioners and Operative Dentistry Specialists'
+    },
+    catalogRef: 'NG-DX-103',
+    isFeatured: true,
+    origin: 'Dubai, UAE'
+  },
+  {
+    id: 'best-04',
+    name: 'Dentex DX.Etch 37% Phosphoric Gel',
+    category: 'composites',
+    description: 'A premium 37% phosphoric acid etching gel for enamel and dentin conditioning. Features an ideal thixotropic viscosity that allows precise placement without running or dripping, and washes away cleanly with water.',
+    imageUrl: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80',
+    features: [
+      'Ideal 37% phosphoric acid concentration for optimal micromechanical retention',
+      'Thixotropic gel property guarantees exact application without overflowing',
+      'Bright blue coloring provides distinct visual contrast against tooth structure',
+      'Leaves zero residue on enamel or dentin surfaces after water rinsing'
+    ],
+    specifications: {
+      'Brand': 'Dentex',
+      'Type': '37% Phosphoric Acid Etching Gel',
+      'Delivery': 'Syringe-tip dispenser system',
+      'Etching Duration': '15 seconds for dentin, 20-30 seconds for enamel',
+      'Water Solubility': '100% water-soluble for high rinseability',
+      'What It Is Used For': 'Micromechanical surface conditioning of enamel and dentin prior to adhesive application',
+      'For Dental Professional': 'All Clinical Dentists and Orthodontists'
+    },
+    catalogRef: 'NG-DX-104',
+    isFeatured: true,
+    origin: 'Dubai, UAE'
   }
 ];
