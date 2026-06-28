@@ -39,7 +39,7 @@ const DEFAULT_SLIDES: Slide[] = [
     desc: 'Porcelain Fracture Repair Kit with MZ Primer, DX Bond, PC Primer and DX Flow etch system.',
     tag: 'Complete Repair System',
     tagsub: 'with Precision',
-    url: './images/products/DenLink.png',
+    url: './images/products/denlink.png',
     alt: 'Den Link Porcelain Repair Kit'
   },
   {

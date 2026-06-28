@@ -1119,7 +1119,7 @@ export const PRODUCTS: Product[] = [
     name: 'Kulzer Charisma E4SY Composite',
     category: 'composites',
     description: 'Universal light-cure hybrid composite by Kulzer. Syringe Assortment 4×4g. Highly polishable, easy handling, and exceptional color matching thanks to Microglass II technology.',
-    imageUrl: './images/products/chrisma transparent image.png',
+    imageUrl: './images/products/chrisma.png',
     features: [
       'Microglass II filler technology for outstanding shade matching',
       'Excellent polishability to a high, natural gloss',
@@ -1144,7 +1144,7 @@ export const PRODUCTS: Product[] = [
     name: 'Dentex Den Link Kit',
     category: 'composites',
     description: 'A complete porcelain fracture repair kit including MZ Primer, DX.Bond, PC Primer, and DX.Flow phosphoric etch system. Designed to deliver strong, durable bond interfaces between resins and dental porcelain.',
-    imageUrl: './images/products/Den Link kit transparent.png',
+    imageUrl: './images/products/denlink.png',
     features: [
       'Comprehensive system for chairside porcelain fracture repair',
       'Contains specialized silane and metal primers for high bond strength',
