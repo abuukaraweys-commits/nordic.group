@@ -132,7 +132,7 @@ export default function Hero({ onViewProducts }: HeroProps) {
         <div className="relative w-full flex items-center justify-center" style={{ height: '300px' }}>
           <img
             key={currentSlide}
-            src={s.url}
+            src={resolveImageUrl(s.url)}
             alt={s.alt}
             className="object-contain"
             style={{ width: '92%', height: '92%' }}
