@@ -25,7 +25,7 @@ const DEFAULT_SLIDES: Slide[] = [
     tagsub: 'with Confidence',
     url: '/images/products/Charisma%C2%AE%20E4SY.png',
     alt: 'Charisma E4SY Composite',
-    glow: 'rgba(180,40,40,0.12)'
+    glow: 'rgba(180,40,40,0.10)'
   },
   {
     brand: 'Dentex / Nordic Group',
@@ -35,7 +35,7 @@ const DEFAULT_SLIDES: Slide[] = [
     tagsub: 'with Precision',
     url: '/images/products/DX.%20Flow-Color.png',
     alt: 'DX Flow Color Pastes',
-    glow: 'rgba(65,200,100,0.12)'
+    glow: 'rgba(65,200,100,0.10)'
   },
   {
     brand: 'SY / Nordic Group',
@@ -45,7 +45,7 @@ const DEFAULT_SLIDES: Slide[] = [
     tagsub: 'with Comfort',
     url: '/images/products/Dental%20Unit%20QL2028%20II.png',
     alt: 'Dental Unit QL2028 II',
-    glow: 'rgba(120,160,180,0.15)'
+    glow: 'rgba(120,160,180,0.12)'
   }
 ];
 
@@ -66,26 +66,33 @@ export default function Hero({ onViewProducts }: HeroProps) {
       id="homepage-hero"
       className="relative w-full overflow-hidden border-b border-[#bfc8ca]/25"
       style={{
-        height: '420px',
-        background: 'linear-gradient(120deg, #e8f0f2 0%, #c8dde2 40%, #d4e8ed 70%, #b8d4da 100%)'
+        height: '440px',
+        background: 'linear-gradient(115deg, #dce9ec 0%, #cfe2e7 45%, #c4dbe1 100%)'
       }}
     >
-      {/* Glow behind image */}
+      {/* Soft glow behind the product */}
       <div
-        className="absolute right-[8%] top-[8%] w-64 h-64 rounded-full pointer-events-none z-0"
-        style={{ background: `radial-gradient(circle, ${s.glow} 0%, transparent 70%)` }}
+        className="absolute top-1/2 -translate-y-1/2 rounded-full pointer-events-none z-0"
+        style={{
+          right: '18%',
+          width: '360px',
+          height: '360px',
+          background: `radial-gradient(circle, ${s.glow} 0%, transparent 70%)`
+        }}
       />
 
       {/* LEFT — Text */}
-      <div className="absolute left-0 top-0 h-full z-10 flex flex-col justify-center pl-10 sm:pl-14 lg:pl-20" style={{ width: '50%' }}>
-
+      <div
+        className="absolute left-0 top-0 h-full z-30 flex flex-col justify-center pl-10 sm:pl-14 lg:pl-20"
+        style={{ width: '46%' }}
+      >
         <p className="text-xs font-bold italic text-[#1a3a42] mb-1.5 tracking-wide">
           {s.brand}
         </p>
 
         <h1
           className="font-extrabold text-[#41808F] leading-tight mb-3"
-          style={{ fontSize: 'clamp(26px, 3.5vw, 44px)' }}
+          style={{ fontSize: 'clamp(26px, 3.4vw, 42px)' }}
         >
           {s.name}
         </h1>
@@ -109,10 +116,10 @@ export default function Hero({ onViewProducts }: HeroProps) {
         </button>
       </div>
 
-      {/* RIGHT — Product image */}
+      {/* RIGHT — Big product image */}
       <div
         className="absolute right-0 top-0 h-full z-[1] flex items-center justify-center"
-        style={{ width: '52%' }}
+        style={{ width: '58%' }}
       >
         <img
           key={currentSlide}
@@ -120,20 +127,20 @@ export default function Hero({ onViewProducts }: HeroProps) {
           alt={s.alt}
           className="object-contain"
           style={{
-            width: '88%',
-            height: '88%',
+            width: '100%',
+            height: '100%',
             mixBlendMode: 'multiply'
           }}
         />
       </div>
 
       {/* CE Badge */}
-      <div className="absolute top-5 right-12 z-20 bg-[#1a3a42] text-white text-center px-3 py-2 rounded text-[10px] font-bold uppercase tracking-wide leading-tight">
+      <div className="absolute top-5 right-12 z-40 bg-[#1a3a42] text-white text-center px-3 py-2 rounded text-[10px] font-bold uppercase tracking-wide leading-tight">
         CE<br />Certified
       </div>
 
       {/* Dots — vertical right side */}
-      <div className="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-2 items-center">
+      <div className="absolute right-3 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2 items-center">
         {DEFAULT_SLIDES.map((_, i) => (
           <button
             key={i}
@@ -150,3 +157,4 @@ export default function Hero({ onViewProducts }: HeroProps) {
     </div>
   );
 }
+
