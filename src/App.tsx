@@ -284,7 +284,8 @@ export default function App() {
                     return (
                       <div
                         key={product.id}
-                        className="bg-white border border-[#2c8fa0]/15 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col h-full group"
+                        style={{ backgroundColor: '#ffffff', border: '1px solid rgba(53,128,130,0.15)', borderRadius: '16px' }}
+                        className="overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] hover:shadow-[0_14px_34px_rgba(0,0,0,0.13)] hover:-translate-y-1 hover:border-[#1a5a5c]/40 transition-all duration-300 flex flex-col h-full group"
                       >
                         {/* Image wrapper */}
                         <div
@@ -292,8 +293,12 @@ export default function App() {
                             setSelectedProductForDetail(product);
                             navigateToPage('product-detail');
                           }}
-                          className="relative aspect-square bg-[#f0f8fa]/50 border-b border-[#2c8fa0]/10 flex items-center justify-center p-4 cursor-pointer overflow-hidden"
+                          className="relative aspect-[4/3] bg-white border-b border-[#358082]/15 flex items-center justify-center p-4 cursor-pointer overflow-hidden"
                         >
+                          {/* CE Certified badge */}
+                          <span className="absolute top-2.5 left-2.5 z-20 text-[8px] font-extrabold uppercase tracking-wider text-white bg-[#1a3a42] px-2 py-1 rounded shadow-sm">
+                            CE Certified
+                          </span>
                           <img
                             src={product.imageUrl}
                             alt={product.name}
@@ -326,16 +331,18 @@ export default function App() {
                               target.src = fallbackUrl;
                             }}
                           />
+                          {/* Hover baseline band */}
+                          <div className="absolute bottom-0 left-0 w-full h-1 bg-[#0e7490] z-20 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
 
                         {/* Product details */}
-                        <div className="p-5 flex-1 flex flex-col justify-between">
+                        <div className="p-6 flex-1 flex flex-col justify-between">
                           <div>
                             <div className="flex items-center justify-between gap-2 mb-2">
-                              <span className="text-[9px] font-extrabold text-[#2c8fa0] uppercase tracking-wider">
+                              <span className="text-[10px] font-extrabold text-[#358082] uppercase tracking-widest">
                                 {product.category === 'composites' ? 'Composites' : product.category === 'tools' ? 'Tools' : 'X-Ray & Imaging'}
                               </span>
-                              <span className="text-[9px] font-mono font-bold text-[#6b8f96] bg-[#f0f8fa] border border-[#2c8fa0]/10 px-1.5 py-0.5 rounded">
+                              <span className="text-[9px] font-bold font-mono text-[#0e7490] bg-[#eff7f8] border border-[#358082]/15 px-2 py-0.5 rounded">
                                 {product.catalogRef}
                               </span>
                             </div>
@@ -344,25 +351,36 @@ export default function App() {
                                 setSelectedProductForDetail(product);
                                 navigateToPage('product-detail');
                               }}
-                              className="text-sm font-bold text-[#1a3a42] tracking-tight hover:text-[#2c8fa0] transition-colors cursor-pointer line-clamp-1 hover:underline text-left"
+                              className="text-base font-bold text-[#1a5a5c] tracking-tight group-hover:text-[#0e7490] transition-colors line-clamp-1 cursor-pointer hover:underline text-left"
                             >
                               {product.name}
                             </h3>
-                            <p className="text-xs text-[#6b8f96] mt-1.5 line-clamp-2 leading-relaxed text-left">
+                            <p style={{ color: '#358082' }} className="text-xs mt-2 line-clamp-3 leading-relaxed text-left">
                               {product.description}
                             </p>
+
+                            {/* Features checklist */}
+                            <div className="mt-4 space-y-1.5">
+                              {product.features.slice(0, 2).map((feat, i) => (
+                                <div key={i} className="flex items-start gap-1.5 text-xs text-[#358082]/70">
+                                  <ChevronRight className="w-3.5 h-3.5 text-[#0e7490] shrink-0 mt-0.5" />
+                                  <span className="line-clamp-1 text-[#358082]/90 font-medium">{feat}</span>
+                                </div>
+                              ))}
+                            </div>
                           </div>
 
                           {/* Actions */}
-                          <div className="mt-4 pt-4 border-t border-[#f0f8fa]">
+                          <div className="mt-6 pt-5 border-t border-[#358082]/15">
                             <button
                               onClick={() => {
                                 setSelectedProductForDetail(product);
                                 navigateToPage('product-detail');
                               }}
-                              className="w-full py-2 bg-[#f0f8fa] hover:bg-[#e0eff2] text-[#2c8fa0] border border-[#2c8fa0]/15 text-[10px] font-bold uppercase rounded-md tracking-wider transition-all flex items-center justify-center gap-1 cursor-pointer"
+                              style={{ backgroundColor: 'rgba(6,182,212,0.12)', color: '#0e7490', border: '1px solid rgba(6,182,212,0.35)', borderRadius: '6px' }}
+                              className="w-full py-2.5 text-xs font-bold uppercase transition-all flex items-center justify-center gap-1.5 cursor-pointer hover:bg-[rgba(6,182,212,0.22)] hover:-translate-y-0.5"
                             >
-                              <FileText className="w-3.5 h-3.5" />
+                              <FileText className="w-4 h-4" />
                               <span>More Details</span>
                             </button>
                           </div>
@@ -407,7 +425,8 @@ export default function App() {
                     return (
                       <div
                         key={product.id}
-                        className="bg-white border border-[#2c8fa0]/15 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col h-full group"
+                        style={{ backgroundColor: '#ffffff', border: '1px solid rgba(53,128,130,0.15)', borderRadius: '16px' }}
+                        className="overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] hover:shadow-[0_14px_34px_rgba(0,0,0,0.13)] hover:-translate-y-1 hover:border-[#1a5a5c]/40 transition-all duration-300 flex flex-col h-full group"
                       >
                         {/* Image wrapper */}
                         <div
@@ -415,8 +434,12 @@ export default function App() {
                             setSelectedProductForDetail(product);
                             navigateToPage('product-detail');
                           }}
-                          className="relative aspect-square bg-[#f0f8fa]/50 border-b border-[#2c8fa0]/10 flex items-center justify-center p-4 cursor-pointer overflow-hidden"
+                          className="relative aspect-[4/3] bg-white border-b border-[#358082]/15 flex items-center justify-center p-4 cursor-pointer overflow-hidden"
                         >
+                          {/* CE Certified badge */}
+                          <span className="absolute top-2.5 left-2.5 z-20 text-[8px] font-extrabold uppercase tracking-wider text-white bg-[#1a3a42] px-2 py-1 rounded shadow-sm">
+                            CE Certified
+                          </span>
                           <img
                             src={product.imageUrl}
                             alt={product.name}
@@ -449,16 +472,18 @@ export default function App() {
                               target.src = fallbackUrl;
                             }}
                           />
+                          {/* Hover baseline band */}
+                          <div className="absolute bottom-0 left-0 w-full h-1 bg-[#0e7490] z-20 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
 
                         {/* Product details */}
-                        <div className="p-5 flex-1 flex flex-col justify-between">
+                        <div className="p-6 flex-1 flex flex-col justify-between">
                           <div>
                             <div className="flex items-center justify-between gap-2 mb-2">
-                              <span className="text-[9px] font-extrabold text-[#2c8fa0] uppercase tracking-wider">
+                              <span className="text-[10px] font-extrabold text-[#358082] uppercase tracking-widest">
                                 {product.category === 'composites' ? 'Composites' : product.category === 'tools' ? 'Tools' : 'X-Ray & Imaging'}
                               </span>
-                              <span className="text-[9px] font-mono font-bold text-[#6b8f96] bg-[#f0f8fa] border border-[#2c8fa0]/10 px-1.5 py-0.5 rounded">
+                              <span className="text-[9px] font-bold font-mono text-[#0e7490] bg-[#eff7f8] border border-[#358082]/15 px-2 py-0.5 rounded">
                                 {product.catalogRef}
                               </span>
                             </div>
@@ -467,25 +492,36 @@ export default function App() {
                                 setSelectedProductForDetail(product);
                                 navigateToPage('product-detail');
                               }}
-                              className="text-sm font-bold text-[#1a3a42] tracking-tight hover:text-[#2c8fa0] transition-colors cursor-pointer line-clamp-1 hover:underline text-left text-ellipsis"
+                              className="text-base font-bold text-[#1a5a5c] tracking-tight group-hover:text-[#0e7490] transition-colors line-clamp-1 cursor-pointer hover:underline text-left"
                             >
                               {product.name}
                             </h3>
-                            <p className="text-xs text-[#6b8f96] mt-1.5 line-clamp-2 leading-relaxed text-left">
+                            <p style={{ color: '#358082' }} className="text-xs mt-2 line-clamp-3 leading-relaxed text-left">
                               {product.description}
                             </p>
+
+                            {/* Features checklist */}
+                            <div className="mt-4 space-y-1.5">
+                              {product.features.slice(0, 2).map((feat, i) => (
+                                <div key={i} className="flex items-start gap-1.5 text-xs text-[#358082]/70">
+                                  <ChevronRight className="w-3.5 h-3.5 text-[#0e7490] shrink-0 mt-0.5" />
+                                  <span className="line-clamp-1 text-[#358082]/90 font-medium">{feat}</span>
+                                </div>
+                              ))}
+                            </div>
                           </div>
 
                           {/* Actions */}
-                          <div className="mt-4 pt-4 border-t border-[#f0f8fa]">
+                          <div className="mt-6 pt-5 border-t border-[#358082]/15">
                             <button
                               onClick={() => {
                                 setSelectedProductForDetail(product);
                                 navigateToPage('product-detail');
                               }}
-                              className="w-full py-2 bg-[#f0f8fa] hover:bg-[#e0eff2] text-[#2c8fa0] border border-[#2c8fa0]/15 text-[10px] font-bold uppercase rounded-md tracking-wider transition-all flex items-center justify-center gap-1 cursor-pointer"
+                              style={{ backgroundColor: 'rgba(6,182,212,0.12)', color: '#0e7490', border: '1px solid rgba(6,182,212,0.35)', borderRadius: '6px' }}
+                              className="w-full py-2.5 text-xs font-bold uppercase transition-all flex items-center justify-center gap-1.5 cursor-pointer hover:bg-[rgba(6,182,212,0.22)] hover:-translate-y-0.5"
                             >
-                              <FileText className="w-3.5 h-3.5" />
+                              <FileText className="w-4 h-4" />
                               <span>More Details</span>
                             </button>
                           </div>
@@ -661,3 +697,4 @@ export default function App() {
     </div>
   );
 }
+
