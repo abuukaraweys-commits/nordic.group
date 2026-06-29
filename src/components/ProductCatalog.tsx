@@ -200,17 +200,22 @@ export default function ProductCatalog({
                 <div
                   key={product.id}
                   style={{
-                    backgroundColor: 'rgba(53,128,130,0.06)',
-                    border: '1px solid rgba(53,128,130,0.25)',
-                    borderRadius: '12px'
+                    backgroundColor: '#ffffff',
+                    border: '1px solid rgba(53,128,130,0.15)',
+                    borderRadius: '16px'
                   }}
-                  className="overflow-hidden hover:shadow-lg hover:border-[#1a5a5c]/40 transition-all duration-300 flex flex-col h-full group bg-white bg-opacity-40"
+                  className="overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] hover:shadow-[0_14px_34px_rgba(0,0,0,0.13)] hover:-translate-y-1 hover:border-[#1a5a5c]/40 transition-all duration-300 flex flex-col h-full group"
                 >
                   {/* Image Wrapper */}
                   <div 
                     onClick={() => onSelectProduct?.(product)}
                     className="relative aspect-[4/3] bg-white border-b border-[#358082]/15 flex items-center justify-center p-4 overflow-hidden cursor-pointer"
                   >
+                    {/* CE Certified badge */}
+                    <span className="absolute top-2.5 left-2.5 z-20 text-[8px] font-extrabold uppercase tracking-wider text-white bg-[#1a3a42] px-2 py-1 rounded shadow-sm">
+                      CE Certified
+                    </span>
+
                     {product.imageUrl ? (
                       <img
                         src={resolveImageUrl(product.imageUrl)}
@@ -259,7 +264,7 @@ export default function ProductCatalog({
                           }
                           target.src = fallbackUrl;
                         }}
-                        className="max-w-full max-h-full w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-102"
+                        className="max-w-full max-h-full w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                       />
                     ) : (
                       // Subtle abstract modern dental gradient
@@ -456,3 +461,4 @@ export default function ProductCatalog({
     </div>
   );
 }
+
