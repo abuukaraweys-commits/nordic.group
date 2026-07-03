@@ -306,7 +306,7 @@ export default function ProductCatalog({
                         {product.features.slice(0, 2).map((feat, i) => (
                           <div key={i} className="flex items-start gap-1.5 text-xs text-[#358082]/70">
                             <ChevronRight className="w-3.5 h-3.5 text-[#0e7490] shrink-0 mt-0.5" />
-                            <span className="line-clamp-1 text-[#358082]/90 font-medium">{feat}</span>
+                            <span className="line-clamp-1 text-[#358082] font-medium">{feat}</span>
                           </div>
                         ))}
                       </div>
