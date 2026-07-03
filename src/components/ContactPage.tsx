@@ -90,7 +90,7 @@ ${message}`);
           <h1 className="font-sans font-extrabold text-3xl sm:text-4xl text-[#1a3a42] tracking-tight">
             Contact Information & Support
           </h1>
-          <p className="text-sm text-[#6b8f96] mt-3 leading-relaxed">
+          <p className="text-sm text-[#3a5c63] mt-3 leading-relaxed">
             Do you have questions about our product inventory or want to request a custom quote? Our dedicated teams in Dubai and Mogadishu are ready to guide you.
           </p>
         </div>
@@ -109,7 +109,7 @@ ${message}`);
                   <CheckCircle className="w-8 h-8" />
                 </div>
                 <h3 className="text-lg font-bold text-[#1a3a42]">Message sent successfully!</h3>
-                <p className="text-xs text-[#6b8f96] leading-relaxed max-w-md">
+                <p className="text-xs text-[#3a5c63] leading-relaxed max-w-md">
                   Our team will coordinate with our office in Dubai and respond to you as soon as possible. You may also email us directly at <strong>info@nordicgr.com</strong>.
                 </p>
                 <button
@@ -128,7 +128,7 @@ ${message}`);
             ) : (
               <form onSubmit={handleSendEmail} className="space-y-5">
                 <div>
-                  <label className="block text-xs font-bold text-[#6b8f96] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                     Name *
                   </label>
                   <input
@@ -143,7 +143,7 @@ ${message}`);
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#6b8f96] uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                       Email Address *
                     </label>
                     <input
@@ -157,7 +157,7 @@ ${message}`);
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#6b8f96] uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                       Phone Number
                     </label>
                     <input
@@ -171,7 +171,7 @@ ${message}`);
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#6b8f96] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                     Message *
                   </label>
                   <textarea
@@ -228,11 +228,11 @@ ${message}`);
                     <Phone className="w-4.5 h-4.5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold uppercase text-[#6b8f96] tracking-wider">Phone</h4>
+                    <h4 className="text-xs font-bold uppercase text-[#3a5c63] tracking-wider">Phone</h4>
                     <p className="text-sm font-bold text-[#1a3a42] mt-1 hover:text-[#2c8fa0]">
                       <a href="tel:+252617453777">+252 61 745 3777</a>
                     </p>
-                    <p className="text-xs text-[#6b8f96] mt-0.5">Our support team speaks English, Arabic, and Somali.</p>
+                    <p className="text-xs text-[#3a5c63] mt-0.5">Our support team speaks English, Arabic, and Somali.</p>
                   </div>
                 </div>
 
@@ -242,11 +242,11 @@ ${message}`);
                     <Mail className="w-4.5 h-4.5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold uppercase text-[#6b8f96] tracking-wider">Email</h4>
+                    <h4 className="text-xs font-bold uppercase text-[#3a5c63] tracking-wider">Email</h4>
                     <p className="text-sm font-bold text-[#1a3a42] mt-1 hover:text-[#2c8fa0]">
                       <a href="mailto:info@nordicgr.com">info@nordicgr.com</a>
                     </p>
-                    <p className="text-xs text-[#6b8f96] mt-0.5">We usually respond to quote requests within 12-24 hours.</p>
+                    <p className="text-xs text-[#3a5c63] mt-0.5">We usually respond to quote requests within 12-24 hours.</p>
                   </div>
                 </div>
 
@@ -256,8 +256,8 @@ ${message}`);
                     <MapPin className="w-4.5 h-4.5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold uppercase text-[#6b8f96] tracking-wider">Address & Offices</h4>
-                    <div className="text-xs text-[#6b8f96] mt-1.5 space-y-2">
+                    <h4 className="text-xs font-bold uppercase text-[#3a5c63] tracking-wider">Address & Offices</h4>
+                    <div className="text-xs text-[#3a5c63] mt-1.5 space-y-2">
                       <p>
                         <strong className="text-[#1a3a42]">Dubai Office:</strong><br />
                         Office No. 812, Shaikha Maryam Building, Baniyas Square, Deira, Dubai
@@ -276,19 +276,19 @@ ${message}`);
                     <Clock className="w-4.5 h-4.5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold uppercase text-[#6b8f96] tracking-wider">Operating Hours</h4>
-                    <div className="text-xs text-[#6b8f96] mt-1.5 space-y-1">
+                    <h4 className="text-xs font-bold uppercase text-[#3a5c63] tracking-wider">Operating Hours</h4>
+                    <div className="text-xs text-[#3a5c63] mt-1.5 space-y-1">
                       <p className="flex justify-between font-bold text-[#1a3a42]">
                         <span>Monday – Friday:</span>
                         <span>09:00 – 17:00 (Dubai Time)</span>
                       </p>
-                      <p className="flex justify-between text-[11px] text-[#6b8f96]">
+                      <p className="flex justify-between text-[11px] text-[#3a5c63]">
                         <span>Equivalent Mogadishu:</span>
                         <span>08:00 – 16:00</span>
                       </p>
                       <p className="flex justify-between">
                         <span>Saturday – Sunday:</span>
-                        <span className="text-[#6b8f96]/50 font-bold">Closed</span>
+                        <span className="text-[#3a5c63]/70 font-bold">Closed</span>
                       </p>
                     </div>
                   </div>
@@ -343,3 +343,4 @@ ${message}`);
     </div>
   );
 }
+
