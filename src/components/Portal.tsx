@@ -349,7 +349,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
           <h1 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#1a3a42] tracking-tight">
             Integrated Client & Sourcing Portal
           </h1>
-          <p className="text-xs sm:text-sm text-[#6b8f96] mt-2">
+          <p className="text-xs sm:text-sm text-[#3a5c63] mt-2">
             Secure tracking of direct Air-Freight shipments, customized clinics quote workflows, and logistics monitoring.
           </p>
         </div>
@@ -363,7 +363,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                 <Lock className="w-5 h-5" />
               </div>
               <h2 className="text-lg font-bold text-[#1a3a42]">Authorize Your Account</h2>
-              <p className="text-xs text-[#6b8f96] mt-1">
+              <p className="text-xs text-[#3a5c63] mt-1">
                 Access your clinics active order logs or admin dashboard safely.
               </p>
             </div>
@@ -376,11 +376,11 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
 
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-[#6b8f96] uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                   Email Address
                 </label>
                 <div className="relative">
-                  <User className="absolute left-3.5 top-3.5 w-4 h-4 text-[#6b8f96]" />
+                  <User className="absolute left-3.5 top-3.5 w-4 h-4 text-[#3a5c63]" />
                   <input
                     type="email"
                     required
@@ -393,11 +393,11 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#6b8f96] uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                   Security Password
                 </label>
                 <div className="relative">
-                  <Lock className="absolute left-3.5 top-3.5 w-4 h-4 text-[#6b8f96]" />
+                  <Lock className="absolute left-3.5 top-3.5 w-4 h-4 text-[#3a5c63]" />
                   <input
                     type="password"
                     required
@@ -418,7 +418,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
             </form>
 
             <div className="mt-6 pt-5 border-t border-[#bfc8ca]/25 text-center">
-              <p className="text-[11px] text-[#6b8f96] leading-relaxed">
+              <p className="text-[11px] text-[#3a5c63] leading-relaxed">
                 <strong>💡 Demonstration Accounts:</strong><br />
                 • Admin Account: <code className="text-[#1a3a42] font-mono bg-[#f0f8fa] px-1 rounded">admin@nordicgr.com</code> (pass: <code className="font-mono bg-[#f0f8fa] px-1 rounded text-[#1a3a42]">admin123</code>)<br />
                 • Customer Account: Enter any clinic email to log in (pass: <code className="font-mono bg-[#f0f8fa] px-1 rounded text-[#1a3a42]">clinic123</code>)
@@ -439,7 +439,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                 </div>
                 <div>
                   <h2 className="text-xl font-extrabold text-[#1a3a42] tracking-tight">{currentClinic.name}</h2>
-                  <p className="text-xs text-[#6b8f96] font-medium flex items-center gap-1.5 mt-0.5">
+                  <p className="text-xs text-[#3a5c63] font-medium flex items-center gap-1.5 mt-0.5">
                     <span>ID: {currentClinic.id}</span>
                     <span>•</span>
                     <span>Clinic Sourcing Liaison: {currentClinic.contactPerson}</span>
@@ -453,7 +453,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                 </span>
                 <button
                   onClick={handleLogout}
-                  className="px-3 py-1.5 text-xs text-[#6b8f96] hover:bg-red-50 hover:text-red-700 hover:border-red-200 border border-[#bfc8ca]/30 rounded-md transition-colors font-semibold flex items-center gap-1 cursor-pointer"
+                  className="px-3 py-1.5 text-xs text-[#3a5c63] hover:bg-red-50 hover:text-red-700 hover:border-red-200 border border-[#bfc8ca]/30 rounded-md transition-colors font-semibold flex items-center gap-1 cursor-pointer"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                   <span>Exit Portal</span>
@@ -475,7 +475,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-[#2c8fa0]/15 pb-4 text-xs">
                     <div>
                       <p className="font-bold text-[#1a3a42]">Logistics Order Ref: <span className="font-mono text-[#2c8fa0]">{ship.orderId}</span></p>
-                      <p className="text-[#6b8f96] mt-0.5">Sourcing Trajectory: <span className="font-semibold text-[#1a3a42]">{ship.route}</span></p>
+                      <p className="text-[#3a5c63] mt-0.5">Sourcing Trajectory: <span className="font-semibold text-[#1a3a42]">{ship.route}</span></p>
                     </div>
                     <div className="text-right md:text-left flex md:flex-col items-center justify-between md:items-end gap-2 md:gap-0 font-sans">
                       <p className="text-[#1a3a42] font-semibold">Value: {ship.amount} ({ship.itemsCount} clinical categories)</p>
@@ -499,9 +499,9 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                           </div>
                         )}
                         <div>
-                          <p className={`text-xs font-bold ${ms.completed ? 'text-[#1a3a42]' : 'text-[#6b8f96]'}`}>{ms.status}</p>
+                          <p className={`text-xs font-bold ${ms.completed ? 'text-[#1a3a42]' : 'text-[#3a5c63]'}`}>{ms.status}</p>
                           <p className="text-[10px] text-gray-400 mt-0.5">{ms.date}</p>
-                          <p className="text-[10px] text-[#6b8f96] mt-1 leading-normal leading-relaxed">{ms.description}</p>
+                          <p className="text-[10px] text-[#3a5c63] mt-1 leading-normal leading-relaxed">{ms.description}</p>
                         </div>
                       </div>
                     ))}
@@ -519,7 +519,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                   <FileText className="w-4.5 h-4.5 text-[#2c8fa0]" />
                   <h4 className="text-sm font-bold text-[#1a3a42]">Clinical Documentation & Catalogs</h4>
                 </div>
-                <p className="text-xs text-[#6b8f96] leading-relaxed">
+                <p className="text-xs text-[#3a5c63] leading-relaxed">
                   Your registration enables expedited custom duties checking at our local Mogadishu depot hangar. Standard CE certificates for imports (ISO-9001, ISO-13485) are issued alongside all transport manifests.
                 </p>
                 <div className="pt-2">
@@ -559,7 +559,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                 </div>
                 <div>
                   <h2 className="text-xl font-extrabold text-[#1a3a42] tracking-tight">System Admin Panel</h2>
-                  <p className="text-xs text-[#6b8f96] font-medium mt-0.5">
+                  <p className="text-xs text-[#3a5c63] font-medium mt-0.5">
                     Account: {currentUserEmail} • Sourcing, Catalog & Impersonation Hub
                   </p>
                 </div>
@@ -571,7 +571,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                 </span>
                 <button
                   onClick={handleLogout}
-                  className="px-3 py-1.5 text-xs text-[#6b8f96] hover:bg-red-50 hover:text-red-700 hover:border-red-200 border border-[#bfc8ca]/30 rounded-md transition-colors font-semibold flex items-center gap-1 cursor-pointer"
+                  className="px-3 py-1.5 text-xs text-[#3a5c63] hover:bg-red-50 hover:text-red-700 hover:border-red-200 border border-[#bfc8ca]/30 rounded-md transition-colors font-semibold flex items-center gap-1 cursor-pointer"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                   <span>Exit Workspace</span>
@@ -584,7 +584,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
               <button
                 onClick={() => setActiveTab('inquiries')}
                 className={`py-2 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer ${
-                  activeTab === 'inquiries' ? 'border-[#2c8fa0] text-[#2c8fa0]' : 'border-transparent text-[#6b8f96] hover:text-[#2c8fa0]'
+                  activeTab === 'inquiries' ? 'border-[#2c8fa0] text-[#2c8fa0]' : 'border-transparent text-[#3a5c63] hover:text-[#2c8fa0]'
                 }`}
               >
                 Inquiries & Quote Requests ({inquiries.length})
@@ -592,7 +592,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
               <button
                 onClick={() => setActiveTab('clinics')}
                 className={`py-2 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer ${
-                  activeTab === 'clinics' ? 'border-[#2c8fa0] text-[#2c8fa0]' : 'border-transparent text-[#6b8f96] hover:text-[#2c8fa0]'
+                  activeTab === 'clinics' ? 'border-[#2c8fa0] text-[#2c8fa0]' : 'border-transparent text-[#3a5c63] hover:text-[#2c8fa0]'
                 }`}
               >
                 Customer Clinics List ({clinics.length})
@@ -600,7 +600,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
               <button
                 onClick={() => setActiveTab('add-product')}
                 className={`py-2 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer ${
-                  activeTab === 'add-product' ? 'border-[#2c8fa0] text-[#2c8fa0]' : 'border-transparent text-[#6b8f96] hover:text-[#2c8fa0]'
+                  activeTab === 'add-product' ? 'border-[#2c8fa0] text-[#2c8fa0]' : 'border-transparent text-[#3a5c63] hover:text-[#2c8fa0]'
                 }`}
               >
                 Add Custom Product Catalog Item
@@ -610,7 +610,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
             {/* ---------------- A. INQUIRIES TAB ---------------- */}
             {activeTab === 'inquiries' && (
               <div className="space-y-4">
-                <div className="bg-[#f0f8fa] border border-[#2c8fa0]/15 p-4 rounded-xl text-xs text-[#6b8f96]">
+                <div className="bg-[#f0f8fa] border border-[#2c8fa0]/15 p-4 rounded-xl text-xs text-[#3a5c63]">
                   These are message requests posted through web contact forms. Admins can track clinical needs and trigger direct phone contacts.
                 </div>
 
@@ -621,7 +621,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                     inquiries.map((iq) => (
                       <div key={iq.id} className="border border-[#e1e3e4] rounded-xl p-5 bg-white shadow-xs space-y-4 transition-all hover:border-[#2c8fa0]/35 select-none">
                         
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-[#6b8f96]">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-[#3a5c63]">
                           <div>
                             <span className="font-mono text-xs font-bold text-[#1a3a42] bg-[#f0f8fa] border border-[#2c8fa0]/25 px-2 py-0.5 rounded mr-2">
                               {iq.id}
@@ -645,8 +645,8 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                         <div>
                           <div className="flex flex-wrap items-baseline gap-2">
                             <h4 className="text-sm font-extrabold text-[#1a3a42]">{iq.name}</h4>
-                            <span className="text-xs text-[#6b8f96]">({iq.email})</span>
-                            <span className="text-xs text-[#6b8f96]">• {iq.phone}</span>
+                            <span className="text-xs text-[#3a5c63]">({iq.email})</span>
+                            <span className="text-xs text-[#3a5c63]">• {iq.phone}</span>
                           </div>
                           <p className="text-xs text-[#1a3a42] font-medium leading-relaxed mt-2 bg-[#f4f7f9] p-3 rounded-lg border border-gray-150">
                             "{iq.message}"
@@ -732,14 +732,14 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
             {/* ---------------- B. CUSTOMER CLINICS LIST TAB ---------------- */}
             {activeTab === 'clinics' && (
               <div className="space-y-4 text-xs sm:text-sm text-[#1a3a42]">
-                <div className="bg-[#f0f8fa] border border-[#2c8fa0]/15 p-4 rounded-xl text-xs text-[#6b8f96]">
+                <div className="bg-[#f0f8fa] border border-[#2c8fa0]/15 p-4 rounded-xl text-xs text-[#3a5c63]">
                   <strong>🔑 Logga in till kunden (Admin Impersonation):</strong><br />
                   Below are registered medical and dental clinic partners in Somalia. Click <strong>"🔑 Log in as Clinic"</strong> to masquerade as the selected clinic, track active milestones, or configure custom sourcing options.
                 </div>
 
                 <div className="overflow-x-auto border border-[#e1e3e4] rounded-xl bg-white">
                   <table className="w-full text-left border-collapse">
-                    <thead className="bg-[#f4f7f9] text-[#6b8f96] text-xs font-bold uppercase tracking-wider border-b border-gray-150">
+                    <thead className="bg-[#f4f7f9] text-[#3a5c63] text-xs font-bold uppercase tracking-wider border-b border-gray-150">
                       <tr>
                         <th className="px-6 py-4">Clinic ID</th>
                         <th className="px-6 py-4">Clinic Partner</th>
@@ -785,7 +785,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                 
                 <div className="mb-6">
                   <h3 className="text-base font-bold text-[#1a3a42]">Add Product to Live Distribution Catalog</h3>
-                  <p className="text-xs text-[#6b8f96] mt-1">
+                  <p className="text-xs text-[#3a5c63] mt-1">
                     Procured items are categorized dynamically and updated in real-time in the Product Catalog list pages.
                   </p>
                 </div>
@@ -799,7 +799,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                 <form onSubmit={handleAddNewProductSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-[#6b8f96] uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                         Product Sourcing Label/Name *
                       </label>
                       <input
@@ -813,7 +813,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-[#6b8f96] uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                         Clinical Category *
                       </label>
                       <select
@@ -830,7 +830,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-[#6b8f96] uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                         Nordic Reference Catalog Code *
                       </label>
                       <input
@@ -844,7 +844,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-[#6b8f96] uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                         Sourcing Hub / Origin *
                       </label>
                       <input
@@ -859,7 +859,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#6b8f96] uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                       Core Utility Description *
                     </label>
                     <textarea
@@ -873,7 +873,7 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#6b8f96] uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                       Key Highlights/Features (one feature per line)
                     </label>
                     <textarea
@@ -903,3 +903,4 @@ export default function Portal({ onAddCustomProduct }: PortalProps) {
     </div>
   );
 }
+
