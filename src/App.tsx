@@ -277,10 +277,10 @@ export default function App() {
                     How It Works
                   </h2>
                   <p className="text-base font-bold text-[#2c8fa0] mt-1">Sida Ay U Shaqeyso</p>
-                  <p className="text-sm text-[#6b8f96] mt-3 leading-relaxed">
+                  <p className="text-sm text-[#4a7178] mt-3 leading-relaxed">
                     No online payment needed. Just send us your list and we handle the rest.
                     <br />
-                    <span className="text-[#6b8f96]/90">Lacag online ah looma baahna. Noo soo dir liiskaaga, intii kalena annaga ayaa qabanayna.</span>
+                    <span className="text-[#4a7178]">Lacag online ah looma baahna. Noo soo dir liiskaaga, intii kalena annaga ayaa qabanayna.</span>
                   </p>
                 </div>
 
@@ -295,10 +295,10 @@ export default function App() {
                     </div>
                     <h3 className="text-base font-extrabold text-[#1a3a42] tracking-tight">Add to Cart</h3>
                     <p className="text-sm font-bold text-[#2c8fa0] mt-0.5">Ku dar Gaadhiga</p>
-                    <p className="text-xs text-[#6b8f96] mt-3 leading-relaxed">
+                    <p className="text-xs text-[#4a7178] mt-3 leading-relaxed">
                       Browse our products and add the items your clinic needs to the cart.
                     </p>
-                    <p className="text-xs text-[#6b8f96]/85 mt-2 leading-relaxed">
+                    <p className="text-xs text-[#4a7178] mt-2 leading-relaxed">
                       Fiiri alaabtayada, kuna dar waxyaabaha rugtaadu u baahan tahay gaadhiga.
                     </p>
                   </div>
@@ -311,10 +311,10 @@ export default function App() {
                     </div>
                     <h3 className="text-base font-extrabold text-[#1a3a42] tracking-tight">Send Quote Request</h3>
                     <p className="text-sm font-bold text-[#2c8fa0] mt-0.5">Soo Dir Codsiga</p>
-                    <p className="text-xs text-[#6b8f96] mt-3 leading-relaxed">
+                    <p className="text-xs text-[#4a7178] mt-3 leading-relaxed">
                       Press "Send Quote" to send your list to us on WhatsApp or by email.
                     </p>
-                    <p className="text-xs text-[#6b8f96]/85 mt-2 leading-relaxed">
+                    <p className="text-xs text-[#4a7178] mt-2 leading-relaxed">
                       Riix "Send Quote" si aad liiskaaga noogu soo dirto WhatsApp ama iimayl.
                     </p>
                   </div>
@@ -327,10 +327,10 @@ export default function App() {
                     </div>
                     <h3 className="text-base font-extrabold text-[#1a3a42] tracking-tight">Get Your Proposal</h3>
                     <p className="text-sm font-bold text-[#2c8fa0] mt-0.5">Hel Qiimahaaga</p>
-                    <p className="text-xs text-[#6b8f96] mt-3 leading-relaxed">
+                    <p className="text-xs text-[#4a7178] mt-3 leading-relaxed">
                       We reply on WhatsApp with prices, availability, and delivery details.
                     </p>
-                    <p className="text-xs text-[#6b8f96]/85 mt-2 leading-relaxed">
+                    <p className="text-xs text-[#4a7178] mt-2 leading-relaxed">
                       Waxaan kaaga soo jawaabaynaa WhatsApp qiimaha, helitaanka, iyo gaarsiinta.
                     </p>
                   </div>
@@ -349,7 +349,7 @@ export default function App() {
                   <h2 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#1a3a42] tracking-tight">
                     New Arrival Products
                   </h2>
-                  <p className="text-sm text-[#6b8f96] mt-3 leading-relaxed">
+                  <p className="text-sm text-[#4a7178] mt-3 leading-relaxed">
                     Explore our latest additions of CE-certified dental materials, state-of-the-art diagnostic instruments, and digital imaging solutions sourced directly from Sweden and leading clinical hubs.
                   </p>
                 </div>
@@ -441,7 +441,7 @@ export default function App() {
                               {product.features.slice(0, 2).map((feat, i) => (
                                 <div key={i} className="flex items-start gap-1.5 text-xs text-[#358082]/70">
                                   <ChevronRight className="w-3.5 h-3.5 text-[#0e7490] shrink-0 mt-0.5" />
-                                  <span className="line-clamp-1 text-[#358082]/90 font-medium">{feat}</span>
+                                  <span className="line-clamp-1 text-[#358082] font-medium">{feat}</span>
                                 </div>
                               ))}
                             </div>
@@ -490,7 +490,7 @@ export default function App() {
                   <h2 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#1a3a42] tracking-tight">
                     Most Sold Products
                   </h2>
-                  <p className="text-sm text-[#6b8f96] mt-3 leading-relaxed">
+                  <p className="text-sm text-[#4a7178] mt-3 leading-relaxed">
                     Our top-selling clinical essentials, highly recommended by leading dental professionals and clinics for their reliable performance and CE-certified quality.
                   </p>
                 </div>
@@ -582,7 +582,7 @@ export default function App() {
                               {product.features.slice(0, 2).map((feat, i) => (
                                 <div key={i} className="flex items-start gap-1.5 text-xs text-[#358082]/70">
                                   <ChevronRight className="w-3.5 h-3.5 text-[#0e7490] shrink-0 mt-0.5" />
-                                  <span className="line-clamp-1 text-[#358082]/90 font-medium">{feat}</span>
+                                  <span className="line-clamp-1 text-[#358082] font-medium">{feat}</span>
                                 </div>
                               ))}
                             </div>
