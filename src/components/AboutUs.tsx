@@ -63,7 +63,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
           <h1 className="font-sans font-extrabold text-3xl sm:text-4xl text-[#1a3a42] tracking-tight">
             About Nordic Group
           </h1>
-          <p className="text-sm text-[#6b8f96] mt-3 leading-relaxed">
+          <p className="text-sm text-[#3a5c63] mt-3 leading-relaxed">
             We equip modern dental clinics in Somalia and East Africa with secure, premium clinical materials sourced from leading manufacturers.
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
             <h2 className="font-sans font-extrabold text-2xl text-[#1a3a42] tracking-tight">
               Who We Are
             </h2>
-            <p className="text-xs sm:text-sm text-[#6b8f96] mt-4 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-xs sm:text-sm text-[#3a5c63] mt-4 leading-relaxed max-w-2xl mx-auto">
               Nordic Group is a dental distribution company founded in 2022, operating directly from Dubai to Somalia. We provide dental professionals in emerging markets with access to certified, high-quality products at competitive prices, directly from leading global manufacturers.
             </p>
             
@@ -85,7 +85,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
             <div className="bg-[#f0f8fa] border border-[#2c8fa0]/15 rounded-xl p-6 mt-8 max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 text-center md:text-left">
               <div className="flex-1">
                 <p className="font-bold text-[#1a3a42] text-sm md:text-xs lg:text-sm">Dubai Sourcing</p>
-                <p className="text-[#6b8f96] mt-1 text-xs font-medium">Global Sourcing & Trade Hub</p>
+                <p className="text-[#3a5c63] mt-1 text-xs font-medium">Global Sourcing & Trade Hub</p>
               </div>
               
               <div className="hidden md:flex flex-col items-center flex-1">
@@ -109,7 +109,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
 
               <div className="flex-1 text-center md:text-right">
                 <p className="font-bold text-[#1a3a42] text-sm md:text-xs lg:text-sm">Somalia Clinics</p>
-                <p className="text-[#6b8f96] mt-1 text-xs font-medium">Direct Local Distribution</p>
+                <p className="text-[#3a5c63] mt-1 text-xs font-medium">Direct Local Distribution</p>
               </div>
             </div>
           </div>
@@ -121,10 +121,10 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
             <h2 className="font-sans font-extrabold text-2xl text-[#1a3a42] tracking-tight border-b border-[#e1e3e4] pb-2">
               Our History
             </h2>
-            <p className="text-xs sm:text-sm text-[#6b8f96] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#3a5c63] leading-relaxed">
               Nordic Group was established in 2022 with a singular vision: to democratize access to reliable, certified clinical dental consumables and precision models in East Africa. We realized that a shortage of medical-grade steel instruments and temperature-controlled materials presented a hurdle for clinic safety.
             </p>
-            <p className="text-xs sm:text-sm text-[#6b8f96] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#3a5c63] leading-relaxed">
               With our main sourcing operations placed in Deira, Dubai (UAE) and complemented by our own local clearing offices in Mogadishu, we streamline the complete supply pipeline from Dubai directly to Somalia. Every batch undergoes strict mechanical checks before departure – enabling dental surgeons to practice with complete peace of mind.
             </p>
           </div>
@@ -136,7 +136,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
               </div>
               <div>
                 <h3 className="text-sm font-bold text-[#1a3a42]">Certified High Quality Standards</h3>
-                <p className="text-xs text-[#6b8f96] mt-1">We put biological patient protection and material safety first in every batch.</p>
+                <p className="text-xs text-[#3a5c63] mt-1">We put biological patient protection and material safety first in every batch.</p>
               </div>
             </div>
             <div className="flex gap-4">
@@ -145,7 +145,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
               </div>
               <div>
                 <h3 className="text-sm font-bold text-[#1a3a42]">Collaborative Clinic Partnerships</h3>
-                <p className="text-xs text-[#6b8f96] mt-1">We establish stable, long-term procurement frameworks with physical clinics.</p>
+                <p className="text-xs text-[#3a5c63] mt-1">We establish stable, long-term procurement frameworks with physical clinics.</p>
               </div>
             </div>
           </div>
@@ -160,7 +160,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
             {whatWeOffer.map((offer, i) => (
               <div key={i} className="flex items-start gap-3">
                 <div className="w-2.5 h-2.5 rounded-full bg-[#2c8fa0] shrink-0 mt-1.5" />
-                <p className="text-xs sm:text-sm text-[#6b8f96] leading-relaxed font-medium">
+                <p className="text-xs sm:text-sm text-[#3a5c63] leading-relaxed font-medium">
                   {offer}
                 </p>
               </div>
@@ -182,7 +182,7 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
                 <h3 className="text-sm font-bold text-[#1a3a42] tracking-tight mb-2">
                   {point.title}
                 </h3>
-                <p className="text-xs text-[#6b8f96] leading-relaxed">
+                <p className="text-xs text-[#3a5c63] leading-relaxed">
                   {point.desc}
                 </p>
               </div>
@@ -209,11 +209,11 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
                       </p>
                     </div>
                   </div>
-                  <p className="text-xs text-[#6b8f96] leading-relaxed italic">
+                  <p className="text-xs text-[#3a5c63] leading-relaxed italic">
                     "{member.description}"
                   </p>
                 </div>
-                <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between items-center text-[11px] text-[#6b8f96]">
+                <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between items-center text-[11px] text-[#3a5c63]">
                   <span className="font-semibold text-[#1a3a42]">Station {i + 1}</span>
                   <span>{member.location}</span>
                 </div>
@@ -236,3 +236,4 @@ export default function AboutUs({ onNavigateToContact }: AboutUsProps) {
     </div>
   );
 }
+
