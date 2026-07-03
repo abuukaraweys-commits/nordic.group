@@ -272,7 +272,7 @@ export default function ProductCatalog({
                     )}
                     
                     {/* Aesthetic baseline color band */}
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-[#0e7490] z-20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-[#0e7490] z-20 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity" />
                   </div>
 
                   {/* Produktkort Body */}
