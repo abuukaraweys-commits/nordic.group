@@ -201,7 +201,7 @@ Sent via Nordic Group Dental online portal.`;
                 <CheckCircle2 className="w-10 h-10 animate-bounce" />
               </div>
               <h3 className="text-base font-extrabold text-[#1a3a42] tracking-tight">Your Requisition Dispatch Ready!</h3>
-              <p className="text-xs text-[#6b8f96] max-w-sm mx-auto leading-relaxed">
+              <p className="text-xs text-[#3a5c63] max-w-sm mx-auto leading-relaxed">
                 The quotation has been compiled automatically. Click clear below to edit your list or start a new requisition session.
               </p>
               
@@ -231,7 +231,7 @@ Sent via Nordic Group Dental online portal.`;
                     <ShoppingBag className="w-8 h-8" />
                   </div>
                   <p className="text-sm font-extrabold text-[#1a3a42]">Requisition list is empty</p>
-                  <p className="text-xs text-[#6b8f96] mt-1.5 max-w-xs leading-relaxed">
+                  <p className="text-xs text-[#3a5c63] mt-1.5 max-w-xs leading-relaxed">
                     Browse our high-quality Nordic dental tools and click "Add to Cart" to start compiling your customized proposal list.
                   </p>
                   <button
@@ -500,3 +500,4 @@ Sent via Nordic Group Dental online portal.`;
     </div>
   );
 }
+
