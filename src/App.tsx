@@ -8,7 +8,9 @@ import {
   MapPin,
   MessageSquare,
   ChevronRight,
-  FileText
+  FileText,
+  ShoppingCart,
+  Send
 } from 'lucide-react';
 import { CategoryKey, Product } from './types';
 import { PRODUCTS } from './data';
@@ -259,6 +261,81 @@ export default function App() {
                 <p className="font-sans text-xs sm:text-sm font-extrabold text-[#2c8fa0] tracking-wide uppercase">
                   CE-Certified Products • Sourced from leading clinical laboratories • Assured for clinics in Somalia & East Africa
                 </p>
+              </div>
+            </section>
+
+            {/* How It Works - 3-step ordering guide (English + Somali) */}
+            <section id="how-it-works" className="py-20 bg-[#f4f9fa]/60 border-b border-[#2c8fa0]/10">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                {/* Section header */}
+                <div className="text-center max-w-2xl mx-auto mb-14">
+                  <span className="text-[10px] bg-white border border-[#2c8fa0]/20 text-[#2c8fa0] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest inline-block mb-4">
+                    Simple Ordering • Dalab Fudud
+                  </span>
+                  <h2 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#1a3a42] tracking-tight">
+                    How It Works
+                  </h2>
+                  <p className="text-base font-bold text-[#2c8fa0] mt-1">Sida Ay U Shaqeyso</p>
+                  <p className="text-sm text-[#6b8f96] mt-3 leading-relaxed">
+                    No online payment needed. Just send us your list and we handle the rest.
+                    <br />
+                    <span className="text-[#6b8f96]/90">Lacag online ah looma baahna. Noo soo dir liiskaaga, intii kalena annaga ayaa qabanayna.</span>
+                  </p>
+                </div>
+
+                {/* 3 steps */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                  {/* Step 1 */}
+                  <div className="relative bg-white border border-[#2c8fa0]/15 rounded-2xl p-8 text-center shadow-[0_4px_16px_rgba(0,0,0,0.05)] flex flex-col items-center">
+                    <span className="absolute top-4 right-5 text-4xl font-extrabold text-[#2c8fa0]/10 select-none">1</span>
+                    <div className="w-14 h-14 rounded-2xl bg-[#f0f8fa] text-[#2c8fa0] flex items-center justify-center border border-[#2c8fa0]/20 mb-5">
+                      <ShoppingCart className="w-7 h-7" />
+                    </div>
+                    <h3 className="text-base font-extrabold text-[#1a3a42] tracking-tight">Add to Cart</h3>
+                    <p className="text-sm font-bold text-[#2c8fa0] mt-0.5">Ku dar Gaadhiga</p>
+                    <p className="text-xs text-[#6b8f96] mt-3 leading-relaxed">
+                      Browse our products and add the items your clinic needs to the cart.
+                    </p>
+                    <p className="text-xs text-[#6b8f96]/85 mt-2 leading-relaxed">
+                      Fiiri alaabtayada, kuna dar waxyaabaha rugtaadu u baahan tahay gaadhiga.
+                    </p>
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="relative bg-white border border-[#2c8fa0]/15 rounded-2xl p-8 text-center shadow-[0_4px_16px_rgba(0,0,0,0.05)] flex flex-col items-center">
+                    <span className="absolute top-4 right-5 text-4xl font-extrabold text-[#2c8fa0]/10 select-none">2</span>
+                    <div className="w-14 h-14 rounded-2xl bg-[#f0f8fa] text-[#2c8fa0] flex items-center justify-center border border-[#2c8fa0]/20 mb-5">
+                      <Send className="w-7 h-7" />
+                    </div>
+                    <h3 className="text-base font-extrabold text-[#1a3a42] tracking-tight">Send Quote Request</h3>
+                    <p className="text-sm font-bold text-[#2c8fa0] mt-0.5">Soo Dir Codsiga</p>
+                    <p className="text-xs text-[#6b8f96] mt-3 leading-relaxed">
+                      Press "Send Quote" to send your list to us on WhatsApp or by email.
+                    </p>
+                    <p className="text-xs text-[#6b8f96]/85 mt-2 leading-relaxed">
+                      Riix "Send Quote" si aad liiskaaga noogu soo dirto WhatsApp ama iimayl.
+                    </p>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="relative bg-white border border-[#2c8fa0]/15 rounded-2xl p-8 text-center shadow-[0_4px_16px_rgba(0,0,0,0.05)] flex flex-col items-center">
+                    <span className="absolute top-4 right-5 text-4xl font-extrabold text-[#2c8fa0]/10 select-none">3</span>
+                    <div className="w-14 h-14 rounded-2xl bg-[#f0f8fa] text-[#2c8fa0] flex items-center justify-center border border-[#2c8fa0]/20 mb-5">
+                      <MessageSquare className="w-7 h-7" />
+                    </div>
+                    <h3 className="text-base font-extrabold text-[#1a3a42] tracking-tight">Get Your Proposal</h3>
+                    <p className="text-sm font-bold text-[#2c8fa0] mt-0.5">Hel Qiimahaaga</p>
+                    <p className="text-xs text-[#6b8f96] mt-3 leading-relaxed">
+                      We reply on WhatsApp with prices, availability, and delivery details.
+                    </p>
+                    <p className="text-xs text-[#6b8f96]/85 mt-2 leading-relaxed">
+                      Waxaan kaaga soo jawaabaynaa WhatsApp qiimaha, helitaanka, iyo gaarsiinta.
+                    </p>
+                  </div>
+
+                </div>
               </div>
             </section>
 
@@ -697,4 +774,5 @@ export default function App() {
     </div>
   );
 }
+
 
