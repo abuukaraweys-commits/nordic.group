@@ -157,7 +157,7 @@ export default function Header({
                 className="absolute left-0 mt-0 w-80 bg-white rounded-xl shadow-xl border border-[#bfc8ca]/30 py-3 animate-in fade-in slide-in-from-top-2 duration-150 z-[60]"
               >
                 <div className="px-4 pb-2 border-b border-[#e1e3e4] mb-2 flex justify-between items-center bg-[#f0f8fa] py-1.5 rounded-t-lg mx-2">
-                  <span className="text-xs font-bold text-[#6b8f96] tracking-wider uppercase">Product Categories</span>
+                  <span className="text-xs font-bold text-[#3a5c63] tracking-wider uppercase">Product Categories</span>
                   <button
                     onClick={handleAllProductsClick}
                     className="text-xs font-semibold text-[#2c8fa0] hover:underline cursor-pointer"
@@ -344,7 +344,7 @@ export default function Header({
                 <button
                   onClick={() => navigateToPage('home')}
                   className={`text-left text-sm font-bold py-1 transition-colors cursor-pointer ${
-                    currentPage === 'home' ? 'text-[#2c8fa0]' : 'text-[#6b8f96] hover:text-[#2c8fa0]'
+                    currentPage === 'home' ? 'text-[#2c8fa0]' : 'text-[#3a5c63] hover:text-[#2c8fa0]'
                   }`}
                 >
                   Home
@@ -355,7 +355,7 @@ export default function Header({
                   <button
                     onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
                     className={`text-left text-sm font-bold py-1 transition-colors flex items-center justify-between cursor-pointer ${
-                      currentPage === 'products' ? 'text-[#2c8fa0]' : 'text-[#6b8f96] hover:text-[#2c8fa0]'
+                      currentPage === 'products' ? 'text-[#2c8fa0]' : 'text-[#3a5c63] hover:text-[#2c8fa0]'
                     }`}
                   >
                     <span>Products</span>
@@ -368,7 +368,7 @@ export default function Header({
                         className={`text-left text-xs font-semibold transition-colors cursor-pointer ${
                           currentPage === 'products' && activeCategory === null
                             ? 'text-[#2c8fa0]'
-                            : 'text-[#6b8f96] hover:text-[#2c8fa0]'
+                            : 'text-[#3a5c63] hover:text-[#2c8fa0]'
                         }`}
                       >
                         View All Products
@@ -394,7 +394,7 @@ export default function Header({
                 <button
                   onClick={() => navigateToPage('about')}
                   className={`text-left text-sm font-bold py-1 transition-colors cursor-pointer ${
-                    currentPage === 'about' ? 'text-[#2c8fa0]' : 'text-[#6b8f96] hover:text-[#2c8fa0]'
+                    currentPage === 'about' ? 'text-[#2c8fa0]' : 'text-[#3a5c63] hover:text-[#2c8fa0]'
                   }`}
                 >
                   About Us
@@ -404,7 +404,7 @@ export default function Header({
                 <button
                   onClick={() => navigateToPage('contact')}
                   className={`text-left text-sm font-bold py-1 transition-colors cursor-pointer ${
-                    currentPage === 'contact' ? 'text-[#2c8fa0]' : 'text-[#6b8f96] hover:text-[#2c8fa0]'
+                    currentPage === 'contact' ? 'text-[#2c8fa0]' : 'text-[#3a5c63] hover:text-[#2c8fa0]'
                   }`}
                 >
                   Contact Us
@@ -414,7 +414,7 @@ export default function Header({
                 <button
                   onClick={() => navigateToPage('portal')}
                   className={`text-left text-sm font-bold py-1 transition-colors cursor-pointer ${
-                    currentPage === 'portal' ? 'text-[#2c8fa0]' : 'text-[#6b8f96] hover:text-[#2c8fa0]'
+                    currentPage === 'portal' ? 'text-[#2c8fa0]' : 'text-[#3a5c63] hover:text-[#2c8fa0]'
                   }`}
                 >
                   Admin
@@ -427,7 +427,7 @@ export default function Header({
               <div>
                 <p className="text-[10px] text-gray-400 uppercase tracking-wider font-extrabold mb-0.5">Dubai Sourcing & Logistics</p>
                 <p className="text-xs font-semibold text-[#1a3a42] leading-tight flex items-center justify-between">Nordic Group Dental</p>
-                <p className="text-[10px] text-[#6b8f96] mt-0.5">Sourcing & Logistics for clinics</p>
+                <p className="text-[10px] text-[#3a5c63] mt-0.5">Sourcing & Logistics for clinics</p>
               </div>
                <button
                 onClick={() => {
@@ -445,3 +445,4 @@ export default function Header({
     </header>
   );
 }
+
