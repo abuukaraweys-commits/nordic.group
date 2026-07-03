@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+ import { useState, useEffect } from 'react';
 import { 
   Compass,
   Target,
@@ -277,10 +277,10 @@ export default function App() {
                     How It Works
                   </h2>
                   <p className="text-base font-bold text-[#2c8fa0] mt-1">Sida Ay U Shaqeyso</p>
-                  <p className="text-sm text-[#4a7178] mt-3 leading-relaxed">
+                  <p className="text-sm text-[#3a5c63] mt-3 leading-relaxed">
                     No online payment needed. Just send us your list and we handle the rest.
                     <br />
-                    <span className="text-[#4a7178]">Lacag online ah looma baahna. Noo soo dir liiskaaga, intii kalena annaga ayaa qabanayna.</span>
+                    <span className="text-[#3a5c63]">Lacag online ah looma baahna. Noo soo dir liiskaaga, intii kalena annaga ayaa qabanayna.</span>
                   </p>
                 </div>
 
@@ -295,10 +295,10 @@ export default function App() {
                     </div>
                     <h3 className="text-base font-extrabold text-[#1a3a42] tracking-tight">Add to Cart</h3>
                     <p className="text-sm font-bold text-[#2c8fa0] mt-0.5">Ku dar Gaadhiga</p>
-                    <p className="text-xs text-[#4a7178] mt-3 leading-relaxed">
+                    <p className="text-xs text-[#3a5c63] mt-3 leading-relaxed">
                       Browse our products and add the items your clinic needs to the cart.
                     </p>
-                    <p className="text-xs text-[#4a7178] mt-2 leading-relaxed">
+                    <p className="text-xs text-[#3a5c63] mt-2 leading-relaxed">
                       Fiiri alaabtayada, kuna dar waxyaabaha rugtaadu u baahan tahay gaadhiga.
                     </p>
                   </div>
@@ -311,10 +311,10 @@ export default function App() {
                     </div>
                     <h3 className="text-base font-extrabold text-[#1a3a42] tracking-tight">Send Quote Request</h3>
                     <p className="text-sm font-bold text-[#2c8fa0] mt-0.5">Soo Dir Codsiga</p>
-                    <p className="text-xs text-[#4a7178] mt-3 leading-relaxed">
+                    <p className="text-xs text-[#3a5c63] mt-3 leading-relaxed">
                       Press "Send Quote" to send your list to us on WhatsApp or by email.
                     </p>
-                    <p className="text-xs text-[#4a7178] mt-2 leading-relaxed">
+                    <p className="text-xs text-[#3a5c63] mt-2 leading-relaxed">
                       Riix "Send Quote" si aad liiskaaga noogu soo dirto WhatsApp ama iimayl.
                     </p>
                   </div>
@@ -327,10 +327,10 @@ export default function App() {
                     </div>
                     <h3 className="text-base font-extrabold text-[#1a3a42] tracking-tight">Get Your Proposal</h3>
                     <p className="text-sm font-bold text-[#2c8fa0] mt-0.5">Hel Qiimahaaga</p>
-                    <p className="text-xs text-[#4a7178] mt-3 leading-relaxed">
+                    <p className="text-xs text-[#3a5c63] mt-3 leading-relaxed">
                       We reply on WhatsApp with prices, availability, and delivery details.
                     </p>
-                    <p className="text-xs text-[#4a7178] mt-2 leading-relaxed">
+                    <p className="text-xs text-[#3a5c63] mt-2 leading-relaxed">
                       Waxaan kaaga soo jawaabaynaa WhatsApp qiimaha, helitaanka, iyo gaarsiinta.
                     </p>
                   </div>
@@ -349,7 +349,7 @@ export default function App() {
                   <h2 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#1a3a42] tracking-tight">
                     New Arrival Products
                   </h2>
-                  <p className="text-sm text-[#4a7178] mt-3 leading-relaxed">
+                  <p className="text-sm text-[#3a5c63] mt-3 leading-relaxed">
                     Explore our latest additions of CE-certified dental materials, state-of-the-art diagnostic instruments, and digital imaging solutions sourced directly from Sweden and leading clinical hubs.
                   </p>
                 </div>
@@ -490,7 +490,7 @@ export default function App() {
                   <h2 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#1a3a42] tracking-tight">
                     Most Sold Products
                   </h2>
-                  <p className="text-sm text-[#4a7178] mt-3 leading-relaxed">
+                  <p className="text-sm text-[#3a5c63] mt-3 leading-relaxed">
                     Our top-selling clinical essentials, highly recommended by leading dental professionals and clinics for their reliable performance and CE-certified quality.
                   </p>
                 </div>
@@ -622,7 +622,7 @@ export default function App() {
                     </div>
                     <div>
                       <h3 className="text-lg font-extrabold text-[#1a3a42] tracking-tight">Our Vision</h3>
-                      <p className="text-xs sm:text-sm text-[#6b8f96] mt-3 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-[#3a5c63] mt-3 leading-relaxed">
                         Nordic Group aims to be the most trusted dental supplier in the markets we serve. We want dentists, clinic owners, and dental technicians in Somalia and across the region to think of us first, not because we are the biggest, but because we are reliable, honest, and genuinely understand what they need.
                       </p>
                     </div>
@@ -635,7 +635,7 @@ export default function App() {
                     </div>
                     <div>
                       <h3 className="text-lg font-extrabold text-[#1a3a42] tracking-tight">Our Mission</h3>
-                      <p className="text-xs sm:text-sm text-[#6b8f96] mt-3 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-[#3a5c63] mt-3 leading-relaxed">
                         Nordic Group connects dental professionals with certified, high-quality products at competitive prices. We cut unnecessary steps out of the supply chain so that clinics in emerging markets get access to the same materials as clinics in Europe, without the markup that usually comes with distance. Our role is simple: the right product to the right professional, on time, at a price that works.
                       </p>
                     </div>
