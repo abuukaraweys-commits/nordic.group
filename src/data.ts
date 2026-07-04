@@ -100,47 +100,49 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'cons-04',
-    name: 'Premium Micro-Hybrid Restorative Composite Kit',
+    name: 'DEN LINK Kit',
     category: 'composites',
-    description: 'A versatile micro-hybrid composite kit designed to provide dependable durability and polished aesthetics in both load-bearing and anterior regions. Its physical handling allows for easy carving of cusp layouts without slumping. Provides excellent shade-fastness and low contraction stress to extend restoration lifespan.',
+    description: 'Porcelain fracture repair kit is a simple repair kit designed for the repair of porcelain and zirconia restorations. It can be used for bonding silicate glass, alluminia ceramic, zirconia ceramic, metals and alloys',
     imageUrl: 'https://drive.google.com/thumbnail?id=1V_4AiCpCJB2QJiL_6yZaQY-BxJsriDLX&sz=w1000',
     features: [
-      'Minimal polymerisation shrinkage (<1.5%) to prevent microleakage',
-      'High filler load (82%) provides excellent physical properties and durability',
-      'Polishable to an exceptionally high, natural enamel gloss'
+      'High bonding strength with primer treatment',
+      'Quick and great aesthetic restoration with the masking of flowable opaque composite',
+   
     ],
     specifications: {
-      'Curing System': 'LED light-cured (405nm working spectrum)',
-      'Compressive Strength': '395 MPa',
-      'Filler Size': '0.02 to 2.5 micrometers hybrid blend',
-      'What It Is Used For': 'Anterior aesthetic shaping and posterior cavity wall rebuilding',
-      'For Dental Professional': 'General Dentists and Aesthetic Restorative Surgeons'
+      'PC Primer': '5.0ml/bottle',
+      'DX.Flow-opaque OA2, 2.0g/pcs',
+      'DX.Flow-Low Flow A2 2.0g/pcs',
+      'DX.Bond VII 3.0ml/bottle',
+      'Brush': '20pcs/box',
+      'Tips': '5pcs/box(blue), 10pcs/box(black)',
+      
     },
     catalogRef: 'NG-RC-304',
     isFeatured: false,
-    origin: 'Gothenburg, Sweden'
+    origin: 'China'
   },
   {
     id: 'cons-05',
-    name: 'NordicSil Heavy Body Impression Material',
+    name: 'DX. BOND VII',
     category: 'composites',
-    description: 'A robust hydrophilic addition silicone tray material designed to guide lighter wash silicones directly into sulcus detail crevices. Exceptional dimensional stability retains preparation boundaries perfectly for multiple days. Designed to resist intraoral forces when withdrawing from complex prepared margins.',
+    description: 'Suitable for self-etch enamel/dentin, all classes direct restorations and the indirect restoration of porcelain veneer, crown and inlay/onlay.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1_8dgkM3m8iWNY5ARh2QOqZnjA1GGtaIM&sz=w1000',
     features: [
-      'Exceptional dimensional stability with near-zero setting distortion',
-      'Excellent mechanical properties with high tear resistance',
-      'Acts as the perfect primary tray base for light-body dental wash'
+      'Combining etching and adhesive into one step to improve operation consistence and efficiency',
+      'Unique patent technology serviced for disinfection',
+      'Better dentin tubule penetration with DMP-wet adhesion technology resulting in an increase of the bonding strength and less post-operation sensitivity'
     ],
     specifications: {
-      'Mixing Ratio': '1:1 cartridge delivery',
-      'Working Duration': '2 minutes',
-      'Total Setting Time': '4 minutes 30 seconds',
-      'What It Is Used For': 'Heavy-grade foundational tray support in fixed prosthodontic impression techniques',
-      'For Dental Professional': 'Prosthodontists and Implantologists'
+      'Specification:': ',
+      '3.0ml/bottle，brush': '10pcs/box ',
+      '5.0ml/bottle，brush': '20pcs/box',
+      
+     
     },
     catalogRef: 'NG-HB-045',
     isFeatured: false,
-    origin: 'Uppsala, Sweden'
+    origin: 'China'
   },
   {
     id: 'cons-06',
