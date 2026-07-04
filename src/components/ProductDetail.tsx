@@ -146,9 +146,19 @@ export default function ProductDetail({
                 </p>
               </div>
 
-              {/* Merits & Clinical benefits */}
+              {/* Indications */}
+              {product.indications && (
+                <div className="pt-2 border-t border-[#bfc8ca]/20">
+                  <span className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-3">Indications</span>
+                  <p className="text-sm text-[#40484a] leading-relaxed font-normal">
+                    {product.indications}
+                  </p>
+                </div>
+              )}
+
+              {/* Advantages */}
               <div className="pt-2 border-t border-[#bfc8ca]/20">
-                <span className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-3">Clinical Benefits & Features</span>
+                <span className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-3">Advantages</span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {product.features.map((feat, i) => (
                     <div key={i} className="flex gap-2.5 text-xs text-[#40484a] leading-normal font-medium bg-[#fafbfc] border border-[#e1e3e4]/70 p-2.5 rounded-xl">
@@ -161,7 +171,7 @@ export default function ProductDetail({
 
               {/* Specifications Matrix */}
               <div className="border-t border-[#bfc8ca]/20 pt-4">
-                <span className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-3">Technical Specifications Matrix</span>
+                <span className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-3">Packaging</span>
                 <div className="border border-[#e1e3e4] rounded-xl overflow-hidden divide-y divide-[#e1e3e4] text-xs">
                   {Object.entries(product.specifications).map(([key, value]) => (
                     <div key={key} className="flex flex-col sm:flex-row sm:items-center p-3 gap-2 justify-between font-medium bg-white hover:bg-slate-50/50 transition-colors">
@@ -228,3 +238,4 @@ export default function ProductDetail({
     </div>
   );
 }
+
