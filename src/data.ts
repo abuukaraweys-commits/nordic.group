@@ -35,15 +35,14 @@ export const PRODUCTS: Product[] = [
   // Composites
   {
     id: 'cons-01',
-    name: 'Nordic Translucent Ceramic Brackets',
+    name: 'DX. Incisal',
     category: 'composites',
-    description: 'Designed for patients demanding high-aesthetic orthodontic treatment, these premium monocrystalline sapphire brackets offer virtual invisibility by blending seamlessly with natural tooth enamel. The ultra-smooth slot surfaces substantially reduce sliding friction for optimized wire mechanics and accelerated tooth movement. This medical-grade appliance provides outstanding color-stability against dietary pigments and is fitted with a specialized mechanical retention base.',
+    description: 'Light Curing Composite Resin family, the first choice for tooth restoration',
     imageUrl: 'https://drive.google.com/thumbnail?id=1IMAR_U3hqsf4mdiL-OAlkX1AVoC61mNg&sz=w1000',
     features: [
-      '100% High-Purity Monocrystalline Sapphire for crystal-clear aesthetics',
-      'Micro-porous biological base structure for maximal mechanical adhesion',
-      'Extreme slot surface smoothness to reduce orthodontic sliding friction',
-      'Impervious to coffee, tea, and everyday dietary staining agents'
+      'Suitable for most adult enamel margin',
+      'Suitable for the enamel margin of middle-age and old people',
+      'Suitable for teenager enamel margin',
     ],
     specifications: {
       'Prescription Type': 'Roth / MBT .022" slot configurations with custom torque metrics',
