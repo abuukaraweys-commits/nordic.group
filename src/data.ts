@@ -55,27 +55,26 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'cons-02',
-    name: 'Clinik Universal Nano-Hybrid Composite',
+    name: 'DX. Flow-base',
     category: 'composites',
-    description: 'A universal light-cure restorative composite utilizing nano-hybrid technology to achieve a perfect balance of mechanical toughness and lifelike aesthetics. Its chameleon-like shade matching adapts seamlessly to the surrounding enamel structure. Extremely low volumetric shrinkage preserves tight marginal seals and prevents secondary recurrent decay.',
+    description: 'Porcelain restoration  Other whitening restoration  Masking discolored tooth',
     imageUrl: 'https://drive.google.com/thumbnail?id=1JCd6R_9VUTQleuzRULkBPbs99sVPaXWQ&sz=w1000',
     features: [
-      '82% inorganic filler density for maximum wear resistance',
-      'Excellent polishability and natural opalescence',
-      'Non-sticky formulation - easy to sculpt and handle',
-      'Perfect shade matching (Chameleon effect)'
+      'Better whitening effect in veneer bonding',
+      'WH and TW with different whiteness and masking ability to meet the dentist’s Request for different cases',
+      'Good color stability',
+      'Good physical performance and impact resistance'
+      'Low shrinkage'
     ],
     specifications: {
-      'Shades': 'A1, A2, A3, B2',
-      'Filler System': 'Barium glass with nano-silica',
-      'Cure Time (LED)': '20 seconds per layer',
-      'Compressive Strength': '380 MPa',
-      'What It Is Used For': 'Direct anterior and posterior restorations of Class I through V cavities',
-      'For Dental Professional': 'General Dentists and Restorative Specialists'
+       'Specification': '3g',
+      'Shades': 'A1, A2, A3, OA2',
+      
+
     },
     catalogRef: 'NG-RC-302',
     isFeatured: true,
-    origin: 'Uppsala, Sweden'
+    origin: 'China'
   },
   {
     id: 'cons-03',
