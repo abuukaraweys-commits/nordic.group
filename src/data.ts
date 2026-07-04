@@ -111,9 +111,9 @@ export const PRODUCTS: Product[] = [
     ],
     specifications: {
       'PC Primer': '5.0ml/bottle',
-      'DX.Flow-opaque OA2, 2.0g/pcs',
-      'DX.Flow-Low Flow A2 2.0g/pcs',
-      'DX.Bond VII 3.0ml/bottle',
+      'DX.Flow-opaque OA2': '2.0g/pcs',
+      'DX.Flow-Low Flow A2': '2.0g/pcs',
+      'DX.Bond VII': '3.0ml/bottle',
       'Brush': '20pcs/box',
       'Tips': '5pcs/box(blue), 10pcs/box(black)',
       
@@ -134,7 +134,6 @@ export const PRODUCTS: Product[] = [
       'Better dentin tubule penetration with DMP-wet adhesion technology resulting in an increase of the bonding strength and less post-operation sensitivity'
     ],
     specifications: {
-      'Specification:': ',
       '3.0ml/bottle，brush': '10pcs/box ',
       '5.0ml/bottle，brush': '20pcs/box',
       
@@ -1211,4 +1210,5 @@ export const PRODUCTS: Product[] = [
     origin: 'Dubai, UAE'
   }
 ];
+
 
