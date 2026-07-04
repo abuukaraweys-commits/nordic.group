@@ -38,6 +38,7 @@ export const PRODUCTS: Product[] = [
     name: 'DX. Incisal',
     category: 'composites',
     description: 'Light Curing Composite Resin family, the first choice for tooth restoration',
+                 'Suitable for all types of clinical requirements, rebuild natural beauty of teeth',
     imageUrl: 'https://drive.google.com/thumbnail?id=1IMAR_U3hqsf4mdiL-OAlkX1AVoC61mNg&sz=w1000',
     features: [
       'Suitable for most adult enamel margin',
@@ -45,15 +46,12 @@ export const PRODUCTS: Product[] = [
       'Suitable for teenager enamel margin',
     ],
     specifications: {
-      'Prescription Type': 'Roth / MBT .022" slot configurations with custom torque metrics',
-      'Chassis Material': 'Medical Grade High-Translucency Alumina Sapphire Monocrystal',
-      'Retention Engine': 'Anodized micro-porous lock base to prevent bracket shearing',
-      'What It Is Used For': 'Aesthetic alignment of crowded or spaced dentition in orthodontic therapies',
-      'For Dental Professional': 'Orthodontists and Specialty Orthodontic Clinicians'
+      'Specification' : '4g/pcs',
+      'Shade': 'Clear(CL) Amber Blue',
     },
     catalogRef: 'NG-OB-201',
     isFeatured: true,
-    origin: 'Gothenburg, Sweden'
+    origin: 'China'
   },
   {
     id: 'cons-02',
