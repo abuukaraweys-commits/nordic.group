@@ -78,26 +78,25 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'cons-03',
-    name: 'NordicSil Light Body Wash Silicone',
+    name: 'DX. Flow',
     category: 'composites',
-    description: 'An addition-cure correction silicone with superior hydrophilic properties designed to replicate sub-micron prepared tooth structures. The thixotropic fluid stays placed in the sulcus area without running or dripping. Its outstanding tear strength allows the final set impression to be removed from deep undercuts without marginal damage.',
+    description: 'It is suitable for restorations of class III, Class V and small class IV cavities, especially for restoration of minor defects.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1CxZix6a6HbO7ZwX5iavCSVFm0wvOWUPX&sz=w1000',
     features: [
-      'Exceptional precision even in moist oral environments',
-      'Thixotropic formula – stays where placed without running',
-      'High mechanical tear strength without distortion',
-      'Ideal for crowns, bridges, and prosthodontics'
+      'Unique patent oligomer technology resulting in excellent strength and elastic modulus',
+      'High radio opacity',
+      'Fluoride release to effectively prevent from secondary caries',
+      
     ],
     specifications: {
-      'Working Time': '1 minute 30 seconds',
-      'Setting Time': '3 minutes total',
-      'Mixing Ratio': '1:1 cartridge system',
-      'What It Is Used For': 'Highly detailed final correction wash in double-impression steps',
-      'For Dental Professional': 'Prosthodontists and General Dental Practitioners'
+      'Visosity': 'High Flow, Medium Flow, Low Flow, Super Low Flow',
+      'Specification': '2.0gx2，3.0g',
+      'Shade': 'A1、A2、A3、A3.5、B1、B2',
+     
     },
     catalogRef: 'NG-LB-044',
     isFeatured: false,
-    origin: 'Gothenburg, Sweden'
+    origin: 'China'
   },
   {
     id: 'cons-04',
