@@ -3,6 +3,7 @@ export interface Product {
   name: string;
   category: 'composites' | 'tools' | 'imaging';
   description: string;
+  indications?: string;
   features: string[];
   specifications: Record<string, string>;
   imageUrl?: string;
