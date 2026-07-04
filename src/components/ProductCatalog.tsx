@@ -78,12 +78,21 @@ export default function ProductCatalog({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* PRODUKTSIDA - Hero-banner */}
-        <div className="bg-[#eff7f8] border border-[#41808F]/20 rounded-3xl p-8 sm:p-12 mb-12 text-center max-w-7xl mx-auto relative overflow-hidden">
-          {/* Subtle graphic overlay */}
-          <div className="absolute right-0 top-0 opacity-10 select-none pointer-events-none transform translate-x-12 -translate-y-12">
-            <svg width="300" height="300" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="50" r="40" stroke="#41808F" strokeWidth="2" />
-              <path d="M50 20v60M20 50h60" stroke="#41808F" strokeWidth="2" />
+        <div className="bg-[#eff7f8] border border-[#41808F]/20 rounded-3xl p-6 sm:p-8 mb-10 text-center max-w-7xl mx-auto relative overflow-hidden">
+          {/* Subtle decorative graphics (inline SVG — near-zero data, sharp on all screens) */}
+          <div className="absolute right-0 top-0 opacity-[0.07] select-none pointer-events-none transform translate-x-16 -translate-y-16">
+            <svg width="320" height="320" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="46" stroke="#2c8fa0" strokeWidth="1" />
+              <circle cx="50" cy="50" r="34" stroke="#2c8fa0" strokeWidth="1" />
+              <circle cx="50" cy="50" r="22" stroke="#2c8fa0" strokeWidth="1" />
+              <path d="M50 30v40M30 50h40" stroke="#2c8fa0" strokeWidth="1" />
+            </svg>
+          </div>
+          <div className="absolute left-0 bottom-0 opacity-[0.07] select-none pointer-events-none transform -translate-x-6 translate-y-6">
+            <svg width="150" height="150" viewBox="0 0 70 70" fill="none" stroke="#2c8fa0" strokeWidth="2" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 6v12M6 12h12" /><path d="M32 6v12M26 12h12" /><path d="M52 6v12M46 12h12" />
+              <path d="M12 26v12M6 32h12" /><path d="M32 26v12M26 32h12" /><path d="M52 26v12M46 32h12" />
+              <path d="M12 46v12M6 52h12" /><path d="M32 46v12M26 52h12" /><path d="M52 46v12M46 52h12" />
             </svg>
           </div>
 
@@ -91,10 +100,10 @@ export default function ProductCatalog({
             Nordic Group Reference Catalog
           </span>
           <h1 className="font-sans font-extrabold text-3xl sm:text-4xl text-[#191c1d] tracking-tight mt-4">
-            Premium Medical-Grade Dental Products
+            CE-Certified Dental Products
           </h1>
           <p className="text-sm text-[#40484a] max-w-2xl mx-auto mt-3 leading-relaxed">
-            Our collection is environmentally certified and handpicked to ensure standard clinical efficacy. Discover high-performance, certified products for dental professionals.
+            Browse our full range of dental materials, instruments, and imaging equipment. Add items to your cart and request a free quote — no online payment needed.
           </p>
         </div>
 
