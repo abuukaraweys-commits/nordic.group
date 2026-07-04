@@ -63,7 +63,7 @@ export const PRODUCTS: Product[] = [
       'Better whitening effect in veneer bonding',
       'WH and TW with different whiteness and masking ability to meet the dentist’s Request for different cases',
       'Good color stability',
-      'Good physical performance and impact resistance'
+      'Good physical performance and impact resistance',
       'Low shrinkage'
     ],
     specifications: {
@@ -1210,3 +1210,4 @@ export const PRODUCTS: Product[] = [
     origin: 'Dubai, UAE'
   }
 ];
+
