@@ -38,7 +38,7 @@ export const PRODUCTS: Product[] = [
     name: 'DX. Incisal',
     category: 'composites',
     description: 'Light Curing Composite Resin family, the first choice for tooth restoration',
-                 'Suitable for all types of clinical requirements, rebuild natural beauty of teeth',
+
     imageUrl: 'https://drive.google.com/thumbnail?id=1IMAR_U3hqsf4mdiL-OAlkX1AVoC61mNg&sz=w1000',
     features: [
       'Suitable for most adult enamel margin',
