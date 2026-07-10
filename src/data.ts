@@ -166,6 +166,27 @@ export const PRODUCTS: Product[] = [
     origin: 'Gothenburg, Sweden'
   },
 
+    {
+    id: 'cons-07',
+    name: 'DX. CORE',
+    category: 'composites',
+    description: 'Dual-cure core build-up composite for core build up, bonding of crowns, bridges, inlays and onlays, and filling of special deep cavity restorations.',
+    indications: 'Suitable for core build up, bonding for crown, bridge, inlay/onlay, and filling for special deep cavity restoration.',
+    features: [
+      'High compressive strength and flexural strength',
+      'Dual curing — light curing for 20 seconds, self curing for 5 minutes',
+      'DX.Bond V is required after etching when using DX.CORE for bonding',
+    ],
+    specifications: {
+      'Specification': '8g',
+      'Shade': 'A2, A3',
+    },
+    imageUrl: '/images/products/dx-core.png',
+    catalogRef: 'NG-DX-107',
+    isFeatured: false,
+    origin: 'China',
+  },
+
   // Instruments
   {
     id: 'inst-01',
@@ -193,9 +214,7 @@ export const PRODUCTS: Product[] = [
     id: 'inst-02',
     name: 'DX. Posterior',
     category: 'composites',
-    description: 'Light Curing Composite Resins family, the first choice for reconstruction of tooth defects.
-
-',
+    description: 'Light Curing Composite Resins family, the first choice for reconstruction of tooth defects.',
     imageUrl: 'https://drive.google.com/thumbnail?id=16Q0XDBb0cLesm6flC99Ukp4Jc1a9Olgo&sz=w1000',
     features: [
       'High filler loading up to 82%w/w, high compressive and flexural strength',
@@ -1210,5 +1229,3 @@ export const PRODUCTS: Product[] = [
     origin: 'Dubai, UAE'
   }
 ];
-
-
