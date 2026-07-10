@@ -191,69 +191,71 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'inst-02',
-    name: 'Orthodontic Distal Wire Cutter',
+    name: 'DX. Posterior',
     category: 'composites',
-    description: 'Precision surgical pliers with hard Tungsten Carbide cutting edges capable of easily slicing thick braces wires. Features an active holding mechanism to retain cut wire tails safely so they do not fall into the mouth. Designed with a matte coating that avoids direct light reflection.',
+    description: 'Light Curing Composite Resins family, the first choice for reconstruction of tooth defects.
+
+',
     imageUrl: 'https://drive.google.com/thumbnail?id=16Q0XDBb0cLesm6flC99Ukp4Jc1a9Olgo&sz=w1000',
     features: [
-      'Tungsten Carbide inserts for extreme durability and cutting sharpness',
-      'Cuts archwires up to .021 x .025 inches',
-      'Integrated safety hold mechanism protects patients during wire trimming'
+      'High filler loading up to 82%w/w, high compressive and flexural strength',
+      'Suitable visible light opacity for dentin layer',
+      'High strength and good wear-resistance, good handling feel, non-sticky to equipments',
+      'Low shrinkage resulting in less microleakage',
     ],
     specifications: {
-      'Cutting Edge': 'Tungsten Carbide (TC)',
-      'Length': '13 cm',
-      'Finish': 'Matte corrosion-resistant steel',
-      'What It Is Used For': 'Trimming the rear ends of orthodontic wires flush against molar tubes',
-      'For Dental Professional': 'Orthodontists and Specialty Orthodontic Assistants'
+      'Specification': '4g/pcs',
+      'Shade': 'DA1、DA2、DA3、DA3.5、DB1、DB2',
+      
+
+
     },
     catalogRef: 'NG-PL-510',
     isFeatured: false,
-    origin: 'Stockholm, Sweden'
+    origin: 'china'
   },
   {
     id: 'inst-03',
-    name: 'Stainless Steel Dental Root Elevator Set',
+    name: 'DX. BOND UNI',
     category: 'composites',
-    description: 'An essential collection of surgical luxative elevators engineered to safely luxate tooth roots. Thin, sharp-pointed blades easily separate periodontal attachment fibers around the roots. The ergonomic hexagonal handle allows clinicians to apply controlled mechanical leverage with minimal stress.',
+    description: 'BOND UNI Self-etching adhesives (General), a new generation adhesive with the combination of the pretreatment function and self-etching.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1sr4XMgjjj9OouLkTTUX2dq9QDwQv6nf_&sz=w1000',
     features: [
-      'German stainless steel construction with a durable satin luster',
-      'Thin, sharp tip profiles designed for gentle, non-traumatic root luxation',
-      'Lightweight handles deliver ideal comfort and balanced clinical leverage'
+      'BOND UNI is universal adhesive for silicate glass, zirconia ceramics, metal and resin composite',
+      'Simplified operation process with less post-operation sensitivity',
+      'Light curable single-component dental adhesive, low film thickness'
     ],
     specifications: {
-      'Material': 'German Biocompatible SUS304 Surgical Stainless Steel',
-      'Assortment': 'Includes Straight, Curved, Bein, and Flohr dental styles',
-      'Sterilization': 'Fully autoclavable up to 134°C',
-      'What It Is Used For': 'Trauma-free luxation of dental roots and bone widening beforehand',
-      'For Dental Professional': 'Oral Surgeons, Maxillofacial Specialists, and General Practitioners'
+      'Specification': '',
+      '3.0ml/bottle，brush': '10pcs/box ',
+      '5.0ml/bottle，brush': '20pcs/box',
+      
     },
     catalogRef: 'NG-EL-803',
     isFeatured: false,
-    origin: 'Solna, Sweden'
+    origin: 'China'
   },
   {
     id: 'inst-04',
-    name: 'Precision Orthodontic Wire Bender Pliers',
+    name: 'DX. CORE',
     category: 'composites',
-    description: 'Orthodontic loop bender pliers fitted with high-durability Tungsten Carbide inserts to provide reliable wire bending. The box-joint hinge keeps the jaws aligned under heavy grip pressures. Smooth tips block wire scoring, protecting the braces archwire integrity.',
+    description: 'Core build up  Bonding for crown, bridge, inlay/ onlay  Filling for special deep cavity restoration  ',
     imageUrl: 'https://drive.google.com/thumbnail?id=1UVghtTG5Eiv5PYZjEPhjG-w5ThWSbPpb&sz=w1000',
     features: [
-      'Tungsten Carbide tip inserts offer stellar wear resistance and grip',
-      'Zero-slip tip profile ensures precise wire loop bending without scoring',
-      'Box-joint precision hinge maintains perfect alignment under load'
+      'High compressive strength and flexural strength',
+      'Dual curing, light curing for 20s, self curing for 5min',
+      'DX.Bond V is required after etching if using for DX.CORE for bonding'
     ],
     specifications: {
-      'Hinge JointType': 'Preloaded Box-Joint alignment',
-      'Max Wire Thickness': '.021 x .025 inches archwire',
-      'Instrument Length': '13.5 cm',
-      'What It Is Used For': 'Accurate bending, looping, and forming of orthodontic wires',
-      'For Dental Professional': 'Orthodontists'
+      'Specification': '8g',
+      'Shade': 'A2、A3',
+     
+      
+      
     },
     catalogRef: 'NG-PL-512',
     isFeatured: false,
-    origin: 'Stockholm, Sweden'
+    origin: 'China'
   },
 
   // Equipment
