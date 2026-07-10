@@ -169,27 +169,25 @@ export const PRODUCTS: Product[] = [
   // Instruments
   {
     id: 'inst-01',
-    name: 'Professional Diagnostic Instrument Set',
+    name: 'DX. Flow-Opaque',
     category: 'composites',
-    description: 'A premium-grade surgical stainless steel explorer and diagnostic probe kit. Features rattle-free hollow handles designed to optimize tactile sensations when searching for structural enamel weaknesses. Coated in an anti-glare satin finish to eliminate visual stress under modern high-powered LED clinical illumination.',
+    description: 'Great opacity to cover metal or discolored tooth, especially for exposed metal in ceramic tooth and the color tooth caused by tetracycline.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1gB950I26y7XrFUASxw7k23HcAr3sxVLA&sz=w1000',
     features: [
-      'Satin-finish surface eliminates reflections and glare',
-      'Includes front-surface mirror, probe, and graduated probe',
-      '100% autoclavable up to 134°C',
-      'Ergonomic grip design minimizes wrist fatigue'
+      'Multiple shades to match different tooth color',
+      'Suitable flowability to reach all areas',
+      
     ],
     specifications: {
-      'Material': 'German SUS440C Surgical Stainless Steel',
-      'Contents': 'Probe No 23, CP12 Periodontal Probe, Mouth Mirror No 4, Tweezers',
-      'Cleaning': 'Suitable for thermal disinfector and autoclave',
-      'Standard': 'CE-certified, FDA, ISO 9001',
-      'What It Is Used For': 'Routine intraoral patient examinations, periodontal assessment, and diagnosis',
-      'For Dental Professional': 'Dental Hygienists, General Dentists, and Periodontists'
+      'Specification': '2g/pcs',
+      'Shade': 'OA2、OA3',
+     
+   
+
     },
     catalogRef: 'NG-DS-801',
     isFeatured: true,
-    origin: 'Solna, Sweden'
+    origin: 'China'
   },
   {
     id: 'inst-02',
