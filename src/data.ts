@@ -280,186 +280,195 @@ export const PRODUCTS: Product[] = [
   // Equipment
   {
     id: 'equip-01',
-    name: 'Fiber-Optic High-Speed Handpiece',
+    name: 'DX. Etch',
     category: 'composites',
-    description: 'A surgical rotary turbine featuring robust daylite LED optics emitting a full 25,000 Lux of daylight. Ceramic ball bearings provide steady, whisper-quiet performance with low micro-vibrations. High-performance 4-port sprays suppress heat buildup to protect pulpal vitality.',
+    description: 'Increase the wetting effect and bonding area of the adhesive, and improve the bonding strength',
     imageUrl: 'https://drive.google.com/thumbnail?id=1pDrazSjVvFGHqnnhcDW1b6cu7L0Tx500&sz=w1000',
     features: [
-      '4-point spray water cooling protects the dental pulp',
-      'Anti-retraction head prevents cross-contamination',
-      'Ultra-quiet ceramic ball bearings with long service life',
-      'Push-button chuck head for fast and secure bur changes'
+      'Blue gel, easy to identify',
+      'Thixotropic flow, strong adhesion, less flowability, easy to use',
+      'Smooth extrusion without gel block',
+      'Easy to remove and clean without residual'
     ],
     specifications: {
-      'Connection': 'Midwest 4-hole',
-      'Rotation Speed': '400,000 RPM',
-      'Luminosity': '25,000 Lux LED',
-      'Noise Level': '<58 dB',
-      'What It Is Used For': 'Urgent caries removal, enamel reduction, and tooth preparational sculpting',
-      'For Dental Professional': 'General Dentists, Prosthodontists, and Endodontists'
+      'Specification': 'Phosphoric acid content: 37%，20%',
+      'Shade': 'light blue（37%），blue（20%）2.5ml、5.0ml、10.0ml、50.0ml',
+      
+
+
+      
     },
     catalogRef: 'NG-HP-920',
     isFeatured: true,
-    origin: 'Västerås, Sweden'
+    origin: 'China'
   },
   {
     id: 'equip-02',
-    name: 'ProCart Mobile Dental Delivery Trolley',
+    name: 'DX. Whiten',
     category: 'composites',
-    description: 'A versatile mobile work station structured with easy-cleaning shelves to accommodate clinical tools. Features heavy silent caster wheels with individual brake locks for easy repositioning. Outfitted with multiple internal power sockets to simplify power distribution.',
+    description: 'Esthetic white, to rebuild nature tooth layer.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1nHpHMhPVKjG3Ze7hDEQ9oEW23z-IK-na&sz=w1000',
     features: [
-      'Robust steel frame with durable chemical-resistant finish',
-      '3-way internal power outlet strip and storage shelves',
-      'Hygienic smooth surfaces – easy to wipe-clean and sanitize'
+      'Three shades of stratified filling to rebuild the layering of tooth ',
+      'Ideal viscosity, easily to shape ',
+      'High simulation, natural esthetic ',
+      'Excellent polishing effect and wear resistance'
     ],
     specifications: {
-      'Dimensions': '50 x 48 x 85 cm',
-      'Weight': '14 kg',
-      'Castors': '4 lockable swivel castors',
-      'What It Is Used For': 'Staging, arranging, and moving equipment easily inside operating areas',
-      'For Dental Professional': 'Dental Assistants, Hygienists, and Dental Surgeons'
+      'Specification': '4g/pcs',
+      'Shade': 'EXW、EW、BL',
+     
+
     },
     catalogRef: 'NG-PC-120',
     isFeatured: false,
-    origin: 'Lund, Sweden'
+    origin: 'China'
   },
   {
     id: 'equip-03',
-    name: 'Classic High-Speed Dental Turbine',
+    name: 'Light Curing Composite Resins',
     category: 'composites',
-    description: 'An efficient, durable dental turbine designed to deliver reliable rotation speeds up to 380,000 RPM with low mechanical vibrations. An integrated anti-suction design helps control cross-contamination. Built with single-port water cooling for everyday clinical procedures.',
+    description: ' Used for repairing ceramics',
     imageUrl: 'https://drive.google.com/thumbnail?id=1MOWqIy9S5TdcD3e6SB4YL-ucbR163rRh&sz=w1000',
     features: [
-      'High speed rotation of up to 380,000 RPM with low vibration',
-      'Special diagnostic head prevents water/saliva backup or suction',
-      'Quick, secure push-button chuck locking system'
+      '',
+      
     ],
     specifications: {
-      'Pneumatic Drive': '0.22 - 0.25 MPa air pressure',
-      'Rotor Torque': 'High torque pneumatic turbine',
-      'Coolant Spray': 'Single-port micro-spray jet water line',
-      'What It Is Used For': 'Routine restorative cavity preparations and crown removal procedures',
-      'For Dental Professional': 'General Restorative Dentists'
+      'Specification': '4g/pcs',
+      ' Color': 'white'
+
+      
+     
     },
     catalogRef: 'NG-HP-910',
     isFeatured: false,
-    origin: 'Västerås, Sweden'
+    origin: 'China'
   },
   {
     id: 'equip-04',
-    name: 'ProCart Standard Dental Utility Workstation',
+    name: 'DX. Universal',
     category: 'composites',
-    description: 'A clinical trolley system constructed from carbon steel with a powder-coated antimicrobial finish. Features three spacious shelves with high protective rims to hold diagnostic and therapeutic setup boxes. Provides lockable silent caster rollers for easy operatory movement.',
+    description: 'Light-curing composite resin family, the first choice for reconstruction of tooth defects. DX. Universal Composite is a light-curable composite for anterior and posterior dentine and enamel restorations. The inorganic filler loading is 82% w/w, with particle size from 0.002 to 5 microns.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1S_QfOKhkLthRKwKbhS7uJ7I9u2fAsIbI&sz=w1000',
     features: [
-      'Sturdy carbon-steel framing with anti-microbial chemical coating',
-      'Built-in 220V multi-outlet strip for clinic accessories',
-      'Smooth-rolling caster wheels offer silent workspace re-positioning'
+      'High versatility. It takes care of either dentin or enamel restorations',
+      'Moderate viscosity and non-sticky handling',
+      'Excellent plasticity and great handling',
+      'High radio opacity'
     ],
     specifications: {
-      'Organiser Shelves': '3 functional metallic shelves with high rim guards',
-      'Total Dimensions': '45 x 45 x 80 cm',
-      'Load Capacity': 'Up to 30 kg aggregate load',
-      'What It Is Used For': 'General storing, organizing, and transporting dental restorative trays and materials',
-      'For Dental Professional': 'Dental Operatory Nurses and Hygienists'
+      'Specification': '4g/pcs',
+      'Shade': 'A1、A2、A3、A3.5、A4、B1、B2、B3、C2、C3',
+      
+
+
     },
     catalogRef: 'NG-PC-110',
     isFeatured: false,
-    origin: 'Lund, Sweden'
+    origin: 'China'
   },
 
   // Imaging
   {
     id: 'img-01',
-    name: 'NordicScan USB Intraoral Sensor',
+    name: 'DX.Ceram',
     category: 'composites',
-    description: 'An advanced CMOS-driven radiography sensor providing crystal-clear 25 lp/mm resolution imaging. The waterproof IP68 housing stands up to complete clinical decontamination. Its rounded corner shape is comfortable for patients during intraoral exposures.',
+    description: 'DX.Ceram Capsule compreises not only conventional, but also Zirconia fillers.Using ceramic technology, all performances are improved and the curing depth is increased up to 5mm.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1DGcpo1pCuz3CjQufwy6T1hjXKAzwLU93&sz=w1000',
     features: [
-      'High-resolution images enable accurate instant diagnosis on screen',
-      'Rounded corners for optimal patient comfort',
-      'Direct high-speed USB interface with plug-and-play capability',
-      'Completely dust and waterproof (IP68)'
+      'Curing depth up to 5 mm, to improve practice efficiency',
+      'High abrasion resistance, low shrinkage, easy polishing, great coloration',
+      'High radio opaque',
+      'Single use to eliminate contamination and safe'
     ],
     specifications: {
-      'Sensor Technology': 'Advanced CMOS with fiber optic scintillator',
-      'Theoretical Resolution': '25 lp/mm',
-      'Cable Length': '2.7 meters',
-      'Software Compatibility': 'DICOM-compliant, works with all major imaging programs',
-      'What It Is Used For': 'High-resolution digital digital radiography, caries detection, and bone height checks',
-      'For Dental Professional': 'General Dentists, Endodontists, and Periodontists'
+      'Specification': 'Standard Kit',
+      'Capsules': '0.3g/Capsulesx60 Capsules（A1x5Capsules、A2 x20 Capsules、A3x20 Capsules、A3.5x10 Capsules、A4x5 Capsules）BOND VII 3ML, Brush 20pcs',
+      'Specification': 'Intro Kit',
+      'Capsules': '0.3g/Capsulesx10 Capsules（A1x1 Capsules、A2 x3 Capsules、A3x3 Capsules、A3.5x2 Capsules、A4x1 Capsules）',
+      
+      
     },
     catalogRef: 'NG-IS-601',
     isFeatured: true,
-    origin: 'Gothenburg, Sweden'
+    origin: 'China'
   },
   {
     id: 'img-02',
-    name: 'DentalScan Portable Handheld X-Ray',
+    name: 'Veneer/Inlay/Onlay Luting Kit ',
     category: 'composites',
-    description: 'A lightweight portable handheld radiography device with a localized exposure focus that yields high-resolution images. Features thick internal lead linings to fully exclude scatter radiation for clinician protection. Equipped with a lithium battery supporting up to 150 exposures per charge.',
+    description: 'This kit is specially designed for various types of porcelain veneer and inlay/onlya and also meet different requirements for restoration bonding',
     imageUrl: 'https://drive.google.com/thumbnail?id=1Ytpabs5_z9yeHcBLcoRnU8xdJXU2ceV4&sz=w1000',
     features: [
-      'Lightweight and ergonomically balanced for single-handed use',
-      'Double internal lead shielding protects the clinician from scatter',
-      'High-capacity lithium battery allows up to 150 exposures per charge'
+      'Porcelain veneer, inlay try-in, color matching, and bonding together with one kit',
+      'Aesthetic restoration of the upper tooth part',
+      'Multi-purpose, complete configuration'
     ],
     specifications: {
-      'Tube Voltage': '60 kV',
-      'Tube Current': '2 mA',
-      'Focal Spot': '0.4 mm',
-      'Weight': '1.8 kg',
-      'What It Is Used For': 'Chairside dental radiography without requiring dedicated wall-mounted x-ray arms',
-      'For Dental Professional': 'General Practitioners, Mobile Clinicians, and Pediatric Dentists'
+      'Try-in paste': 'BB (Clear), A1,A2,A3,OA2',
+      'DX.Flow Veneer': 'BB (Clear), A1,A2,A3,OA2',
+      'DX.CORE dental cement 8g',
+      'PC porcelain primer': '5ml',
+      'MZ metal/zirconia primer': '5ml',
+      'Hydrofluoric acid etchant': '2.5g',
+      'DX.etch 37% etchant': '2.5ml',
+      'DX.BOND V': '5ml',
+      'DX.AIR-BLOCK Oxgen Isolation Gel': '2.5ml',
+      'White brush': '20pcs',
+      'Purple brush holder': '1pcs',
+      'Tip:mixed tis : 5pcs; black tip': '30pcs; type 1 blue tip:10pcs; type 2 tip:5pcs',
+      'Shading box:': '1'
     },
     catalogRef: 'NG-PX-440',
     isFeatured: false,
-    origin: 'Lund, Sweden'
+    origin: 'China'
   },
   {
     id: 'img-03',
-    name: 'Elite HD Digital Imaging Sensor',
+    name: 'DEN CEM Ⅰ',
     category: 'composites',
-    description: 'A thin, titanium-framed intraoral radiography sensor with supreme CMOS micro-pixel sensors. Carbon-fiber backplates prevent bending and mechanical cracking. Works securely over standard high-volume diagnostic loads.',
+    description: 'DEN CEM l is a self etching, self adhesion, dual cure resincement with automix syringe. It is suitable for all kinds ofpermanent cementation of restorations.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1LhKmvkCE_68gJyLAY2P1zJCIQtFM3JN2&sz=w1000',
     features: [
-      'Comfortable active sensor surface area suited for diverse patient profiles',
-      'Rugged carbon-fiber composite backing prevents mechanical cracking',
-      'Interoperable digital imaging driver integrates smoothly with standard software'
+      'Simplified steps. Etching, bonding & cementation completed in one step by applyingDEN CEMI.',
+      'Dual cure. Light curing and self curing for easy handling upon case requirement.',
+      'Low solubility. A long restoration and durability.',
+      'Radiopaque. Easy identification on radiographs for diagnosis.',
+      'Fluoride releasing. Effective preventing recurrent caries.'
     ],
     specifications: {
-      'Active Technology': 'High sensitivity active CMOS with direct micro-scintillator',
-      'Clarity Resolution': '22 lp/mm detail clarity',
-      'Waterproof Rating': 'IP67 moisture and dust seal',
-      'What It Is Used For': 'High-fidelity intraoral radiologic scanning for pathology screening',
-      'For Dental Professional': 'General Dentists, Endodontists, and Implant Practitioners'
+      'Specification': '8g',
+      'Shade': 'OA2、A1、A2、A3、T、W',
+      
+
     },
     catalogRef: 'NG-IS-599',
     isFeatured: false,
-    origin: 'Gothenburg, Sweden'
+    origin: 'China'
   },
   {
     id: 'img-04',
-    name: 'DentalScan Pro Handheld Radiography System',
+    name: 'DX. Flow-Color',
     category: 'composites',
-    description: 'An advanced handheld dental X-ray camera system featuring a high penetration 65 kV tube voltage. Features thick internal lead-shield walls to keep operator exposure at zero. Highly recommended for endodontic monitoring, implant seating checks, and caries discovery.',
+    description: 'Light Curing Composite Resin family, first choice tooth restoration.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1LEYjkgthKafhVlUvIyR0ViGMtL5K9btV&sz=w1000',
     features: [
-      'Double-layer internal lead shield restricts scatter backscatter to zero',
-      'Micro-focus focal point generates razor-sharp anatomical outline captures',
-      'High capacity Li-ion power pack enables up to 150 exposures per charge'
+      'Nice dyeing effect, good color stability',
+      'Less material, better dyeing effect',
+      'Great flowability to reach anywhere with a brush and tip',
+      'Various color shades for different combinations without impact the curability'
     ],
     specifications: {
-      'Tube Output': '65 kV stability',
-      'Safe Shielding': '0.8mm internal safety lead lining',
-      'Exposure Control': 'Range between 0.01 and 2.00 seconds',
-      'What It Is Used For': 'On-the-spot high-penetration intraoral dental radiography',
-      'For Dental Professional': 'Implantologists, Oral Surgeons, and General Clinicians'
+      'Specification': '1.5g/pcs',
+      'Shade': 'WH (milky white)，DY (orange brown) ，TR (brown)，YE (yellow) ，DR (crimson)，CY (blue)，BL (back) ，BB (clear). ',
+      
+     
+      
     },
     catalogRef: 'NG-PX-450',
     isFeatured: false,
-    origin: 'Lund, Sweden'
+    origin: 'China'
   },
   {
     id: 'img-05',
@@ -619,49 +628,41 @@ export const PRODUCTS: Product[] = [
   // Sterilization
   {
     id: 'ster-01',
-    name: 'NordicClave Class B Steam Sterilizer (22L)',
+    name: 'DX.CAL',
     category: 'composites',
-    description: 'An exceptional-capacity Class B pre-vacuum steam sterilizer that meets the highest EN13060 European standards. Equipped with three fractionated vacuum phases to guarantee steam penetration in complex hollow hand instruments. Includes an integrated thermal printer to log biosecurity compliance.',
+    description: 'DX.CAL  Calcium Hydroxied Paste is for temporary root canal treatment, pulp curettage and pulpotomy',
     imageUrl: 'https://drive.google.com/thumbnail?id=1_JlaYTM3D12meYgEIv_9DaJFYRym5iE_&sz=w1000',
     features: [
-      '3-stage fractionated pre-vacuum ensures perfect steam penetration',
-      'Integrated thermal printer and USB port for computerized logs',
-      'High-efficiency bacterolocial filter included',
-      'Double-safety door locking mechanism'
+      'Excellent antimicrobial effect PH>12',
+      'High water solubility,easy to be cleaned and removed ',
+      'Ready to use'
+     
     ],
     specifications: {
-      'Chamber Dimensions': '250 mm x 450 mm',
-      'Volume': '22 Liters',
-      'Sterilization Temps': '121°C and 134°C',
-      'Power Consumption': '1950W',
-      'What It Is Used For': 'Complete sterilization of surgical instruments, porous materials, and dental turbines',
-      'For Dental Professional': 'Infection Control Officers, Dental Auxiliaries, and Dental Hygienists'
+      'Specification': '2g',
+      
     },
     catalogRef: 'NG-NC-22B',
     isFeatured: true,
-    origin: 'Stockholm, Sweden'
+    origin: 'China'
   },
   {
     id: 'ster-02',
-    name: 'NordicClave Eco Steam Autoclave (18L)',
+    name: 'DX. BOND V',
     category: 'composites',
-    description: 'A compact Class B vacuum steam autoclave engineered with eco cycles to sterilize everyday hand tools in only 22 minutes. Features electronic water sensors to guard against structural dry overheating. Fits three standard instrument trays comfortably, saving clinical countertop space.',
+    description: 'BOND V dental adhesive is a single component for total etch technology.It can be used wildly in dental clinic for all direct and indirect restoration. It also works well for enamel with total etching technique',
     imageUrl: 'https://drive.google.com/thumbnail?id=1Sn3Wzkb8RSk5PaXneZ-if216IKPx4s0z&sz=w1000',
     features: [
-      'Eco rapid-sterilisation cycle completes in 22 minutesflat',
-      'Advanced mechanical water diagnostics sensor blocks running empty',
-      'High-performance fractionated vacuum guarantees complete air removal'
+      'Great stability, compatible with other resins',
+      'Super bonding, durable adhesion performance'
     ],
     specifications: {
-      'Sterilization Chamber': '18 Liters medical autoclave chamber',
-      'Preset Temperatures': '121°C and 134°C adjustable menus',
-      'Safe Max Load': '4.5 kg clinical instruments',
-      'What It Is Used For': 'Rapid sterilization of critical dental handpieces and surgical accessories',
-      'For Dental Professional': 'Dental Nurses, Assistants, and General Dental Practitioners'
+      'Specification': '5.0ml/bottle',
+      
     },
     catalogRef: 'NG-NC-18B',
     isFeatured: false,
-    origin: 'Stockholm, Sweden'
+    origin: 'China'
   },
   {
     id: 'ster-03',
