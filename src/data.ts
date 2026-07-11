@@ -472,47 +472,45 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'img-05',
-    name: 'Nordic Orthopantomograph OPG-3D',
+    name: 'Digital Imaging Plate Scanner',
     category: 'imaging',
-    description: 'State-of-the-art extraoral 3D OPG system. Panoramic radiographic machine featuring multi-slice Tomosynthesis for razor-sharp dental arch scans and minimal radiation dosage.',
+    description: 'A compact and high-performance PSP scanner that delivers fast, high-resolution digital dental images with an efficient workflow.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1R2y3IPcrcgXduyvT--EZaBiT8gko6eFz&sz=w1000',
     features: [
-      'Multi-layer Panomatic technology',
-      'Adaptive focal trough alignment',
-      'Low-dose clinical scanning profiles'
+      'High-quality digital images',
+      'Fast image processing',
+      'Compatible with reusable PSP plates',
+      'Compact and easy to use',
+      'Cost-effective digital imaging'
     ],
     specifications: {
-      'Sensor Type': 'Direct-conversion CMOS panoramic',
-      'Scan Program': 'Standard panoramic, TMJ, child-pantomography',
-      'Expose Duration': '8 - 14 seconds',
-      'What It Is Used For': 'Complete radiographic examination of teeth, alveolar bone, and jaw structures',
-      'For Dental Professional': 'Maxillofacial surgeons, Orthodontists, and general clinical practices'
+      'Spec': '1Pcs',
+      
     },
     catalogRef: 'NG-OPG-101',
     isFeatured: true,
-    origin: 'Stuttgart, Germany'
+    origin: 'China'
   },
   {
     id: 'img-06',
-    name: 'NordicScan Dental Phosphor Plate System',
+    name: 'Portable Dental X-Ray Unit',
     category: 'imaging',
-    description: 'Ultra-thin phosphor plate (PSP) reader. Turns high-fidelity analog radiograph plates into digital files in under 10 seconds. Completely covers patients requiring variable dental imaging dimensions.',
+    description: 'A lightweight and portable dental X-ray unit designed to deliver fast, high-quality images for accurate diagnosis in any clinical setting.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1SuCIVjrfmUZiLGGDvqH-C5o7RfNosSaA&sz=w1000',
     features: [
-      'Compatible with plate size 0 to 4',
-      'Rapid diagnostic scan processing',
-      'Flexible plates optimized for patient comfort'
+      'Lightweight and portable',
+      'High-quality X-ray imaging',
+      'Fast and easy operation',
+      'Rechargeable battery',
+      'Ideal for chairside and mobile use'
     ],
     specifications: {
-      'Plate Handling': 'Automatic insertion & erasing loop',
-      'Scanner Resolution': 'Up to 40 lp/mm',
-      'Scan Process Speed': '6.8 seconds average processing time',
-      'What It Is Used For': 'Converting intraoral radiography phosphor plates into high-resolution digital files',
-      'For Dental Professional': 'Dental Radiographers, Orthodontists, and General Clinicians'
+      'Spec': '1Pcs',
+     
     },
     catalogRef: 'NG-PSP-202',
     isFeatured: false,
-    origin: 'Gothenburg, Sweden'
+    origin: 'China'
   },
   {
     id: 'img-07',
@@ -734,115 +732,107 @@ export const PRODUCTS: Product[] = [
   // NEW TOOLS PAGE ENTRIES WITH SPECIFIC DRIVE LINKS REQUESTED BY USER
   {
     id: 'tool-01',
-    name: 'Nordic Explorer Diagnostic Hand Tool',
+    name: 'Disposable Micro-Applicators',
     category: 'tools',
-    description: 'A masterfully balanced dental hand instrument with heat-tempered micro-alloy steel tips. Designed to easily discover subgingival calculus, caries, and hard tissue enamel defects. Hollow cross-milled grips ensure a fatigue-free hand holding and clear tactile feedback.',
+    description: 'Flexible dental applicators designed for precise and controlled application of bonding agents, etchants, primers, and other dental materials in hard-to-reach areas. Suitable for various restorative and cosmetic dental procedures.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1DOByGhKYIXgDWhJTOF-iEIf845MDsIAy&sz=w1000',
     features: [
-      'Engineered from top-grade heat-tempered micro-alloy steel',
-      '9.5mm hollow cross-milled handle offers an optimal tactile response',
-      'Expertly balanced structure relieves wrist fatiguing over extended shifts',
-      'Withstands repeated high-heat autoclave sterilization'
+      'Provides accurate and controlled material placement',
+      'Flexible tip adapts easily to different tooth surfaces',
+      'Reduces material waste and improves efficiency',
+      'Disposable design ensures hygiene and prevents cross-contamination',
+      'Ideal for bonding, etching, and restorative procedures'
     ],
     specifications: {
-      'Tip Profile': 'Curved hook fine pointed explorer',
-      'Handle Pattern': 'Ultralight knurled hollow grip',
-      'Material Composition': 'German SUS440C Stainless Steel',
-      'Length & Weight': '16.5cm length / 18g total weight',
-      'What It Is Used For': 'Routine caries screening, root examination, and crown margin auditing',
-      'For Dental Professional': 'General Dentists, Hygienists, and Periodontal Specialists'
+      'Spec': '100Pcs',
+      'Color': 'Multi color',
+     
     },
     catalogRef: 'NG-UT-701',
     isFeatured: true,
-    origin: 'Uppsala, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-02',
-    name: 'Premium Periodontal Gracey Scale 11/12',
+    name: 'Sectional contoured metal Matrices',
     category: 'tools',
-    description: 'A periodontal scaler designed precisely for deep root cleaning on mesial surfaces of the posterior dentition. Dual-ended sharp blades adapt flawlessly to root morphology. Helps specialists and generalists perform periodontal scaling with maximum patient comfort.',
+    description: 'Pre-shaped metal matrix bands designed to restore the natural contour and shape of posterior teeth during composite restorations. They help create accurate proximal contacts and proper anatomical tooth form.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1QcOzT4C9ShxMX8-S67PB1f6dFpVgNJuw&sz=w1000',
     features: [
-      'Precisely curved neck contours to anatomical molar structure with absolute ease',
-      'Satin polish minimizes harsh operational light reflections in the clinic',
-      'Tempered blades maintain sharp wedge boundaries through diagnostic cycles'
+      'Provides natural tooth contour and accurate restoration shape',
+      'Helps achieve tight and precise proximal contacts',
+      'Easy placement and removal during restorative procedures',
+      'Improves isolation and reduces excess composite material',
+      'Suitable for Class II posterior composite restorations'
     ],
     specifications: {
-      'Tip Type': 'Double-ended Gracey 11/12 shape',
-      'Handle Ergonomics': 'Anti-slip grooved handle core',
-      'Approved Standard': 'ISO 13485 surgical device standards',
-      'What It Is Used For': 'Deep subgingival scaling, plaque removal, and root planing on posterior teeth',
-      'For Dental Professional': 'Periodontists and Dental Hygienists'
+      'Spec': '100Pcs',
+      
     },
     catalogRef: 'NG-UT-702',
     isFeatured: false,
-    origin: 'Gothenburg, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-03',
-    name: 'High-Definition Rhodium Dental Mirror No. 5',
+    name: 'Dental Bracket',
     category: 'tools',
-    description: 'An exceptional-quality mouth mirror coated with Rhodium directly on the front surface to completely prevent ghosting and double-image effects. Polished satin steel stems provide secure diagnostic control and a clear, detailed indirect view of posterior tooth surfaces.',
+    description: 'Orthodontic components bonded to the surface of teeth to hold and guide orthodontic wires. They apply controlled forces to gradually move teeth into the desired position during orthodontic treatment.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1DcKlsgoZ1TUUVf1PrUen2P4twMlfpcFx&sz=w1000',
     features: [
-      'Front Rhodium reflection layer guarantees razor-sharp visual clarity',
-      'Teflon-engineered anti-fog shield works smoothly in warm conditions',
-      'Perfect weight balancing prevents mouth tissue slippage during exams'
+      'Enables precise tooth movement and alignment',
+      'Provides strong bonding and reliable performance',
+      'Available in different designs for various orthodontic needs',
+      'Improves treatment efficiency and patient comfort',
+      'Suitable for a wide range of orthodontic procedures'
     ],
     specifications: {
-      'Lens Style': 'No. 5 standard size flat lens',
-      'Mirror Coat': 'Genuine dual-sided front Rhodium plating',
-      'Thread Coupling': 'Universal medical screw-on head',
-      'What It Is Used For': 'Indirect intraoral visualization, cheek retraction, and diagnostic illuminated transillumination',
-      'For Dental Professional': 'All Dental Professionals (Dentists, Hygienists, Assistants)'
+      'Spec': '100pcs',
+      
     },
     catalogRef: 'NG-UT-703',
     isFeatured: false,
-    origin: 'Solna, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-04',
-    name: 'Nordic Metric Periodontal Probe CP-12',
+    name: 'Absorbent Paper Pionts',
     category: 'tools',
-    description: 'A premium periodontal measurement hand probe displaying black millimeter markers at 3, 6, 9, 12 mm margins. The micro-rounded blunt tip allows accurate evaluation of pocket depths and bone levels without patient discomfort. Highly resistant to surgical disinfection wear.',
+    description: 'Absorbent Paper Points are used in endodontic procedures to absorb moisture and fluids from root canals after cleaning and irrigation. They help prepare the canal for effective root canal filling.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1wGYXIYRHBubkjnWvnlT5hDtlIkYdWijC&sz=w1000',
     features: [
-      'Crisp high-contrast mark lines at 3, 6, 9, 12 mm margins',
-      'Micro-rounded smooth tip ensures pocket assessment without patient pain',
-      'Highly resistant to chemical disinfectants'
+      'Provides efficient absorption of moisture and fluids',
+      'Helps create a dry environment before root canal filling',
+      'High precision with a thin and flexible design',
+      'Sterile and hygienic for safe clinical use',
+      'Available in different sizes to fit various root canals'
     ],
     specifications: {
-      'Mark Ranges': 'CP-12 metric lines (3, 6, 9, 12 mm)',
-      'Probe Stem': 'Standard straight round gauge',
-      'Composition': 'High density bio-safe surgical steel',
-      'What It Is Used For': 'Measuring active gingival sulcus pockets, bone loss levels, and attachment loss',
-      'For Dental Professional': 'Periodontists, Dental Hygienists, and General Clinicians'
+      'Spec': '100Pcs',
+     
     },
     catalogRef: 'NG-UT-704',
     isFeatured: false,
-    origin: 'Uppsala, Sweden'
+    origin: 'Korea'
   },
   {
     id: 'tool-05',
-    name: 'Ergonomic Incisor Extraction Forceps No. 150',
+    name: 'Mouth Mirror',
     category: 'tools',
-    description: 'Heavy duty surgical premium extraction forceps engineered specifically for upper universal incisors, canines, and dental root segments. Offers high grip mechanical jaw cross-patterns. Contoured beak designs minimize root fracture risks during extraction luxations.',
+    description: 'Mouth mirrors are dental instruments used for indirect vision, retraction of soft tissues, and illumination during dental examinations and procedures. They help dentists access and view areas of the mouth that are difficult to see directly.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1dqUHGaX0WNcW-kyuzDC8ORe0oyWxVpBL&sz=w1000',
     features: [
-      'Textured micro-groove forcep handle prevents slipping inside wet gloves',
-      'Preloaded double box hinge resists sideways twisting',
-      'Contoured beak profiles reduce bone fracture risk during tooth luxations'
+      'Provides clear view of hard-to-reach areas',
+      'Helps with accurate diagnosis and treatment',
+      'Enables easy soft tissue retraction'
     ],
     specifications: {
-      'Anatomical Suitability': 'Upper universal premolar/cuspid geometry',
-      'Hinge Assembly': 'Flush micro-rivet box-joint alignment',
-      'Certifications': 'Surgical Medical Class A certification',
-      'What It Is Used For': 'Surgical extraction, luxation, and removal of upper teeth and roots from sockets',
-      'For Dental Professional': 'Oral Surgeons and General Dental Practitioners'
+      'Spec': '12Pcs',
+     
     },
     catalogRef: 'NG-UT-705',
     isFeatured: true,
-    origin: 'Gothenburg, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-06',
