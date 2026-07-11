@@ -408,7 +408,7 @@ export const PRODUCTS: Product[] = [
     specifications: {
       'Try-in paste': 'BB (Clear), A1,A2,A3,OA2',
       'DX.Flow Veneer': 'BB (Clear), A1,A2,A3,OA2',
-      'DX.CORE dental cement 8g',
+      'DX.CORE dental cement 8g': '',
       'PC porcelain primer': '5ml',
       'MZ metal/zirconia primer': '5ml',
       'Hydrofluoric acid etchant': '2.5g',
