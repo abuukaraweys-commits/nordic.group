@@ -143,50 +143,6 @@ export const PRODUCTS: Product[] = [
     isFeatured: false,
     origin: 'China'
   },
-  {
-    id: 'cons-06',
-    name: 'Nordic Prime Bond & Adhesive System',
-    category: 'composites',
-    description: 'A single-component, fifth-generation light-cure bonding agent developed to achieve a highly durable interface with enamel and dentin. It utilizes a solvent-free formula that seals dentin tubules to alleviate tooth sensitivity completely. Eliminates clinical mixing steps to ensure highly predictable results.',
-    imageUrl: 'https://drive.google.com/thumbnail?id=1D5Vu8BdLkWWAvm8al8TfCTkB0FAFILkr&sz=w1000',
-    features: [
-      'High bond-strength performance to dentin and enamel (up to 30 MPa)',
-      'Solvent-free formulation ensures minimal post-operative sensitivity',
-      'Single-bottle application saves valuable clinical chair time'
-    ],
-    specifications: {
-      'Shear Bond Strength': '30.2 MPa on etched enamel',
-      'Curing Mode': 'Visible light-cure dental systems (10 seconds)',
-      'Storage Condition': 'Refrigerate (2-8°C) for optimal long-term shelf stability',
-      'What It Is Used For': 'Robust bonding interface for primary resins, core buildups, and composites',
-      'For Dental Professional': 'General Restorative Clinicians and Operative Dentists'
-    },
-    catalogRef: 'NG-PB-306',
-    isFeatured: true,
-    origin: 'Gothenburg, Sweden'
-  },
-
-    {
-    id: 'cons-07',
-    name: 'DX. CORE',
-    category: 'composites',
-    description: 'Dual-cure core build-up composite for core build up, bonding of crowns, bridges, inlays and onlays, and filling of special deep cavity restorations.',
-    indications: 'Suitable for core build up, bonding for crown, bridge, inlay/onlay, and filling for special deep cavity restoration.',
-    features: [
-      'High compressive strength and flexural strength',
-      'Dual curing — light curing for 20 seconds, self curing for 5 minutes',
-      'DX.Bond V is required after etching when using DX.CORE for bonding',
-    ],
-    specifications: {
-      'Specification': '8g',
-      'Shade': 'A2, A3',
-    },
-    imageUrl: '/images/products/dx-core.png',
-    catalogRef: 'NG-DX-107',
-    isFeatured: false,
-    origin: 'China',
-  },
-
   // Instruments
   {
     id: 'inst-01',
@@ -646,73 +602,7 @@ export const PRODUCTS: Product[] = [
     isFeatured: false,
     origin: 'China'
   },
-  {
-    id: 'ster-03',
-    name: 'Digital Ultrasonic Cleaner (3L)',
-    category: 'tools',
-    description: 'A high-powered digital ultrasonic bath featuring frequency sweep technology to break down cement residues and organic soils. Coated in chemical-resistant steel, it has a built-in heater up to 80°C to speed up decontamination. Essential for safe surgical tool prep before autoclave cycles.',
-    imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
-    features: [
-      'Industrial ultrasonic transducers generate powerful cavitation',
-      'Heater heating up to 80°C accelerates organic material release',
-      'Stainless steel basket and lid dampen operational noise'
-    ],
-    specifications: {
-      'Capacity': '3 Liters',
-      'Ultrasonic Frequency': '40 kHz',
-      'Timer': '1-99 minutes digital setup',
-      'What It Is Used For': 'Ultrasonic pre-cleansing of hand tools, burs, files, and scaling tips',
-      'For Dental Professional': 'Dental Auxiliaries, Sterilization Technicians, and Surgeons'
-    },
-    catalogRef: 'NG-UC-303',
-    isFeatured: false,
-    origin: 'Malmö, Sweden'
-  },
-
   // Office supplies
-  {
-    id: 'office-01',
-    name: 'Custom Printed Patient Record Sheets (A4, 100-pack)',
-    category: 'tools',
-    description: 'Thick, archive-grade paper patient charts incorporating a pre-printed dental grid for convenient manual clinical notation. Ideal for clinics requiring reliable backup filing. Acid-free and chlorine-free fibers prevent yellowing over decades of records storage.',
-    imageUrl: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80',
-    features: [
-      'Thick 120g archive-grade acid-free paper',
-      'Contains complete adult and pediatric dental charting grids',
-      'Easy file-cabinet archiving tab pre-printed'
-    ],
-    specifications: {
-      'Size': 'Standard A4',
-      'Paper Quality': 'Eco-friendly chlorine-free paper',
-      'Quantity': '100 sheets per pack',
-      'What It Is Used For': 'Comprehensive patient dental charting, record-keeping, and backup filing',
-      'For Dental Professional': 'Clinic Administrators, Dental Assistants, and General Practitioners'
-    },
-    catalogRef: 'NG-OP-100',
-    isFeatured: false,
-    origin: 'Malmö, Sweden'
-  },
-  {
-    id: 'office-02',
-    name: 'Appointment & Reminder Cards (250-pack)',
-    category: 'tools',
-    description: 'Classy, double-sided dental appointment cards crafted from premium heavyweight matte cardstock. Features clean appointment entry lines on the front and branding areas on the back. Easy to write on with any standard ballpoint, ink, or gel pen without smudging.',
-    imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80',
-    features: [
-      'Premium texturized heavy cardstock paper easy to write on with any pen',
-      'Pre-printed fields for Date, Time, Clinician, and cancellation policies'
-    ],
-    specifications: {
-      'Format': '85 x 54 mm (Standard business card size)',
-      'Paper Weight': 'Heavy-duty 350g cardstock',
-      'What It Is Used For': 'Writing down appointment times and scheduled clinical recalls for patients',
-      'For Dental Professional': 'Receptionists, Clinic Reception Staff, and Dental Hygienists'
-    },
-    catalogRef: 'NG-OP-250',
-    isFeatured: false,
-    origin: 'Gothenburg, Sweden'
-  },
-
   // NEW TOOLS PAGE ENTRIES WITH SPECIFIC DRIVE LINKS REQUESTED BY USER
   {
     id: 'tool-01',
@@ -1047,28 +937,6 @@ export const PRODUCTS: Product[] = [
     origin: 'China'
   },
   {
-    id: 'tool-18',
-    name: 'Interproximal Ward Carver Restore instrument',
-    category: 'tools',
-    description: 'A thin, flexible interproximal carver carrying flat opposite blade points. Allows clinical carving of composite materials along proximal tooth surfaces, avoiding overhangs. Polished medical steel keeps material from sticking during build-up.',
-    imageUrl: 'https://drive.google.com/thumbnail?id=1ym5ygH8COPmWkSHl_YhgtsLuDdk_4fRH&sz=w1000',
-    features: [
-      'Ultra-thin flexible blades allow precise carving without micro-fracturing material',
-      'Expertly curved stems facilitate posterior restoration shaping with absolute comfort',
-      'Top-quality medical-grade stainless steel preserves margins over heavy uses'
-    ],
-    specifications: {
-      'Blade Patterns': 'Double-ended Ward 150 blade-shaped active points',
-      'Grip Diameter': '9.5mm hollow core for precise clinical feel',
-      'Cleaning standard': 'Highly resistant to repeated medical-grade disinfection cycles',
-      'What It Is Used For': 'Carving, trimming, and detail profiling of restorative fillings inside interproximal areas',
-      'For Dental Professional': 'General Restorative Specialists and Operative Dentists'
-    },
-    catalogRef: 'NG-UT-718',
-    isFeatured: true,
-    origin: 'Uppsala, Sweden'
-  },
-  {
     id: 'best-01',
     name: 'Kulzer Charisma E4SY Composite',
     category: 'composites',
@@ -1117,54 +985,4 @@ export const PRODUCTS: Product[] = [
     isFeatured: true,
     origin: 'Dubai, UAE'
   },
-  {
-    id: 'best-03',
-    name: 'Dentex DX.Bond Adhesive',
-    category: 'composites',
-    description: 'A highly reliable, single-component, fifth-generation light-cure bonding agent developed to achieve a long-lasting, micro-mechanical bond to both enamel and dentin. Fully compatible with total-etch techniques.',
-    imageUrl: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80',
-    features: [
-      'High bond strength (up to 30 MPa) to dentin and etched enamel',
-      'Low film thickness prevents visual bonding lines at margins',
-      'Reduces post-operative sensitivity by completely sealing open tubules',
-      'Excellent wetting and penetration into micro-etched tooth structures'
-    ],
-    specifications: {
-      'Brand': 'Dentex',
-      'Type': '5th Generation Light-Cure Adhesive',
-      'Volume': '5ml bottle',
-      'Shear Strength': '29.8 MPa',
-      'Cure Method': 'Light-cured (10 seconds)',
-      'What It Is Used For': 'Direct composite restorations, bonding of porcelain/ceramic veneers, and crown core build-ups',
-      'For Dental Professional': 'General Practitioners and Operative Dentistry Specialists'
-    },
-    catalogRef: 'NG-DX-103',
-    isFeatured: true,
-    origin: 'Dubai, UAE'
-  },
-  {
-    id: 'best-04',
-    name: 'Dentex DX.Etch 37% Phosphoric Gel',
-    category: 'composites',
-    description: 'A premium 37% phosphoric acid etching gel for enamel and dentin conditioning. Features an ideal thixotropic viscosity that allows precise placement without running or dripping, and washes away cleanly with water.',
-    imageUrl: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80',
-    features: [
-      'Ideal 37% phosphoric acid concentration for optimal micromechanical retention',
-      'Thixotropic gel property guarantees exact application without overflowing',
-      'Bright blue coloring provides distinct visual contrast against tooth structure',
-      'Leaves zero residue on enamel or dentin surfaces after water rinsing'
-    ],
-    specifications: {
-      'Brand': 'Dentex',
-      'Type': '37% Phosphoric Acid Etching Gel',
-      'Delivery': 'Syringe-tip dispenser system',
-      'Etching Duration': '15 seconds for dentin, 20-30 seconds for enamel',
-      'Water Solubility': '100% water-soluble for high rinseability',
-      'What It Is Used For': 'Micromechanical surface conditioning of enamel and dentin prior to adhesive application',
-      'For Dental Professional': 'All Clinical Dentists and Orthodontists'
-    },
-    catalogRef: 'NG-DX-104',
-    isFeatured: true,
-    origin: 'Dubai, UAE'
-  }
 ];
