@@ -982,7 +982,7 @@ export const PRODUCTS: Product[] = [
       'Soft and comfortable for patient use'
     ],
     specifications: {
-      'Size': '10*38mm, 20roll/bag',
+      'Spec': '10*38mm  20roll/bag',
       '
     },
     catalogRef: 'NG-UT-714',
