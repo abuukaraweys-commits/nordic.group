@@ -514,113 +514,97 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'img-07',
-    name: 'DentalScan HD Intraoral Camera System',
+    name: 'Steam Sterilizer Class B',
     category: 'imaging',
-    description: 'Ergonomic intraoral wand camera with precise autofocus, built-in glare-free LED illumination, and digital capture integration. Excellent tool for interactive diagnostics and patient treatment walkthroughs.',
+    description: 'A Class B steam sterilizer designed to sterilize dental instruments using high-pressure steam. Suitable for wrapped, unwrapped, solid, hollow, and porous instruments, ensuring reliable sterilization for clinical use.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1Ieo-zaHsXR80V9PaJ2WffvwXNya2yvQv&sz=w1000',
     features: [
-      'High Definition 1080p sensor resolution',
-      '8-point surgical LED visual glow rings',
-      'Micro-focus lens resolving 1.0mm-to-infinity details'
+      'Provides fast and reliable sterilization',
+      'Suitable for a wide range of dental instruments',
+      'Helps maintain high infection control standards'
     ],
     specifications: {
-      'Interface Connect': 'USB 3.0 digital throughput',
-      'Wand Grip Design': '95g featherlight ergonomic medical polymer',
-      'Resolution Ratio': '1920 x 1080 Active Pixels',
-      'What It Is Used For': 'Interactive high-definition intraoral patient diagnosis and case documentation',
-      'For Dental Professional': 'Aesthetic Clinicians, General Dentists, and Hygienists'
+      'Spec': '1Pcs',
     },
     catalogRef: 'NG-IC-303',
     isFeatured: false,
-    origin: 'Lund, Sweden'
+    origin: 'China'
   },
   {
     id: 'img-08',
-    name: 'Elite3D Cone Beam Computed Tomography (CBCT)',
+    name: 'Dental Chair Unit',
     category: 'imaging',
-    description: 'Multi-field-of-view clinical CBCT scanner providing true high-resolution isotropic 3D scans. Ideal for precision planning in dental implant placements, endodontic therapy, and orthodontic analysis.',
+    description: 'A complete dental treatment unit designed to provide comfort for patients and efficiency for dental professionals. It integrates essential equipment such as the dental chair, operating light, instrument tray, suction system, and delivery unit.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1ElXYjGENHCQj7g_FTZv3WtK3dudc6cAe&sz=w1000',
     features: [
-      'Multi FOV capability (up to 12x10cm)',
-      'Pulsed-beam x-ray mechanism for ultra-low dose',
-      'Interactive DICOM visual reconstruction module'
+      'Provides comfort for both patient and dentist',
+      'Integrates essential dental equipment in one unit',
+      'Improves workflow and treatment efficiency'
     ],
     specifications: {
-      'Voxel Dimensions': 'Down to 75 micrometers (isotropic)',
-      'Scan Duration': '11 seconds quick-scan phase',
-      'Compliance Code': 'Certified medical device EN 60601-1',
-      'What It Is Used For': 'High-precision 3D diagnostic scanning of dentomaxillofacial anatomy',
-      'For Dental Professional': 'Implantologists, Oral Surgeons, and Maxillofacial Radiologists'
+      'Spec': '1Pcs',
+
     },
     catalogRef: 'NG-CBCT-404',
     isFeatured: true,
-    origin: 'Gothenburg, Sweden'
+    origin: 'China'
   },
   {
     id: 'img-09',
-    name: 'NordicScan Mobile Cart Imaging Workstation',
+    name: '18L Class N Dental Autoclave High Pressure Steam Sterilizer',
     category: 'imaging',
-    description: 'Fully integrated clinic-grade mobile imaging console. Unites flat-panel displays, x-ray sensors, and secure diagnostic software onto a chemical-resistant mobile platform.',
+    description: 'A 18-liter Class N steam sterilizer designed to sterilize unwrapped solid dental instruments using high-pressure steam. Ideal for routine sterilization in dental clinics and practices.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1o3Zfh9C_SFH_yFQAkulHL7yQsEiXL9PQ&sz=w1000',
     features: [
-      'Lockable anti-static wheels with full movement',
-      'Adjustable clinical desktop ergonomics',
-      'Sealed control panels with touch interaction support'
+      '18L capacity for efficient instrument sterilization',
+      'Fast and reliable high-pressure steam sterilization',
+      'Ideal for unwrapped solid dental instruments'
     ],
     specifications: {
-      'Terminal Module': 'Fanless dustproof medical computer',
-      'Power Station': 'Integrated battery backup system (UPS)',
-      'Chassis Construct': 'High-performance steel with anti-microbial paint',
-      'What It Is Used For': 'Centralizing, transporting, and executing chairside dental radiologic imaging',
-      'For Dental Professional': 'Dental Assistants, Hygienists, and General Clinicians'
+      'Spec': '1Pcs',
+      
     },
     catalogRef: 'NG-MWS-505',
     isFeatured: false,
-    origin: 'Uppsala, Sweden'
+    origin: 'China'
   },
   {
     id: 'img-10',
-    name: 'DentalScan Cephalometric Attachment Module',
+    name: 'Dental Chair Unit',
     category: 'imaging',
-    description: 'Dedicated cephalometric scanning arm designed for panoramic machines. Delivers ultra-sharp skull radiographs for orthodontic tracing, craniomandibular diagnostics, and treatment planning.',
+    description: 'A complete dental treatment unit designed to provide comfort for patients and efficiency for dental professionals. It integrates essential equipment such as the dental chair, operating light, instrument tray, suction system, and delivery unit.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1CmK6j0oAqSoELIuEWFWzgfVKQQdzKhXI&sz=w1000',
     features: [
-      'One-touch soft-tissue profiling filters',
-      'Extremely stable head fixation clamps',
-      'Rapid lateral skull capture under 3 seconds'
+      'Provides comfort for both patient and dentist',
+      'Integrates essential dental equipment in one unit',
+      'Improves workflow and treatment efficiency'
     ],
     specifications: {
-      'Scan Programs': 'Lateral, AP/PA, Waters, and carpus scanning',
-      'Focal Spot Setup': '0.5 mm micro-focus',
-      'Scan Capture Speed': '2.6 to 4.2 seconds range',
-      'What It Is Used For': 'Acquiring lateral and sagittal cranial radiographs for orthodontic skeletal tracing',
-      'For Dental Professional': 'Orthodontists and Oral-Maxillofacial Surgeons'
+      'Spec': '1Pcs',
+      
     },
     catalogRef: 'NG-CEP-606',
     isFeatured: false,
-    origin: 'Gothenburg, Sweden'
+    origin: 'China'
   },
   {
     id: 'img-11',
-    name: 'NordicScan Digital Dental Arch Scanner',
+    name: 'Ultrasonic Cleaner 2.5L',
     category: 'imaging',
-    description: 'High-precision intraoral digital scanner delivering flawless powder-free three-dimensional teeth modeling. Accelerates restorative cycles and enhances clinical workflow productivity.',
+    description: 'A 2.5-liter ultrasonic cleaner designed to remove dirt, debris, and contaminants from dental instruments using high-frequency ultrasonic waves. It provides effective pre-cleaning before sterilization.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1b5Pp4vxyjgiYy4Kx79nLEk_pBoNXZa62&sz=w1000',
     features: [
-      'Real-time visual rendering showing true dental coloring',
-      'Lightweight compact body with autoclavable ends',
-      'Full system integration supporting standard CAD/CAM export'
+      'Provides deep and effective instrument cleaning',
+      'Removes contaminants from hard-to-reach areas',
+      'Improves sterilization efficiency and hygiene control'
     ],
     specifications: {
-      'Scanner Tech': 'High-speed continuous video scanning',
-      'CAD Export': 'Direct export of STL, PLY, and OBJ data models',
-      'Weight Profile': '210g featherlight handheld wand',
-      'What It Is Used For': 'Direct powderless digital impression modeling for CAD/CAM restorations',
-      'For Dental Professional': 'Prosthodontists, Orthodontists, and Cosmetic Surgeons'
+      'Spec': '1Pcs',
+      
     },
     catalogRef: 'NG-IOS-707',
     isFeatured: true,
-    origin: 'Lund, Sweden'
+    origin: 'China'
   },
 
   // Sterilization
@@ -744,7 +728,7 @@ export const PRODUCTS: Product[] = [
       'Ideal for bonding, etching, and restorative procedures'
     ],
     specifications: {
-      'Spec': '100Pcs',
+      'Spec': '100pcs',
       'Color': 'Multi color',
      
     },
@@ -766,7 +750,7 @@ export const PRODUCTS: Product[] = [
       'Suitable for Class II posterior composite restorations'
     ],
     specifications: {
-      'Spec': '100Pcs',
+      'Spec': '100pcs',
       
     },
     catalogRef: 'NG-UT-702',
@@ -808,7 +792,7 @@ export const PRODUCTS: Product[] = [
       'Available in different sizes to fit various root canals'
     ],
     specifications: {
-      'Spec': '100Pcs',
+      'Spec': '100pcs',
      
     },
     catalogRef: 'NG-UT-704',
@@ -827,7 +811,7 @@ export const PRODUCTS: Product[] = [
       'Enables easy soft tissue retraction'
     ],
     specifications: {
-      'Spec': '12Pcs',
+      'Spec': '12pcs',
      
     },
     catalogRef: 'NG-UT-705',
@@ -836,109 +820,94 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'tool-06',
-    name: 'Straight Luxator root Elevator (Bein 3mm)',
+    name: 'Bracket Holding Tweezer',
     category: 'tools',
-    description: 'A straight root elevator designed to break periodontal fibers safely before extraction. Features a solid hexagonal handle providing extreme mechanical torque and balanced force. Slides smoothly into the periodontal space to preserve cortical bone.',
+    description: 'A precision orthodontic instrument designed for holding, positioning, and placing dental brackets accurately on tooth surfaces during orthodontic procedures.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1Bgo_Oc64u20OkocvT3Zpbjt-IqbryHo9&sz=w1000',
     features: [
-      'Gently curved wedge blade slides into root cavities with zero resistance',
-      'Solid handle design stands up to robust clinical rotational forces',
-      'Tapered neck delivers ideal ergonomic finger rest placements'
+      'Provides precise bracket placement and control',
+      'Ensures secure handling of small orthodontic components',
+      'Improves efficiency during orthodontic procedures'
     ],
     specifications: {
-      'Blade Width': '3.0mm straight elevator blade',
-      'Handle Motif': 'Hexagonal hollow power grip',
-      'Corrosion Class': 'Grade A medical steel anti-acid',
-      'What It Is Used For': 'Extracting deep dental root residues and loosening teeth before applying forceps',
-      'For Dental Professional': 'Oral Surgeons and General Dentists'
+      'Spec': '1pcs',
+      
     },
     catalogRef: 'NG-UT-706',
     isFeatured: false,
-    origin: 'Solna, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-07',
-    name: 'Model Composite Sculpting Spatula NG-1',
+    name: 'Perforated Impression Tray with Teeth – Upper Jaw (All Sizes)',
     category: 'tools',
-    description: 'An aesthetic dental spatula coated with gold Titanium Nitride to completely prevent resin sticking. Features thin double-ended flexible modeling paddles to achieve natural cusp contouring. Ergonomically optimized handle reduces fatigue during multi-shade building.',
+    description: 'A perforated impression tray designed for taking accurate dental impressions of the upper jaw. The perforated design helps retain impression material and provides reliable results for diagnostic and treatment procedures.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1lw6m_PJOX2zlhMe06zzPYH2f8cMy4ifx&sz=w1000',
     features: [
-      'Anti-adhesive gold Titanium Nitride coating for ultimate modeling accuracy',
-      'Double-ended flexible blades allow highly detailed anterior tooth sculpting',
-      'Extremely lightweight structural balance minimizes clinician thumb stress'
+      'Provides accurate and stable dental impressions',
+      'Perforations improve retention of impression material',
+      'Available in multiple sizes for different patient needs'
     ],
     specifications: {
-      'Active Ends': 'Superficial flat sculpting spade + condenser bulb',
-      'Coating Shield': 'Medical gold titanium plasma deposition',
-      'Shaft Diameter': '9.5mm circular grip control',
-      'What It Is Used For': 'Placing, blending, and detailing direct composite resins in complex restorations',
-      'For Dental Professional': 'Cosmetic Dentists and Restorative Clinicians'
+      'Spec': '10pcs',
+      
     },
     catalogRef: 'NG-UT-707',
     isFeatured: false,
-    origin: 'Stockholm, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-08',
-    name: 'Hemingway Spoon Bone Curette (Double-Ended)',
+    name: 'Prophy Colorful Brushes (100 pcs/box)',
     category: 'tools',
-    description: 'A double-ended pocket bone curette with sharp scoop borders to clean extraction sockets. Perfect for extracting cement remnants, necrotic tissue, and bone debris safely. Built from solid German steel, it resists flexing during clinical procedures.',
+    description: 'Prophy brushes are dental polishing tools used with a prophylaxis paste to clean and polish tooth surfaces. They help remove plaque, stains, and deposits during professional dental cleaning procedures.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1o8ta_JIGO0A3whJJ1e0W4Ey1CPFWKqMc&sz=w1000',
     features: [
-      'Micro-sharp scoop edges capture leftover surgical tissue immediately',
-      'Ergonomic stem allows quick posterior pocket entries',
-      'German solid metal build stops tool bending under hard contact pressure'
+      'Effectively removes stains and plaque',
+      'Provides smooth and polished tooth surfaces',
+      'Available in different colors for easy identification and use'
     ],
     specifications: {
-      'Scoop Diameter': '2.0mm and 2.5mm opposite dual scoop tips',
-      'Finish Method': 'Corrosion-proof electropolish',
-      'Approval Standards': 'ISO 9001 and CE medical certificates',
-      'What It Is Used For': 'Debriding infected pockets and scraping bone sockets after extractions',
-      'For Dental Professional': 'Oral Surgeons and Implantologist Specialists'
+      'Spec': '100pcs/box',
+      
     },
     catalogRef: 'NG-UT-708',
     isFeatured: false,
-    origin: 'Stockholm, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-09',
-    name: 'College Locking Dressing Tweezers',
+    name: 'Wire Cutter Pliers',
     category: 'tools',
-    description: 'A heavy-duty locking tweezers featuring angled serrated tips. Equipped with a secure locking pin to grasp paper points, cotton rolls, and small wedges without slippage. The balanced tension spring plate ensures immediate clinical response.',
+    description: 'Wire Cutter Pliers are orthodontic instruments designed for cutting and trimming orthodontic wires during dental procedures. They provide precise cutting of different types of orthodontic wires.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1iInF5aKi91IhcF2LFheEdvNfbOujFTpY&sz=w1000',
     features: [
-      'Serrated interior grips prevent cotton roll slide-outs',
-      'Precision lock pin aligns tweezer tips perfectly under firm compression',
-      'Durable tempered spring plate responds immediately'
+      'Provides accurate and clean wire cutting',
+      'Strong and durable design for clinical use',
+      'Improves efficiency during orthodontic procedures'
     ],
     specifications: {
-      'Tip Angle': '45-degree angled beak',
-      'Total Length': '15cm utility dental size',
-      'Class Certification': 'SUS304 biocompatible steel device',
-      'What It Is Used For': 'Holding, picking, and placing cotton rolls, endodontic files, and matrices into the field',
-      'For Dental Professional': 'All Dental auxiliary team members and Dentists'
+      'Spec': '1pCS',
+     
     },
     catalogRef: 'NG-UT-709',
     isFeatured: false,
-    origin: 'Uppsala, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-10',
-    name: 'Finger Plugger obturation Endodontic Kit',
+    name: 'Disposable Impression Tray (10 pcs/set)',
     category: 'tools',
-    description: 'A selected set of root canal endodontic finger pluggers. Built with high-grade Nickel-Titanium (NiTi) alloy stems that safely bend to match natural canal structures. The flat-bottomed tips deliver consistent pressure for vertical obturation.',
+    description: 'Disposable impression trays are dental trays used to hold impression material during the process of taking accurate impressions of the patient’s teeth and oral structures. Designed for single use to ensure hygiene and convenience.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1Iuw7sbId7f_VvDs52vZzIb4FoAaPmbVG&sz=w1000',
     features: [
-      'Flat condenser face ensures even vertical pressure for filling',
-      'Ultra-thin flexible stems navigate curving dental canals with ease',
-      'Color-marked handle sections allow quick clinical recognition'
+      'Ensures hygienic single-use application',
+      'Provides accurate and stable dental impressions',
+      'Saves time by eliminating cleaning and sterilization needs'
     ],
     specifications: {
-      'Assortments': 'ISO standard size bundle (04, 06, 08 sizes)',
-      'Core Metal': 'Flex Ni-Ti alloy core with surgical grade cover',
-      'Sizing': 'Knurled ergonomic grip handle',
-      'What It Is Used For': 'Vertical condensation and compaction of warm gutta-percha fillings during root repairs',
-      'For Dental Professional': 'Endodontists and General Practitioners'
+      'Spec': '10pcs',
+      
     },
     catalogRef: 'NG-UT-710',
     isFeatured: false,
@@ -946,157 +915,136 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'tool-11',
-    name: 'Orthodontic Band Contour & bend Pliers',
+    name: 'Sterilization Pouch Roll 20cm * 200m',
     category: 'tools',
-    description: 'Precision pliers designed to contour and trim orthodontic bands to match natural crown anatomy. Fitted with slightly curved flat jaws to prevent wire scratching while styling. Heavy box-joint alignment ensures long-lasting durability.',
+    description: 'Sterilization pouch rolls are used for packaging dental instruments before sterilization. They provide a protective barrier that maintains instrument sterility after the sterilization process until use.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1X0PBgwEpNA8fUJmgLQveWLiTCWERVbiY&sz=w1000',
     features: [
-      'Curved dynamic jaws model tooth metal borders with minor clinical manual effort',
-      'High-rigidity hinges align tips perfectly over years of active duty',
-      'Anti-fog matte stainless finish feels exceptionally slip-free'
+      'Maintains instrument sterility after sterilization',
+      'Provides safe and hygienic storage',
+      'Available in flexible sizes for different instruments'
     ],
     specifications: {
-      'Hinge Assembly': 'Frictionless dual-channel boxed joint',
-      'Bending Limit': 'Accommodates orthodontic bands up to 0.15mm',
-      'Approved Standard': 'FDA-cleared, CE certified clinical steel',
-      'What It Is Used For': 'Styling, contouring, and bending metal bands to achieve a snug molar fit',
-      'For Dental Professional': 'Orthodontists and Specialty Assistants'
+      'Spec': '20cm*200m',
+     
     },
     catalogRef: 'NG-UT-711',
     isFeatured: false,
-    origin: 'Uppsala, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-12',
-    name: 'Precision Ultrasonic scaling Tip Set',
+    name: 'Gutta Percha Points 0.2 & 0.4',
     category: 'tools',
-    description: 'A set of high-efficiency piezo ultrasonic scaler insert tips. Fully compatible with major scaling systems and designed to safely disperse calculus. Built with specialized integrated irrigation channels to deliver cooling water directly to the field.',
+    description: 'Gutta Percha Points are dental filling materials used in endodontic (root canal) treatments to seal and fill cleaned root canals. Available in different sizes to fit various canal shapes and preparation techniques.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1U9_ZOYuGC2YNSwsf10IkgkaXaaO1r4yw&sz=w1000',
     features: [
-      'Slender scaling tips ensure easy access to crowded subgingival structures',
-      'Ultra-precise thread coupling prevents water leakage or pressure drops',
-      'Steady frequency transmission delivers smooth scaling cycles'
+      'Provides effective sealing of root canals',
+      'Available in different sizes for precise fitting',
+      'Biocompatible and reliable for long-term use'
     ],
     specifications: {
-      'Thread Fit': 'Universal compatible scaler thread standard (G1/G2/G4)',
-      'Substance': 'Titanium alloy bonded surgical steel core',
-      'Fluid Line': 'Built-in direct micro-cooling irrigation channel',
-      'What It Is Used For': 'Ultrasonic plaque removal, periodontal pocket scaling, and root debridement',
-      'For Dental Professional': 'Dental Hygienists and Periodontal Specialists'
+      'Spec': '0.2 and 0.4',
+      
     },
     catalogRef: 'NG-UT-712',
     isFeatured: false,
-    origin: 'Gothenburg, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-13',
-    name: 'Orthodontic Archwire Distal Shear Cutter',
+    name: 'NiTi Files 15–40',
     category: 'tools',
-    description: 'Advanced dental distal wire clippers incorporating micro-sharp Tungsten Carbide inserts. Slices orthodontic archwires completely flush to the molar tube. Features an active holding mechanism to catch and retain cut wire tails safely.',
+    description: 'NiTi Files are endodontic instruments used for cleaning, shaping, and preparing root canals during root canal treatment. Their flexible design helps navigate curved canals while maintaining the original canal anatomy.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1qBeoRSEVZDNMAungMnPTe0WJ5RjJUNiW&sz=w1000',
     features: [
-      'Inlaid Tungsten Carbide jaws offer maximum slicing life',
-      'Active safety mechanism prevents orthodontic wire segments from jumping off',
-      'Beveled outer joints prevent intraoral soft tissue injuries'
+      'Provides efficient root canal shaping and cleaning',
+      'High flexibility for curved and complex canals',
+      'Reduces risk of instrument separation and canal damage'
     ],
     specifications: {
-      'Max Cutting Capacity': 'Up to .021 x .025" heavy-gauge archwires',
-      'Blade Edge': 'Flush point distal shear cutter',
-      'Joint Design': 'Slightly spring-assisted boxed hinge',
-      'What It Is Used For': 'Clipping orthodontic wire ends intraorally while protecting cheeks from loose pieces',
-      'For Dental Professional': 'Orthodontists'
+      'Spec': ' Files 15-40',
+      
     },
     catalogRef: 'NG-UT-713',
     isFeatured: false,
-    origin: 'Stockholm, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-14',
-    name: 'Castroviejo Spring Suture Needle Holder',
+    name: 'Dental Cotton Roll',
     category: 'tools',
-    description: 'A micro-surgical needle holder equipped with gold-plated spring locks and micro-serrated Tungsten Carbide jaws. Provides a perfect grip on fine 5-0 to 7-0 threads. The rounded, textured handle allows for smooth, seamless rotation during surgical procedures.',
+    description: 'Dental cotton rolls are absorbent materials used during dental procedures to control moisture, absorb saliva, and maintain a dry working area for improved treatment accuracy.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1yECSblTaGhZL4Fun4OndgopN5r1qf2Kt&sz=w1000',
     features: [
-      'Tungsten Carbide cross-hatched jaws firmly clamp 5-0 to 7-0 micro-surgical sutures',
-      'Spring lock mechanism opens instantly with a slight finger squeeze',
-      'Round knurled body format allows easy rotation in-hand'
+      'Provides effective moisture and saliva control',
+      'Helps maintain a clean and dry treatment area',
+      'Soft and comfortable for patient use'
     ],
     specifications: {
-      'Lock System': 'Castroviejo automatic spring lock with quick snap-open',
-      'Handle Pattern': 'Heavy round knurling texture',
-      'Insert material': 'Premium TC (Tungsten Carbide) gold-style plating',
-      'What It Is Used For': 'Accurate holding and driving of delicate surgical needles during flap suturing',
-      'For Dental Professional': 'Periodontal Surgeons and Oral Implantologists'
+      'Size': '10*38mm, 20roll/bag',
+      '
     },
     catalogRef: 'NG-UT-714',
     isFeatured: true,
-    origin: 'Solna, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-15',
-    name: 'Aspirating anesthetic syringe Pen-Style',
+    name: 'Dental Model with metal bracket',
     category: 'tools',
-    description: 'An aspirating dental syringe designed with an ergonomic pen-style thumb pull-ring. Securely grips 1.8ml glass cartridges, enabling precise, single-handed local anesthetic delivery. Highly durable construction stands up to heavy-duty clinical sterilization.',
+    description: 'A dental model with metal brackets is an orthodontic training and demonstration model used to simulate teeth with orthodontic appliances. It helps dental professionals and students practice bracket placement, wire positioning, and treatment planning.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1cU0ctdxTbDurtTZG0YQ8pMgf5-dvKWTW&sz=w1000',
     features: [
-      'Fully mechanical pullback ring ensures convenient aspiration feedback with ease',
-      'Secures standard 1.8ml glass cartridges with zero wiggles',
-      'Premium medical steel stands up to hundreds of thermal washing cycles'
+      'Useful for orthodontic training and demonstrations',
+      'Helps practice accurate bracket placement',
+      'Provides realistic simulation of orthodontic procedures'
     ],
     specifications: {
-      'Carpule capacity': 'Accepts standard 1.8ml medication glass cartridges',
-      'Thread Format': 'Universal standard imperial needle screws',
-      'Weight & Fit': 'Optimized 38g balanced pen geometry',
-      'What It Is Used For': 'Submucosal and intraosseous delivery of local dental anesthetics',
-      'For Dental Professional': 'All clinical licensed Dental Practitioners'
+      'Spec': '1pcs',
+      
     },
     catalogRef: 'NG-UT-715',
     isFeatured: false,
-    origin: 'Stockholm, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-16',
-    name: 'Universal Tofflemire Matrix Band Tensioner',
+    name: 'Customized Probe',
     category: 'tools',
-    description: 'A straight retainer designed to tighten matrix foil ribbons securely around molar boundaries. Simplifies reconstruction of accurate proximal walls during composite or amalgam fillings. Precision-threaded shafts hold foil bands without slipping under tension.',
+    description: 'A dental instrument designed for precise examination and measurement of tooth surfaces, gums, and periodontal conditions.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1eo0XvDFV_TJEQMuEJ4x2LlcWUffDGxGX&sz=w1000',
     features: [
-      'Double micro-screw shafts tighten foil loops with stellar stability',
-      'Slender, burnished design lies comfortably along lateral dental arches',
-      'Rust-proof steel prevents binding under mechanical disinfection'
+      'Provides accurate clinical measurements',
+      'Helps with periodontal examination',
+      'Designed for precise dental procedures'
     ],
     specifications: {
-      'Tensioner Pattern': 'Straight universal posterior Tofflemire design',
-      'Thread Core': 'Micro-brass smooth turning screw post',
-      'Steel Grade': 'SUS316 medical high-durability steel block',
-      'What It Is Used For': 'Clamping and tensioning stainless steel matrix bands around posterior decayed cavities',
-      'For Dental Professional': 'Restorative Clinicians and General Dentists'
+      'Spec': '3pcs',
+      
     },
     catalogRef: 'NG-UT-716',
     isFeatured: false,
-    origin: 'Gothenburg, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-17',
-    name: 'Double-Ended Bone Curette Hemingway No. 2/S',
+    name: 'Orthodontic buccal tube 1st molar Bonding single tubes',
     category: 'tools',
-    description: 'A surgical bone curette carrying double-ended curved spoon scoop tips. Optimal for cleaning deep socket walls after teeth extraction, removing necrotic tissue efficiently. Raised knurled bands on the handle guarantee non-slip surgical precision.',
+    description: 'Orthodontic buccal tubes are bonded to first molars and used to hold orthodontic wires during braces treatment, helping guide and control tooth movement.',
     imageUrl: 'https://drive.google.com/thumbnail?id=1ym5ygH8COPmWkSHl_YhgtsLuDdk_4fRH&sz=w1000',
     features: [
-      'Hemingway dual scoop spoons capture bone debris cleanly',
-      'Textured center handle stays reliable under wet clinical conditions',
-      'Refined design enables quick periodontal cavity accesses'
+      'Provides secure wire attachment on molars',
+      'Supports accurate orthodontic tooth movement',
+      'Easy placement and reliable performance'
     ],
     specifications: {
-      'Active Spoon size': '2.8mm curved curette scoops',
-      'Tool Length': '17.2cm optimal surgical control diameter',
-      'Class': 'Surgical Medical tool certificate',
-      'What It Is Used For': 'Scraping osseous cavities, debriding extraction sockets, and removing cysts',
-      'For Dental Professional': 'Oral Surgeons, Periodontists, and Implantologists'
+      'Spec': '200pcs/box',
+      
     },
     catalogRef: 'NG-UT-717',
     isFeatured: false,
-    origin: 'Solna, Sweden'
+    origin: 'China'
   },
   {
     id: 'tool-18',
