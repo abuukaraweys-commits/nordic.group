@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, MessageSquare, PhoneCall, ShoppingCart } from 'lucide-react';
+import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/react';
 import { CategoryKey } from '../types';
 import { CATEGORIES } from '../data';
 
@@ -255,6 +256,25 @@ export default function Header({
               </span>
             ) : null}
           </button>
+
+          {/* Clerk Auth: Sign In / Sign Up when logged out, avatar when logged in */}
+          <Show when="signed-out">
+            <div className="flex items-center gap-2">
+              <SignInButton mode="modal">
+                <button className="text-xs font-bold text-white/90 hover:text-[#2c8fa0] transition-colors px-3 py-2 cursor-pointer">
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="text-xs font-bold text-white bg-[#2c8fa0] hover:bg-[#1a6e7e] transition-colors px-4 py-2 rounded-lg cursor-pointer">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </div>
+          </Show>
+          <Show when="signed-in">
+            <UserButton />
+          </Show>
         </div>
 
         {/* Mobile menu toggle */}
