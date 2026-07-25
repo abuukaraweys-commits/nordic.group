@@ -294,12 +294,12 @@ export default function Header({
       {isMobileMenuOpen && (
         <div
           id="mobile-drawer-overlay"
-          className="fixed inset-0 bg-slate-950/40 backdrop-blur-[2px] z-[120] lg:hidden flex justify-end"
+          className="fixed inset-0 bg-slate-950/40 backdrop-blur-[2px] z-[120] lg:hidden flex items-center justify-center p-4"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <div
             id="mobile-drawer-panel"
-            className="bg-white w-[320px] max-w-[85vw] h-screen overflow-y-auto shadow-2xl flex flex-col justify-between p-6 relative animate-in slide-in-from-right duration-300"
+            className="bg-white w-full max-w-sm max-h-[85vh] overflow-y-auto shadow-2xl rounded-2xl flex flex-col justify-between p-6 relative animate-in zoom-in-95 fade-in duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             <div>
@@ -344,8 +344,6 @@ export default function Header({
 
               {/* Nav links */}
               <div className="flex flex-col gap-4">
-                <span className="text-[10px] bg-[#f0f8fa] text-[#2c8fa0] w-max px-2 py-0.5 rounded font-bold uppercase tracking-widest">Navigation</span>
-                
                 {/* Home */}
                 <button
                   onClick={() => navigateToPage('home')}
@@ -455,15 +453,6 @@ export default function Header({
                 <p className="text-xs font-semibold text-[#1a3a42] leading-tight flex items-center justify-between">Nordic Group Dental</p>
                 <p className="text-[10px] text-[#3a5c63] mt-0.5">Sourcing & Logistics for clinics</p>
               </div>
-               <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  if (onOpenCart) onOpenCart();
-                }}
-                className="w-full text-center py-2.5 bg-[#06B6D4] border border-[#06B6D4] text-white hover:bg-[#05a0bc] hover:border-[#05a0bc] font-sans text-xs font-bold tracking-wider uppercase rounded-[6px] shadow-xs transition-colors cursor-pointer"
-              >
-                View Cart {cartItemsCount > 0 ? `(${cartItemsCount})` : ''}
-              </button>
             </div>
           </div>
         </div>
@@ -471,6 +460,8 @@ export default function Header({
     </header>
   );
 }
+
+
 
 
 
