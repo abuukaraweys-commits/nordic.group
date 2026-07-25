@@ -421,6 +421,35 @@ export default function Header({
 
             {/* Bottom Actions of Side Panel */}
             <div className="pt-4 border-t border-[#bfc8ca]/30 flex flex-col gap-4 mt-8">
+              {/* Clerk Auth - mobile */}
+              <Show when="signed-out">
+                <div className="flex items-center gap-2">
+                  <SignInButton mode="modal">
+                    <button
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex-1 text-center py-2.5 border border-[#2c8fa0] text-[#2c8fa0] hover:bg-[#f0f8fa] font-sans text-xs font-bold tracking-wider uppercase rounded-full transition-colors cursor-pointer"
+                    >
+                      Sign In
+                    </button>
+                  </SignInButton>
+                  <SignUpButton mode="modal">
+                    <button
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 bg-[#2c8fa0] hover:bg-[#1a6e7e] text-white font-sans text-xs font-bold tracking-wider uppercase rounded-full shadow-md shadow-[#2c8fa0]/30 transition-colors cursor-pointer"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5" />
+                      Join Us
+                    </button>
+                  </SignUpButton>
+                </div>
+              </Show>
+              <Show when="signed-in">
+                <div className="flex items-center gap-2">
+                  <UserButton />
+                  <span className="text-xs font-semibold text-[#3a5c63]">My Account</span>
+                </div>
+              </Show>
+
               <div>
                 <p className="text-[10px] text-gray-400 uppercase tracking-wider font-extrabold mb-0.5">Dubai Sourcing & Logistics</p>
                 <p className="text-xs font-semibold text-[#1a3a42] leading-tight flex items-center justify-between">Nordic Group Dental</p>
@@ -442,6 +471,10 @@ export default function Header({
     </header>
   );
 }
+
+
+
+
 
 
 
