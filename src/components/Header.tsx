@@ -294,12 +294,12 @@ export default function Header({
       {isMobileMenuOpen && (
         <div
           id="mobile-drawer-overlay"
-          className="fixed inset-0 bg-slate-950/40 backdrop-blur-[2px] z-[120] lg:hidden flex items-center justify-center p-4"
+          className="fixed inset-0 bg-slate-950/40 backdrop-blur-[2px] z-[120] lg:hidden flex items-start justify-end p-4 pt-24"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <div
             id="mobile-drawer-panel"
-            className="bg-white w-full max-w-sm max-h-[85vh] overflow-y-auto shadow-2xl rounded-2xl flex flex-col justify-between p-6 relative animate-in zoom-in-95 fade-in duration-200"
+            className="bg-white w-full max-w-xs max-h-[75vh] overflow-y-auto shadow-2xl rounded-none flex flex-col justify-between p-5 relative animate-in zoom-in-95 fade-in duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             <div>
@@ -460,6 +460,10 @@ export default function Header({
     </header>
   );
 }
+
+
+
+
 
 
 
