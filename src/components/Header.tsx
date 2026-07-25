@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, MessageSquare, PhoneCall, ShoppingCart } from 'lucide-react';
+import { Menu, X, ChevronDown, MessageSquare, PhoneCall, ShoppingCart, ArrowRight } from 'lucide-react';
 import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/react';
 import { CategoryKey } from '../types';
 import { CATEGORIES } from '../data';
@@ -215,21 +215,6 @@ export default function Header({
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#2c8fa0] rounded-full" />
             )}
           </button>
-
-          {/* New Portal navigation link as Admin */}
-          <button
-            onClick={() => navigateToPage('portal')}
-            className={`font-sans text-sm font-semibold tracking-wide transition-colors py-2 relative cursor-pointer ${
-              currentPage === 'portal'
-                ? 'text-[#2c8fa0]'
-                : 'text-white hover:text-[#2c8fa0]'
-            }`}
-          >
-            Admin
-            {currentPage === 'portal' && (
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#2c8fa0] rounded-full" />
-            )}
-          </button>
         </nav>
 
         {/* Header Right Interactions */}
@@ -259,15 +244,16 @@ export default function Header({
 
           {/* Clerk Auth: Sign In / Sign Up when logged out, avatar when logged in */}
           <Show when="signed-out">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <SignInButton mode="modal">
-                <button className="text-xs font-bold text-white/90 hover:text-[#2c8fa0] transition-colors px-3 py-2 cursor-pointer">
+                <button className="text-xs font-bold text-white/90 border border-white/25 hover:bg-white/10 hover:border-white/40 transition-colors px-4 py-2 rounded-full cursor-pointer">
                   Sign In
                 </button>
               </SignInButton>
               <SignUpButton mode="modal">
-                <button className="text-xs font-bold text-white bg-[#2c8fa0] hover:bg-[#1a6e7e] transition-colors px-4 py-2 rounded-lg cursor-pointer">
-                  Sign Up
+                <button className="flex items-center gap-1.5 text-xs font-bold text-white bg-[#2c8fa0] hover:bg-[#1a6e7e] transition-colors px-4 py-2 rounded-full shadow-md shadow-[#2c8fa0]/30 cursor-pointer">
+                  <ArrowRight className="w-3.5 h-3.5" />
+                  Join Us
                 </button>
               </SignUpButton>
             </div>
@@ -430,15 +416,6 @@ export default function Header({
                   Contact Us
                 </button>
 
-                {/* Admin */}
-                <button
-                  onClick={() => navigateToPage('portal')}
-                  className={`text-left text-sm font-bold py-1 transition-colors cursor-pointer ${
-                    currentPage === 'portal' ? 'text-[#2c8fa0]' : 'text-[#3a5c63] hover:text-[#2c8fa0]'
-                  }`}
-                >
-                  Admin
-                </button>
               </div>
             </div>
 
@@ -465,4 +442,6 @@ export default function Header({
     </header>
   );
 }
+
+
 
