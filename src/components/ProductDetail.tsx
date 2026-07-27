@@ -8,8 +8,7 @@ import {
   Plus, 
   Minus, 
   ShoppingCart, 
-  Building,
-  Info
+  Building
 } from 'lucide-react';
 
 interface ProductDetailProps {
@@ -114,13 +113,6 @@ export default function ProductDetail({
               <div className="flex items-center justify-between gap-4 text-xs font-medium text-gray-500 bg-white p-3 rounded-xl border border-[#e1e3e4]">
                 <span className="font-bold">Catalog Ref Number:</span>
                 <span className="font-mono text-[#0e7490] font-black bg-[#eff7f8] px-2.5 py-0.5 rounded border border-[#358082]/10">{product.catalogRef}</span>
-              </div>
-              
-              <div className="flex items-center gap-3 bg-amber-50/60 p-3.5 rounded-xl border border-amber-200/40 text-amber-900 text-xs">
-                <Info className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
-                <p className="leading-relaxed">
-                  Authorized medical distribution package. Autoclave compatible structures are guaranteed across all dental mechanical usage patterns.
-                </p>
               </div>
             </div>
           </div>
@@ -238,4 +230,6 @@ export default function ProductDetail({
     </div>
   );
 }
+
+
 
