@@ -16,11 +16,11 @@ createRoot(document.getElementById('root')!).render(
       publishableKey={PUBLISHABLE_KEY}
       appearance={{
         variables: {
-          colorPrimary: '#2c8fa0',       // Er turkosa accentfärg (knappar, länkar, fokus-ram)
-          colorText: '#1a3a42',           // Mörk text, matchar sajtens brödtext
+          colorPrimary: '#2c8fa0',        // Er turkosa accentfärg (knappar, länkar, fokus-ram)
+          colorForeground: '#1a3a42',     // Mörk text, matchar sajtens brödtext
           colorBackground: '#ffffff',     // Vit bakgrund på själva popup-rutan
-          colorInputBackground: '#f8f9fa',// Ljusgrå bakgrund i textfälten
-          colorInputText: '#1a3a42',
+          colorInput: '#f8f9fa',          // Ljusgrå bakgrund i textfälten
+          colorInputForeground: '#1a3a42',// Textfärg i textfälten
           borderRadius: '0.5rem',         // Måttligt rundade hörn, matchar knapparna i headern
         },
       }}
@@ -29,3 +29,4 @@ createRoot(document.getElementById('root')!).render(
     </ClerkProvider>
   </StrictMode>,
 );
+
