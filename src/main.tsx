@@ -12,9 +12,20 @@ if (!PUBLISHABLE_KEY) {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <ClerkProvider
+      publishableKey={PUBLISHABLE_KEY}
+      appearance={{
+        variables: {
+          colorPrimary: '#2c8fa0',       // Er turkosa accentfärg (knappar, länkar, fokus-ram)
+          colorText: '#1a3a42',           // Mörk text, matchar sajtens brödtext
+          colorBackground: '#ffffff',     // Vit bakgrund på själva popup-rutan
+          colorInputBackground: '#f8f9fa',// Ljusgrå bakgrund i textfälten
+          colorInputText: '#1a3a42',
+          borderRadius: '0.5rem',         // Måttligt rundade hörn, matchar knapparna i headern
+        },
+      }}
+    >
       <App />
     </ClerkProvider>
   </StrictMode>,
 );
-
