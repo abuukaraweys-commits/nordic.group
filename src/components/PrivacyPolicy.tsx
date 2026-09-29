@@ -29,7 +29,9 @@ export default function PrivacyPolicy() {
               <li>
                 <strong>Quote request information:</strong> when you submit a quote request
                 through our product catalog, we collect your name, clinic name, phone
-                number, and the list of products you are requesting a quote for.
+                number, email address (if you give one), any message, and the list of
+                products you are requesting a quote for. We store this in our database. If
+                you are signed in, the request is linked to your account.
               </li>
               <li>
                 <strong>Contact form information:</strong> if you reach out through our
@@ -60,6 +62,8 @@ export default function PrivacyPolicy() {
             <ul className="list-disc pl-5 space-y-1.5 mt-2">
               <li><strong>Clerk</strong> — for account creation and sign-in (including optional Google sign-in).</li>
               <li><strong>Vercel</strong> — for hosting our website.</li>
+              <li><strong>Supabase</strong> — for storing the quote requests you send us.</li>
+              <li><strong>WhatsApp</strong> (Meta) and your email provider — when you choose to send your request through them.</li>
             </ul>
             <p className="mt-2">
               These providers process data on our behalf and are bound by their own
@@ -71,9 +75,9 @@ export default function PrivacyPolicy() {
             <h2 className="text-lg font-bold text-[#1a3a42] mb-2">5. Information stored in your browser</h2>
             <p>
               Our website uses your browser's local storage (a small storage area in your
-              own browser, similar to cookies) to make the site work. This information stays
-              on your device. It is not sent to our servers, and we do not use it for
-              advertising or to track you across other websites. We store:
+              own browser, similar to cookies) to make the site work. What is kept there stays
+              on your device, and we do not use it for advertising or to track you across
+              other websites. We store:
             </p>
             <ul className="list-disc pl-5 space-y-1.5 mt-2">
               <li>
@@ -83,8 +87,8 @@ export default function PrivacyPolicy() {
               <li>
                 <strong>A copy of your quote and contact requests:</strong> the name, clinic
                 name, phone number, email address, message, and product list you enter when
-                you send a request. The request itself only reaches us when you send it via
-                WhatsApp or email.
+                you send a request. This browser copy is separate from the request we
+                receive and store in our database (see section 2).
               </li>
               <li>
                 <strong>Product catalog data:</strong> a saved copy of the product list, so

@@ -1,6 +1,9 @@
 import { useState, FormEvent } from 'react';
-import { X, Mail, MessageSquare, Send, CheckCircle2, ShieldAlert } from 'lucide-react';
+import { X, Mail, MessageSquare, Send, CheckCircle2, ShieldAlert, Loader2, AlertCircle } from 'lucide-react';
+import { useAuth } from '@clerk/react';
 import { Product } from '../types';
+import { submitQuoteRequest } from '../lib/submitQuoteRequest';
+import { isValidEmail } from '../lib/quoteRequest';
 
 interface ContactModalProps {
   selectedProduct: Product | null;
@@ -30,13 +33,59 @@ export default function ContactModal({ selectedProduct, cartItems, onClose, onCl
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [website, setWebsite] = useState(''); // honeypot, stays empty for real people
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+  const [saveError, setSaveError] = useState('');
+
+  const { isSignedIn, getToken } = useAuth();
+
+  // Products this request is about: the cart, or the single product it was opened for.
+  const quoteItems = cartItems && cartItems.length > 0
+    ? cartItems.map((item) => ({ productId: item.product.id, name: item.product.name, quantity: item.quantity }))
+    : selectedProduct
+      ? [{ productId: selectedProduct.id, name: selectedProduct.name, quantity: 1 }]
+      : [];
+
+  // Email is only required for the Email button, but if typed it must be valid.
+  const emailEntered = email.trim() !== '';
+  const emailValid = isValidEmail(email);
+  const canSend = name.trim() !== '' && clinicName.trim() !== '' && phone.trim() !== '' && (!emailEntered || emailValid);
+  const canSendEmail = canSend && emailValid;
+
+  // Save quote requests (requests with products) to the database. The cart is
+  // cleared only once it is saved, so a failed save can be retried.
+  const saveRequest = async () => {
+    if (quoteItems.length === 0) return;
+    setSaveStatus('saving');
+    setSaveError('');
+    const result = await submitQuoteRequest(
+      {
+        name,
+        company: clinicName,
+        phone,
+        email,
+        notes: `Region: ${region}\n\n${message}`,
+        website,
+        items: quoteItems
+      },
+      getToken,
+      !!isSignedIn
+    );
+    if (result.ok === false) {
+      setSaveStatus('error');
+      setSaveError(result.error);
+    } else {
+      setSaveStatus('saved');
+      onClearCart?.();
+    }
+  };
 
   const coreEmail = 'info@nordicgr.com';
   const whatsappNumber = '252617453777';
 
   const handleSendEmail = (e: FormEvent) => {
     e.preventDefault();
-    if (!name || !email) return;
+    if (!canSendEmail || saveStatus === 'saving') return;
 
     const subject = encodeURIComponent(`Nordic Group Dental Quote Request - ${clinicName || name}`);
     const emailBody = encodeURIComponent(`Name: ${name}
@@ -69,14 +118,15 @@ ${message}`);
       console.error('Error saving inquiry:', err);
     }
 
+    // The app is opened before saving: browsers block window.open after an await.
     window.open(`mailto:${coreEmail}?subject=${subject}&body=${emailBody}`, '_blank');
     setSubmitted(true);
-    onClearCart?.();
+    saveRequest();
   };
 
   const handleSendWhatsApp = (e: FormEvent) => {
     e.preventDefault();
-    if (!name) return;
+    if (!canSend || saveStatus === 'saving') return;
 
     const text = encodeURIComponent(`*Nordic Group Dental Supply Request*
 *Name:* ${name}
@@ -111,7 +161,7 @@ ${message}`);
 
     window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
     setSubmitted(true);
-    onClearCart?.();
+    saveRequest();
   };
 
   return (
@@ -144,6 +194,33 @@ ${message}`);
             <p className="text-sm text-[#40484a] leading-relaxed max-w-sm">
               Your quotation draft has been compiled. If your mail client or WhatsApp did not open automatically, you can also send email to <strong className="text-primary">info@nordicgr.com</strong> or message us on WhatsApp at <strong className="text-primary">+252 61 745 3777</strong>.
             </p>
+            {saveStatus === 'saving' && (
+              <p className="flex items-center gap-2 text-xs font-semibold text-[#41808F]">
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Saving your request…
+              </p>
+            )}
+            {saveStatus === 'saved' && (
+              <p className="flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg p-2.5">
+                <CheckCircle2 className="w-4 h-4" />
+                Your request has been saved. We will get back to you soon.
+              </p>
+            )}
+            {saveStatus === 'error' && (
+              <div className="text-left text-xs bg-red-50 border border-red-200 rounded-lg p-3 space-y-2 w-full">
+                <p className="flex items-start gap-2 font-semibold text-red-700">
+                  <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                  <span>{saveError} Your WhatsApp/email message can still reach us.</span>
+                </p>
+                <button
+                  type="button"
+                  onClick={saveRequest}
+                  className="px-3 py-1.5 bg-white border border-red-300 text-red-700 rounded-md font-bold hover:bg-red-100 cursor-pointer"
+                >
+                  Retry saving
+                </button>
+              </div>
+            )}
             <button
               onClick={() => {
                 setSubmitted(false);
@@ -209,9 +286,10 @@ ${message}`);
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#40484a] uppercase tracking-wider mb-1">Clinic Name</label>
+                <label className="block text-xs font-bold text-[#40484a] uppercase tracking-wider mb-1">Clinic Name *</label>
                 <input
                   type="text"
+                  required
                   value={clinicName}
                   onChange={(e) => setClinicName(e.target.value)}
                   placeholder="Mogadishu Dental Center"
@@ -222,27 +300,50 @@ ${message}`);
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-[#40484a] uppercase tracking-wider mb-1">Email Address *</label>
+                <label className="block text-xs font-bold text-[#40484a] uppercase tracking-wider mb-1">Email Address <span className="normal-case font-semibold text-gray-400">(needed for Email)</span></label>
                 <input
                   type="email"
-                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="doctor@clinic.com"
-                  className="w-full px-3.5 py-2 rounded-lg border border-[#bfc8ca]/40 text-sm focus:outline-none focus:border-[#41808F] focus:ring-1 focus:ring-[#41808F]"
+                  aria-invalid={emailEntered && !emailValid}
+                  className={`w-full px-3.5 py-2 rounded-lg border text-sm focus:outline-none focus:ring-1 ${
+                    emailEntered && !emailValid
+                      ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
+                      : 'border-[#bfc8ca]/40 focus:border-[#41808F] focus:ring-[#41808F]'
+                  }`}
                 />
+                {emailEntered && !emailValid && (
+                  <p className="text-[11px] text-red-600 font-semibold mt-1">Please enter a valid email address.</p>
+                )}
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#40484a] uppercase tracking-wider mb-1">WhatsApp / Phone</label>
+                <label className="block text-xs font-bold text-[#40484a] uppercase tracking-wider mb-1">WhatsApp / Phone *</label>
                 <input
                   type="text"
+                  required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+252 61..."
                   className="w-full px-3.5 py-2 rounded-lg border border-[#bfc8ca]/40 text-sm focus:outline-none focus:border-[#41808F] focus:ring-1 focus:ring-[#41808F]"
                 />
               </div>
+            </div>
+
+            {/* Honeypot: hidden from people, bots fill it in */}
+            <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+              <label>
+                Website
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                />
+              </label>
             </div>
 
             <div>
@@ -287,9 +388,9 @@ ${message}`);
                 <button
                   type="button"
                   onClick={handleSendWhatsApp}
-                  disabled={!name}
+                  disabled={!canSend}
                   className={`w-full py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 border ${
-                    name 
+                    canSend 
                       ? 'bg-[#25D366] hover:bg-[#20ba59] text-white border-transparent cursor-pointer shadow-sm hover:-translate-y-0.5' 
                       : 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
                   }`}
@@ -301,9 +402,9 @@ ${message}`);
                 <button
                   type="button"
                   onClick={handleSendEmail}
-                  disabled={!name || !email}
+                  disabled={!canSendEmail}
                   className={`w-full py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 border ${
-                    name && email 
+                    canSendEmail 
                       ? 'bg-[#41808F] hover:bg-[#316470] text-white border-transparent cursor-pointer shadow-sm hover:-translate-y-0.5' 
                       : 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
                   }`}
