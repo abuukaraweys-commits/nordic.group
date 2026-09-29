@@ -40,7 +40,7 @@ export default function CartDrawer({
   onClearCart
 }: CartDrawerProps) {
   // Constants for messaging channels as specified by customer
-  const RECIPIENT_EMAIL = 'email@nordicgroup.com';
+  const RECIPIENT_EMAIL = 'info@nordicgr.com';
   const RECIPIENT_WHATSAPP = '+252617453777'; // Somalia recipient contact number
 
   const [showQuoteForm, setShowQuoteForm] = useState(false);
