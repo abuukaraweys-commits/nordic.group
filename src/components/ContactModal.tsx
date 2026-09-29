@@ -3,6 +3,7 @@ import { X, Mail, MessageSquare, Send, CheckCircle2, ShieldAlert, Loader2, Alert
 import { useAuth } from '@clerk/react';
 import { Product } from '../types';
 import { submitQuoteRequest } from '../lib/submitQuoteRequest';
+import { isValidEmail } from '../lib/quoteRequest';
 
 interface ContactModalProps {
   selectedProduct: Product | null;
@@ -45,7 +46,11 @@ export default function ContactModal({ selectedProduct, cartItems, onClose, onCl
       ? [{ productId: selectedProduct.id, name: selectedProduct.name, quantity: 1 }]
       : [];
 
-  const canSend = name.trim() !== '' && clinicName.trim() !== '' && phone.trim() !== '';
+  // Email is only required for the Email button, but if typed it must be valid.
+  const emailEntered = email.trim() !== '';
+  const emailValid = isValidEmail(email);
+  const canSend = name.trim() !== '' && clinicName.trim() !== '' && phone.trim() !== '' && (!emailEntered || emailValid);
+  const canSendEmail = canSend && emailValid;
 
   // Save quote requests (requests with products) to the database. The cart is
   // cleared only once it is saved, so a failed save can be retried.
@@ -80,7 +85,7 @@ export default function ContactModal({ selectedProduct, cartItems, onClose, onCl
 
   const handleSendEmail = (e: FormEvent) => {
     e.preventDefault();
-    if (!canSend || !email || saveStatus === 'saving') return;
+    if (!canSendEmail || saveStatus === 'saving') return;
 
     const subject = encodeURIComponent(`Nordic Group Dental Quote Request - ${clinicName || name}`);
     const emailBody = encodeURIComponent(`Name: ${name}
@@ -295,15 +300,22 @@ ${message}`);
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-[#40484a] uppercase tracking-wider mb-1">Email Address *</label>
+                <label className="block text-xs font-bold text-[#40484a] uppercase tracking-wider mb-1">Email Address <span className="normal-case font-semibold text-gray-400">(needed for Email)</span></label>
                 <input
                   type="email"
-                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="doctor@clinic.com"
-                  className="w-full px-3.5 py-2 rounded-lg border border-[#bfc8ca]/40 text-sm focus:outline-none focus:border-[#41808F] focus:ring-1 focus:ring-[#41808F]"
+                  aria-invalid={emailEntered && !emailValid}
+                  className={`w-full px-3.5 py-2 rounded-lg border text-sm focus:outline-none focus:ring-1 ${
+                    emailEntered && !emailValid
+                      ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
+                      : 'border-[#bfc8ca]/40 focus:border-[#41808F] focus:ring-[#41808F]'
+                  }`}
                 />
+                {emailEntered && !emailValid && (
+                  <p className="text-[11px] text-red-600 font-semibold mt-1">Please enter a valid email address.</p>
+                )}
               </div>
 
               <div>
@@ -390,9 +402,9 @@ ${message}`);
                 <button
                   type="button"
                   onClick={handleSendEmail}
-                  disabled={!canSend || !email}
+                  disabled={!canSendEmail}
                   className={`w-full py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 border ${
-                    canSend && email 
+                    canSendEmail 
                       ? 'bg-[#41808F] hover:bg-[#316470] text-white border-transparent cursor-pointer shadow-sm hover:-translate-y-0.5' 
                       : 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
                   }`}

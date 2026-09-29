@@ -15,6 +15,7 @@ import {
 import { useAuth } from '@clerk/react';
 import { Product, resolveImageUrl } from '../types';
 import { submitQuoteRequest } from '../lib/submitQuoteRequest';
+import { isValidEmail } from '../lib/quoteRequest';
 
 interface CartItem {
   product: Product;
@@ -169,7 +170,7 @@ ${productsLines}`;
 
   // Button 2: Send via Email
   const handleSendEmail = () => {
-    if (!isFormValid || saveStatus === 'saving') return;
+    if (!canSendEmail || saveStatus === 'saving') return;
 
     logInquiryToLocalDatabase();
 
@@ -208,7 +209,12 @@ Sent via Nordic Group Dental online portal.`;
     onClose();
   };
 
-  const isFormValid = fullName.trim() !== '' && clinicName.trim() !== '' && phoneNumber.trim() !== '';
+  // Email is optional, but if something is typed it must be a valid address.
+  const emailEntered = email.trim() !== '';
+  const emailValid = isValidEmail(email);
+  const requiredFilled = fullName.trim() !== '' && clinicName.trim() !== '' && phoneNumber.trim() !== '';
+  const isFormValid = requiredFilled && (!emailEntered || emailValid);
+  const canSendEmail = requiredFilled && emailValid;
 
   return (
     <div
@@ -493,15 +499,21 @@ Sent via Nordic Group Dental online portal.`;
 
                     <div>
                       <label className="block text-[10px] font-extrabold text-[#40484a] uppercase tracking-wider mb-1.5">
-                        Email <span className="text-slate-400 normal-case font-semibold">(optional)</span>
+                        Email <span className="text-slate-400 normal-case font-semibold">(optional, needed for Send via Email)</span>
                       </label>
                       <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="doctor@clinic.com"
-                        className="w-full px-3 py-2 text-xs bg-white rounded-lg border border-slate-200 text-slate-800 font-sans focus:outline-none focus:border-[#2c8fa0] shadow-sm"
+                        aria-invalid={emailEntered && !emailValid}
+                        className={`w-full px-3 py-2 text-xs bg-white rounded-lg border text-slate-800 font-sans focus:outline-none shadow-sm transition-colors ${
+                          emailEntered && !emailValid ? 'border-red-300 focus:border-red-500' : 'border-slate-200 focus:border-[#2c8fa0]'
+                        }`}
                       />
+                      {emailEntered && !emailValid && (
+                        <p className="text-[10px] text-red-600 font-semibold mt-1">Please enter a valid email address, e.g. name@clinic.com</p>
+                      )}
                     </div>
 
                     {/* Honeypot: hidden from people, bots fill it in */}
@@ -539,18 +551,23 @@ Sent via Nordic Group Dental online portal.`;
                       <button
                         type="button"
                         onClick={handleSendEmail}
-                        disabled={!isFormValid}
+                        disabled={!canSendEmail}
                         className="py-3.5 px-2 bg-[#06B6D4] hover:bg-[#05a0bc] disabled:bg-slate-100 disabled:text-slate-400 disabled:border-slate-200 text-white hover:-translate-y-0.5 disabled:-translate-y-0 transition-all text-xs font-black uppercase tracking-wider rounded-lg shadow-md disabled:shadow-none flex items-center justify-center gap-1.5 cursor-pointer disabled:cursor-not-allowed text-center border border-transparent"
-                        title={isFormValid ? "Submit Quote via Email" : "Please fill out Name, Clinic Name and Phone Number"}
+                        title={canSendEmail ? "Submit Quote via Email" : "Please fill out Name, Clinic Name, Phone Number and a valid Email"}
                       >
                         <Mail className="w-4 h-4 shrink-0" />
                         <span>Send via Email</span>
                       </button>
                     </div>
 
-                    {!isFormValid && (
+                    {!requiredFilled && (
                       <p className="text-[10px] text-amber-600 text-center font-bold bg-amber-50 p-2.5 border border-amber-200/50 rounded-lg animate-pulse">
                         ⚠️ Please specify your Full Name, Clinic Name and Phone Number to enable the send channels.
+                      </p>
+                    )}
+                    {requiredFilled && !emailEntered && (
+                      <p className="text-[10px] text-slate-500 text-center font-semibold">
+                        To use Send via Email, enter your email address above.
                       </p>
                     )}
                   </div>

@@ -38,6 +38,12 @@ export const QUOTE_LIMITS = {
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export function isValidEmail(value: string): boolean {
+  const email = value.trim();
+  return email.length <= 254 && EMAIL_RE.test(email);
+}
+
 const PHONE_RE = /^[+\d\s()-]{6,30}$/;
 
 function text(value: unknown): string {
@@ -68,7 +74,7 @@ export function validateQuoteRequest(input: unknown): ValidationResult {
   }
 
   const email = text(body.email);
-  if (email && (email.length > 254 || !EMAIL_RE.test(email))) {
+  if (email && !isValidEmail(email)) {
     return { ok: false, error: 'Please enter a valid email address.' };
   }
 
