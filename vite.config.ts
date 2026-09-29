@@ -40,9 +40,9 @@ function devApi(): Plugin {
 }
 
 export default defineConfig(({mode}) => {
-  // Make server-only SUPABASE_* vars from .env.local available to the dev API.
-  // They are not VITE_-prefixed, so they are never bundled into the browser code.
-  const env = loadEnv(mode, process.cwd(), 'SUPABASE_');
+  // Make the Supabase vars from .env.local available to the dev API. The secret
+  // SUPABASE_SERVICE_ROLE_KEY is not VITE_-prefixed, so it is never bundled into browser code.
+  const env = loadEnv(mode, process.cwd(), ['SUPABASE_', 'VITE_SUPABASE_']);
   for (const [key, value] of Object.entries(env)) {
     process.env[key] ??= value;
   }

@@ -2,8 +2,10 @@
 // Saves a quote request to Supabase. Runs on the server only, so the
 // service role key never reaches the browser.
 //
-// Env vars (server-only, never prefix with VITE_):
-//   SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY
+// Env vars:
+//   VITE_SUPABASE_URL (or SUPABASE_URL)
+//   VITE_SUPABASE_PUBLISHABLE_KEY (or SUPABASE_ANON_KEY) - public key, safe to expose
+//   SUPABASE_SERVICE_ROLE_KEY - secret/service role key, server-only, NEVER prefix with VITE_
 import { createClient } from '@supabase/supabase-js';
 import { validateQuoteRequest } from '../src/lib/quoteRequest.js';
 
@@ -42,11 +44,11 @@ export async function POST(request: Request): Promise<Response> {
     return json(200, { ok: true });
   }
 
-  const url = process.env.SUPABASE_URL;
-  const anonKey = process.env.SUPABASE_ANON_KEY;
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const anonKey = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !anonKey || !serviceRoleKey) {
-    console.error('quote-request: missing SUPABASE_URL, SUPABASE_ANON_KEY or SUPABASE_SERVICE_ROLE_KEY');
+    console.error('quote-request: missing Supabase URL, publishable key or SUPABASE_SERVICE_ROLE_KEY');
     return json(500, { ok: false, error: 'Quote requests are not configured on the server.' });
   }
 
