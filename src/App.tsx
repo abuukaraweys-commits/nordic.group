@@ -24,9 +24,11 @@ import ContactModal from './components/ContactModal';
 import Portal from './components/Portal';
 import CartDrawer from './components/CartDrawer';
 import ProductDetail from './components/ProductDetail';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail' | 'privacy' | 'terms'>('home');
   const [selectedProductForDetail, setSelectedProductForDetail] = useState<Product | null>(null);
   const [activeCategory, setActiveCategory] = useState<CategoryKey | null>(null);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -84,7 +86,7 @@ export default function App() {
   const syncStateFromHash = () => {
     const hash = window.location.hash || '#home';
     
-    let page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail' = 'home';
+    let page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail' | 'privacy' | 'terms' = 'home';
     let category: CategoryKey | null = null;
     let productId: string | null = null;
 
@@ -108,6 +110,10 @@ export default function App() {
       page = 'contact';
     } else if (hash === '#portal') {
       page = 'portal';
+    } else if (hash === '#privacy') {
+      page = 'privacy';
+    } else if (hash === '#terms') {
+      page = 'terms';
     }
 
     setCurrentPage(page);
@@ -155,6 +161,10 @@ export default function App() {
       targetHash = '#contact';
     } else if (currentPage === 'portal') {
       targetHash = '#portal';
+    } else if (currentPage === 'privacy') {
+      targetHash = '#privacy';
+    } else if (currentPage === 'terms') {
+      targetHash = '#terms';
     }
 
     if (window.location.hash !== targetHash) {
@@ -166,7 +176,7 @@ export default function App() {
   }, [currentPage, activeCategory, selectedProductForDetail]);
 
   // Scroll to top helper on switches
-  const navigateToPage = (page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail') => {
+  const navigateToPage = (page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail' | 'privacy' | 'terms') => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -726,6 +736,16 @@ export default function App() {
         {/* PORTAL & ADMIN WORKSPACE VIEW */}
         {currentPage === 'portal' && (
           <Portal onAddCustomProduct={handleAddCustomProduct} />
+        )}
+
+        {/* PRIVACY POLICY VIEW */}
+        {currentPage === 'privacy' && (
+          <PrivacyPolicy />
+        )}
+
+        {/* TERMS OF SERVICE VIEW */}
+        {currentPage === 'terms' && (
+          <TermsOfService />
         )}
 
       </main>
