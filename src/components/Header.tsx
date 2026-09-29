@@ -5,9 +5,9 @@ import { CategoryKey } from '../types';
 import { CATEGORIES } from '../data';
 
 interface HeaderProps {
-  currentPage: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail';
+  currentPage: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail' | 'privacy' | 'terms';
   activeCategory: CategoryKey | null;
-  onPageChange: (page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail') => void;
+  onPageChange: (page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail' | 'privacy' | 'terms') => void;
   onCategorySelect: (category: CategoryKey | null) => void;
   onRequestQuote: () => void;
   cartItemsCount?: number;
@@ -50,7 +50,7 @@ export default function Header({
     setIsMobileMenuOpen(false);
   };
 
-  const navigateToPage = (page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail') => {
+  const navigateToPage = (page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail' | 'privacy' | 'terms') => {
     onPageChange(page);
     if (page !== 'products') {
       onCategorySelect(null);

@@ -1,7 +1,7 @@
 import { Mail, Phone, Clock, MapPin } from 'lucide-react';
 
 interface FooterProps {
-  onPageChange: (page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail') => void;
+  onPageChange: (page: 'home' | 'products' | 'about' | 'contact' | 'portal' | 'product-detail' | 'privacy' | 'terms') => void;
   onRequestQuote: () => void;
 }
 
@@ -148,6 +148,21 @@ export default function Footer({ onPageChange, onRequestQuote }: FooterProps) {
             <span className="font-bold text-[#2c8fa0]">NORDIC GROUP DENTAL</span>
             <span>•</span>
             <span>Clinical excellence from Dubai to Mogadishu</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => onPageChange('privacy')}
+              className="hover:text-[#2c8fa0] hover:underline underline-offset-4 cursor-pointer transition-colors"
+            >
+              Privacy Policy
+            </button>
+            <span>•</span>
+            <button
+              onClick={() => onPageChange('terms')}
+              className="hover:text-[#2c8fa0] hover:underline underline-offset-4 cursor-pointer transition-colors"
+            >
+              Terms of Service
+            </button>
           </div>
           <p>
             © {currentYear} Nordic Group. All rights reserved. Certified Medical Importer.
