@@ -48,7 +48,13 @@ export async function POST(request: Request): Promise<Response> {
   const anonKey = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !anonKey || !serviceRoleKey) {
-    console.error('quote-request: missing Supabase URL, publishable key or SUPABASE_SERVICE_ROLE_KEY');
+    // Log only the names of missing vars, never their values.
+    const missing = [
+      !url && 'VITE_SUPABASE_URL',
+      !anonKey && 'VITE_SUPABASE_PUBLISHABLE_KEY',
+      !serviceRoleKey && 'SUPABASE_SERVICE_ROLE_KEY',
+    ].filter(Boolean);
+    console.error(`quote-request: missing env vars: ${missing.join(', ')}`);
     return json(500, { ok: false, error: 'Quote requests are not configured on the server.' });
   }
 
