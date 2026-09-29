@@ -1,5 +1,5 @@
 export default function PrivacyPolicy() {
-  const lastUpdated = 'September 26, 2026';
+  const lastUpdated = 'September 29, 2026';
 
   return (
     <div id="privacy-policy-page" className="bg-white">
@@ -68,7 +68,44 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-[#1a3a42] mb-2">5. Data retention</h2>
+            <h2 className="text-lg font-bold text-[#1a3a42] mb-2">5. Information stored in your browser</h2>
+            <p>
+              Our website uses your browser's local storage (a small storage area in your
+              own browser, similar to cookies) to make the site work. This information stays
+              on your device. It is not sent to our servers, and we do not use it for
+              advertising or to track you across other websites. We store:
+            </p>
+            <ul className="list-disc pl-5 space-y-1.5 mt-2">
+              <li>
+                <strong>Your cart:</strong> the products and quantities you add, so your cart
+                is still there when you come back.
+              </li>
+              <li>
+                <strong>A copy of your quote and contact requests:</strong> the name, clinic
+                name, phone number, email address, message, and product list you enter when
+                you send a request. The request itself only reaches us when you send it via
+                WhatsApp or email.
+              </li>
+              <li>
+                <strong>Product catalog data:</strong> a saved copy of the product list, so
+                pages load consistently.
+              </li>
+            </ul>
+            <p className="mt-2">
+              Our sign-in provider, Clerk, also uses cookies and similar storage to keep you
+              signed in. These are necessary for your account to work.
+            </p>
+            <p className="mt-2">
+              This information stays in your browser until you remove it. You can delete it
+              at any time by clearing your browser's site data (often called "cookies and
+              site data") for nordicgr.com. Clearing it will empty your cart and sign you
+              out. If you use a shared or public computer, we recommend clearing this data
+              when you are finished.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-[#1a3a42] mb-2">6. Data retention</h2>
             <p>
               We retain account and quote request information for as long as necessary to
               provide our services and maintain business records, or until you ask us to
@@ -77,7 +114,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-[#1a3a42] mb-2">6. Your rights</h2>
+            <h2 className="text-lg font-bold text-[#1a3a42] mb-2">7. Your rights</h2>
             <p>
               You can ask us to access, correct, or delete the personal information we
               hold about you at any time by contacting us using the details below.
@@ -85,7 +122,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-[#1a3a42] mb-2">7. Contact us</h2>
+            <h2 className="text-lg font-bold text-[#1a3a42] mb-2">8. Contact us</h2>
             <p>
               If you have questions about this Privacy Policy or how your information is
               handled, contact us at{' '}
