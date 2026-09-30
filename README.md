@@ -27,3 +27,8 @@ Signed-in users are saved to `quote_requests`, guests to `guest_quote_requests`.
 Set `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY` and `SUPABASE_SERVICE_ROLE_KEY`
 (secret, no `VITE_` prefix) in Vercel (Production and Preview) as well as in `.env.local`.
 Create the tables by running `supabase/quote_requests.sql` in the Supabase SQL Editor.
+
+After saving, the server emails the request to the team (`QUOTE_TEAM_EMAIL`, default
+info@nordicgr.com) and a confirmation to the customer, through Resend. Set `RESEND_API_KEY`
+and `QUOTE_EMAIL_FROM` (an address on a domain verified in Resend) in Vercel. Without them,
+requests are still saved but no emails are sent.

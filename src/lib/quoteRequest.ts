@@ -11,7 +11,7 @@ export interface QuoteRequestPayload {
   name: string;
   company: string;
   phone: string;
-  email?: string;
+  email: string;
   notes?: string;
   items: QuoteItem[];
   // Honeypot: hidden from people, bots tend to fill it in. Must be empty.
@@ -22,7 +22,7 @@ export interface ValidQuoteRequest {
   name: string;
   company: string;
   phone: string;
-  email: string | null;
+  email: string;
   notes: string | null;
   items: QuoteItem[];
 }
@@ -74,7 +74,7 @@ export function validateQuoteRequest(input: unknown): ValidationResult {
   }
 
   const email = text(body.email);
-  if (email && !isValidEmail(email)) {
+  if (!isValidEmail(email)) {
     return { ok: false, error: 'Please enter a valid email address.' };
   }
 
@@ -118,7 +118,7 @@ export function validateQuoteRequest(input: unknown): ValidationResult {
       name,
       company,
       phone,
-      email: email || null,
+      email,
       notes: notes || null,
       items: [...merged.values()],
     },

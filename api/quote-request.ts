@@ -8,6 +8,10 @@
 //   SUPABASE_SERVICE_ROLE_KEY - secret/service role key, server-only, NEVER prefix with VITE_
 import { createClient } from '@supabase/supabase-js';
 import { validateQuoteRequest } from '../src/lib/quoteRequest.js';
+import { PRODUCTS } from '../src/data.js';
+import { sendQuoteEmails } from './_lib/sendQuoteEmails.js';
+
+const CATALOG = new Map(PRODUCTS.map((product) => [product.id, product.name]));
 
 const MAX_BODY_BYTES = 50_000;
 
@@ -62,6 +66,16 @@ export async function POST(request: Request): Promise<Response> {
   const clerkToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7).trim() : '';
   const row = result.data;
 
+  // Use product names from our catalog, not from the browser: they end up in an
+  // email sent to an address typed into a public form.
+  for (const item of row.items) {
+    const catalogName = CATALOG.get(item.productId);
+    if (!catalogName) {
+      return json(400, { ok: false, error: 'One of the products in your cart is no longer available. Please remove it and try again.' });
+    }
+    item.name = catalogName;
+  }
+
   // Signed in: insert as the user. Supabase verifies the Clerk session token
   // (third-party auth) and fills user_id from auth.jwt()->>'sub'.
   // Guest: insert with the service role, which bypasses RLS.
@@ -86,5 +100,7 @@ export async function POST(request: Request): Promise<Response> {
     return json(502, { ok: false, error: 'Could not save your request. Please try again.' });
   }
 
-  return json(201, { ok: true });
+  // Awaited: Vercel may stop the function once the response is sent.
+  const emailed = await sendQuoteEmails(row, clerkToken ? 'signed-in' : 'guest');
+  return json(201, { ok: true, emailed });
 }

@@ -1,6 +1,8 @@
 import type { QuoteRequestPayload } from './quoteRequest';
 
-export type SubmitResult = { ok: true } | { ok: false; error: string };
+export type SubmitResult =
+  | { ok: true; emailed: { team: boolean; customer: boolean } }
+  | { ok: false; error: string };
 
 // Sends a quote request to api/quote-request.ts. When the user is signed in,
 // their Clerk session token goes along so the server saves it under their account.
@@ -20,11 +22,14 @@ export async function submitQuoteRequest(
       method: 'POST',
       headers,
       body: JSON.stringify(payload),
-      keepalive: true,
     });
 
-    const data = (await res.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
-    if (res.ok && data?.ok) return { ok: true };
+    const data = (await res.json().catch(() => null)) as
+      | { ok?: boolean; error?: string; emailed?: { team: boolean; customer: boolean } }
+      | null;
+    if (res.ok && data?.ok) {
+      return { ok: true, emailed: data.emailed ?? { team: false, customer: false } };
+    }
     return { ok: false, error: data?.error || `Could not save your request (error ${res.status}).` };
   } catch {
     return { ok: false, error: 'Network error. Check your connection and try again.' };

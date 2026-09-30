@@ -1,6 +1,6 @@
 import { useState, FormEvent } from 'react';
-import { X, Mail, MessageSquare, Send, CheckCircle2, ShieldAlert, Loader2, AlertCircle } from 'lucide-react';
-import { useAuth } from '@clerk/react';
+import { X, Send, CheckCircle2, ShieldAlert, Loader2, AlertCircle } from 'lucide-react';
+import { useAuth, useUser } from '@clerk/react';
 import { Product } from '../types';
 import { submitQuoteRequest } from '../lib/submitQuoteRequest';
 import { isValidEmail } from '../lib/quoteRequest';
@@ -34,10 +34,16 @@ export default function ContactModal({ selectedProduct, cartItems, onClose, onCl
 
   const [submitted, setSubmitted] = useState(false);
   const [website, setWebsite] = useState(''); // honeypot, stays empty for real people
-  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
-  const [saveError, setSaveError] = useState('');
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState('');
+  const [confirmationSent, setConfirmationSent] = useState(false);
+  const [sentTo, setSentTo] = useState('');
 
   const { isSignedIn, getToken } = useAuth();
+  const { user } = useUser();
+  // Signed-in users get the confirmation at their account email; the field is locked.
+  const accountEmail = isSignedIn ? user?.primaryEmailAddress?.emailAddress ?? '' : '';
+  const effectiveEmail = accountEmail || email;
 
   // Products this request is about: the cart, or the single product it was opened for.
   const quoteItems = cartItems && cartItems.length > 0
@@ -45,25 +51,48 @@ export default function ContactModal({ selectedProduct, cartItems, onClose, onCl
     : selectedProduct
       ? [{ productId: selectedProduct.id, name: selectedProduct.name, quantity: 1 }]
       : [];
+  const hasItems = quoteItems.length > 0;
 
-  // Email is only required for the Email button, but if typed it must be valid.
-  const emailEntered = email.trim() !== '';
-  const emailValid = isValidEmail(email);
-  const canSend = name.trim() !== '' && clinicName.trim() !== '' && phone.trim() !== '' && (!emailEntered || emailValid);
-  const canSendEmail = canSend && emailValid;
+  const emailEntered = effectiveEmail.trim() !== '';
+  const emailValid = isValidEmail(effectiveEmail);
+  const canSend = hasItems && name.trim() !== '' && clinicName.trim() !== '' && phone.trim() !== '' && emailValid;
 
-  // Save quote requests (requests with products) to the database. The cart is
-  // cleared only once it is saved, so a failed save can be retried.
-  const saveRequest = async () => {
-    if (quoteItems.length === 0) return;
-    setSaveStatus('saving');
-    setSaveError('');
+  // Log to local dashboard state (Admin page)
+  const logInquiryToLocalDatabase = () => {
+    const cartTextLabel = cartItems && cartItems.length > 0
+      ? `[Cart Request: ${cartItems.length} categories]`
+      : '';
+    const newInquiry = {
+      id: `INQ-${Math.floor(4000 + Math.random() * 5900)}`,
+      name: `${name} ${clinicName ? `(${clinicName})` : ''}`,
+      email: effectiveEmail,
+      phone,
+      message: `${selectedProduct ? `[Product Ref: ${selectedProduct.catalogRef}] ` : ''}${cartTextLabel ? `${cartTextLabel} ` : ''}${message}`,
+      date: new Date().toISOString().split('T')[0],
+      status: 'new' as const
+    };
+    try {
+      const existing = localStorage.getItem('nordic_inquiries');
+      const parsed = existing ? JSON.parse(existing) : [];
+      localStorage.setItem('nordic_inquiries', JSON.stringify([newInquiry, ...parsed]));
+    } catch (err) {
+      console.error('Error saving inquiry:', err);
+    }
+  };
+
+  // Save the request and send the emails (both happen on the server).
+  // On failure the form and cart are kept so the customer can try again.
+  const handleSendQuote = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!canSend || sending) return;
+    setSending(true);
+    setSendError('');
     const result = await submitQuoteRequest(
       {
         name,
         company: clinicName,
         phone,
-        email,
+        email: effectiveEmail,
         notes: `Region: ${region}\n\n${message}`,
         website,
         items: quoteItems
@@ -71,97 +100,16 @@ export default function ContactModal({ selectedProduct, cartItems, onClose, onCl
       getToken,
       !!isSignedIn
     );
+    setSending(false);
     if (result.ok === false) {
-      setSaveStatus('error');
-      setSaveError(result.error);
-    } else {
-      setSaveStatus('saved');
-      onClearCart?.();
+      setSendError(result.error);
+      return;
     }
-  };
-
-  const coreEmail = 'info@nordicgr.com';
-  const whatsappNumber = '252617453777';
-
-  const handleSendEmail = (e: FormEvent) => {
-    e.preventDefault();
-    if (!canSendEmail || saveStatus === 'saving') return;
-
-    const subject = encodeURIComponent(`Nordic Group Dental Quote Request - ${clinicName || name}`);
-    const emailBody = encodeURIComponent(`Name: ${name}
-Clinic Name: ${clinicName || 'Not Specified'}
-Email: ${email}
-Phone/WhatsApp: ${phone || 'Not Specified'}
-Region: ${region}
-
-Message:
-${message}`);
-
-    // Save to local storage for Admin tracking
-    const cartTextLabel = cartItems && cartItems.length > 0
-      ? `[Cart Request: ${cartItems.length} categories]`
-      : '';
-    const newInquiry = {
-      id: `INQ-${Math.floor(4000 + Math.random() * 5900)}`,
-      name: `${name} ${clinicName ? `(${clinicName})` : ''}`,
-      email,
-      phone: phone || 'Not specified',
-      message: `${selectedProduct ? `[Product Ref: ${selectedProduct.catalogRef}] ` : ''}${cartTextLabel ? `${cartTextLabel} ` : ''}${message}`,
-      date: new Date().toISOString().split('T')[0],
-      status: 'new' as const
-    };
-    try {
-      const existing = localStorage.getItem('nordic_inquiries');
-      const parsed = existing ? JSON.parse(existing) : [];
-      localStorage.setItem('nordic_inquiries', JSON.stringify([newInquiry, ...parsed]));
-    } catch (err) {
-      console.error('Error saving inquiry:', err);
-    }
-
-    // The app is opened before saving: browsers block window.open after an await.
-    window.open(`mailto:${coreEmail}?subject=${subject}&body=${emailBody}`, '_blank');
+    logInquiryToLocalDatabase();
+    setConfirmationSent(result.emailed.customer);
+    setSentTo(effectiveEmail.trim());
     setSubmitted(true);
-    saveRequest();
-  };
-
-  const handleSendWhatsApp = (e: FormEvent) => {
-    e.preventDefault();
-    if (!canSend || saveStatus === 'saving') return;
-
-    const text = encodeURIComponent(`*Nordic Group Dental Supply Request*
-*Name:* ${name}
-*Clinic:* ${clinicName || 'Not Specified'}
-*Country/Region:* ${region}
-*Phone/WhatsApp:* ${phone || 'Not Specified'}
-*Email:* ${email || 'Not Specified'}
-
-*Message:*
-${message}`);
-
-    // Save to local storage for Admin tracking
-    const cartTextLabel = cartItems && cartItems.length > 0
-      ? `[Cart Request: ${cartItems.length} categories]`
-      : '';
-    const newInquiry = {
-      id: `INQ-${Math.floor(4000 + Math.random() * 5900)}`,
-      name: `${name} ${clinicName ? `(${clinicName})` : ''}`,
-      email: email || 'not.specified@clinic.com',
-      phone: phone || 'Not specified',
-      message: `${selectedProduct ? `[Product Ref: ${selectedProduct.catalogRef}] ` : ''}${cartTextLabel ? `${cartTextLabel} ` : ''}${message}`,
-      date: new Date().toISOString().split('T')[0],
-      status: 'new' as const
-    };
-    try {
-      const existing = localStorage.getItem('nordic_inquiries');
-      const parsed = existing ? JSON.parse(existing) : [];
-      localStorage.setItem('nordic_inquiries', JSON.stringify([newInquiry, ...parsed]));
-    } catch (err) {
-      console.error('Error saving inquiry:', err);
-    }
-
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
-    setSubmitted(true);
-    saveRequest();
+    onClearCart?.();
   };
 
   return (
@@ -190,37 +138,24 @@ ${message}`);
             <div className="w-16 h-16 rounded-full bg-[#eff7f8] text-[#41808F] flex items-center justify-center border border-[#41808F]/20">
               <CheckCircle2 className="w-10 h-10" />
             </div>
-            <h3 className="text-xl font-bold text-[#191c1d]">Thank You!</h3>
+            <h3 className="text-xl font-bold text-[#191c1d]">Quote Request Sent!</h3>
             <p className="text-sm text-[#40484a] leading-relaxed max-w-sm">
-              Your quotation draft has been compiled. If your mail client or WhatsApp did not open automatically, you can also send email to <strong className="text-primary">info@nordicgr.com</strong> or message us on WhatsApp at <strong className="text-primary">+252 61 745 3777</strong>.
+              Thank you. We have received your request and will reply with prices, availability and delivery details.
             </p>
-            {saveStatus === 'saving' && (
-              <p className="flex items-center gap-2 text-xs font-semibold text-[#41808F]">
-                <Loader2 className="w-4 h-4 animate-spin" />
-                Saving your request…
-              </p>
-            )}
-            {saveStatus === 'saved' && (
+            {confirmationSent ? (
               <p className="flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg p-2.5">
-                <CheckCircle2 className="w-4 h-4" />
-                Your request has been saved. We will get back to you soon.
+                <CheckCircle2 className="w-4 h-4 shrink-0" />
+                <span>A confirmation was emailed to <strong>{sentTo}</strong>.</span>
+              </p>
+            ) : (
+              <p className="flex items-start gap-2 text-left text-xs font-semibold text-amber-800 bg-amber-50 border border-amber-200 rounded-lg p-2.5">
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                <span>We saved your request, but couldn't send the confirmation email. We will still contact you.</span>
               </p>
             )}
-            {saveStatus === 'error' && (
-              <div className="text-left text-xs bg-red-50 border border-red-200 rounded-lg p-3 space-y-2 w-full">
-                <p className="flex items-start gap-2 font-semibold text-red-700">
-                  <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-                  <span>{saveError} Your WhatsApp/email message can still reach us.</span>
-                </p>
-                <button
-                  type="button"
-                  onClick={saveRequest}
-                  className="px-3 py-1.5 bg-white border border-red-300 text-red-700 rounded-md font-bold hover:bg-red-100 cursor-pointer"
-                >
-                  Retry saving
-                </button>
-              </div>
-            )}
+            <p className="text-xs text-[#40484a]">
+              Questions? WhatsApp <strong className="text-primary">+252 61 745 3777</strong> or email <strong className="text-primary">info@nordicgr.com</strong>.
+            </p>
             <button
               onClick={() => {
                 setSubmitted(false);
@@ -232,7 +167,7 @@ ${message}`);
             </button>
           </div>
         ) : (
-          <form className="p-6 space-y-4">
+          <form onSubmit={handleSendQuote} noValidate className="p-6 space-y-4">
             {/* Context Product Indicator */}
             {selectedProduct ? (
               <div className="bg-[#eff7f8] rounded-xl p-3 border border-[#41808F]/20 flex justify-between items-center gap-3">
@@ -300,17 +235,24 @@ ${message}`);
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-[#40484a] uppercase tracking-wider mb-1">Email Address <span className="normal-case font-semibold text-gray-400">(needed for Email)</span></label>
+                <label className="block text-xs font-bold text-[#40484a] uppercase tracking-wider mb-1">
+                  Email Address *
+                  {accountEmail && <span className="normal-case font-semibold text-gray-400"> (from your account)</span>}
+                </label>
                 <input
                   type="email"
-                  value={email}
+                  required
+                  value={effectiveEmail}
                   onChange={(e) => setEmail(e.target.value)}
+                  readOnly={!!accountEmail}
                   placeholder="doctor@clinic.com"
                   aria-invalid={emailEntered && !emailValid}
                   className={`w-full px-3.5 py-2 rounded-lg border text-sm focus:outline-none focus:ring-1 ${
-                    emailEntered && !emailValid
-                      ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
-                      : 'border-[#bfc8ca]/40 focus:border-[#41808F] focus:ring-[#41808F]'
+                    accountEmail
+                      ? 'bg-slate-100 text-slate-600 border-[#bfc8ca]/40 cursor-not-allowed'
+                      : emailEntered && !emailValid
+                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
+                        : 'border-[#bfc8ca]/40 focus:border-[#41808F] focus:ring-[#41808F]'
                   }`}
                 />
                 {emailEntered && !emailValid && (
@@ -377,42 +319,46 @@ ${message}`);
             <div className="h-px bg-[#bfc8ca]/25 my-2" />
 
             <div className="space-y-2.5">
-              <div className="flex flex-col">
-                <span className="block text-xs font-bold text-[#1a5a5c] uppercase tracking-widest">Select Senders Channel *</span>
-                <p className="text-[10.5px] text-gray-500 mt-1 leading-normal">
-                  You can direct this requisition through either channel. Clicking <strong className="text-[#25D366]">WhatsApp</strong> opens a pre-composed message directly on your phone/desktop, while <strong className="text-[#41808F]">Email</strong> opens your default mail client with the fully drafted list addressed to our administration.
+              {!hasItems && (
+                <p className="text-xs text-[#40484a] bg-[#eff7f8] border border-[#41808F]/20 rounded-lg p-3 leading-relaxed">
+                  Your cart is empty. Add products to your cart to request a quote. For general questions, message us on WhatsApp at <strong>+252 61 745 3777</strong> or email <strong>info@nordicgr.com</strong>.
                 </p>
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <button
-                  type="button"
-                  onClick={handleSendWhatsApp}
-                  disabled={!canSend}
-                  className={`w-full py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 border ${
-                    canSend 
-                      ? 'bg-[#25D366] hover:bg-[#20ba59] text-white border-transparent cursor-pointer shadow-sm hover:-translate-y-0.5' 
-                      : 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
-                  }`}
-                >
-                  <MessageSquare className="w-4.5 h-4.5" />
-                  Send via WhatsApp
-                </button>
+              )}
 
-                <button
-                  type="button"
-                  onClick={handleSendEmail}
-                  disabled={!canSendEmail}
-                  className={`w-full py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 border ${
-                    canSendEmail 
-                      ? 'bg-[#41808F] hover:bg-[#316470] text-white border-transparent cursor-pointer shadow-sm hover:-translate-y-0.5' 
-                      : 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
-                  }`}
-                >
-                  <Mail className="w-4.5 h-4.5" />
-                  Send via Email
-                </button>
-              </div>
+              {sendError && (
+                <p role="alert" className="flex items-start gap-2 text-xs font-semibold text-red-700 bg-red-50 border border-red-200 rounded-lg p-3">
+                  <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                  <span>{sendError}</span>
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={!canSend || sending}
+                className={`w-full py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 border ${
+                  canSend && !sending
+                    ? 'bg-[#41808F] hover:bg-[#316470] text-white border-transparent cursor-pointer shadow-sm'
+                    : 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
+                }`}
+              >
+                {sending ? (
+                  <>
+                    <Loader2 className="w-4.5 h-4.5 animate-spin" />
+                    Sending…
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4.5 h-4.5" />
+                    {sendError ? 'Try Again' : 'Send Quote Request'}
+                  </>
+                )}
+              </button>
+
+              {hasItems && !canSend && !sending && (
+                <p className="text-[11px] text-amber-700 text-center font-semibold">
+                  Please fill in your name, clinic name, phone number and a valid email.
+                </p>
+              )}
             </div>
           </form>
         )}
