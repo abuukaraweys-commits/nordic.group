@@ -1,5 +1,8 @@
 import { useState, FormEvent } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, MessageSquare, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, MessageSquare, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
+import { useAuth, useUser } from '@clerk/react';
+import { isValidEmail } from '../lib/quoteRequest';
+import { submitContactMessage } from '../lib/submitContactMessage';
 
 export default function ContactPage() {
   const [name, setName] = useState('');
@@ -7,27 +10,42 @@ export default function ContactPage() {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [website, setWebsite] = useState(''); // honeypot, stays empty for real people
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState('');
+  const [confirmationSent, setConfirmationSent] = useState(false);
+  const [sentTo, setSentTo] = useState('');
 
-  const coreEmail = 'info@nordicgr.com';
+  const { isSignedIn } = useAuth();
+  const { user } = useUser();
+  // Signed-in users get the confirmation at their account email; the field is locked.
+  const accountEmail = isSignedIn ? user?.primaryEmailAddress?.emailAddress ?? '' : '';
+  const effectiveEmail = accountEmail || email;
+  const emailEntered = effectiveEmail.trim() !== '';
+  const emailValid = isValidEmail(effectiveEmail);
+  const canSendEmail = name.trim() !== '' && emailValid && message.trim() !== '';
+
   const whatsappNumber = '252617453777';
 
-  const handleSendEmail = (e: FormEvent) => {
+  // Sends the message by email through the server (nothing is stored).
+  // On failure the form is kept so the customer can try again.
+  const handleSendEmail = async (e: FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !message) return;
-
-    const subject = encodeURIComponent(`Nordic Group Web Contact - ${name}`);
-    const emailBody = encodeURIComponent(`Name: ${name}
-Email: ${email}
-Phone: ${phone || 'Not specified'}
-
-Message:
-${message}`);
+    if (!canSendEmail || sending) return;
+    setSending(true);
+    setSendError('');
+    const result = await submitContactMessage({ name, email: effectiveEmail, phone, message, website });
+    setSending(false);
+    if (result.ok === false) {
+      setSendError(result.error);
+      return;
+    }
 
     // Save to local storage for Admin tracking
     const newInquiry = {
       id: `INQ-${Math.floor(4000 + Math.random() * 5900)}`,
       name,
-      email,
+      email: effectiveEmail,
       phone: phone || 'Not specified',
       message,
       date: new Date().toISOString().split('T')[0],
@@ -41,7 +59,8 @@ ${message}`);
       console.error('Error saving inquiry:', err);
     }
 
-    window.open(`mailto:${coreEmail}?subject=${subject}&body=${emailBody}`, '_blank');
+    setConfirmationSent(result.confirmation);
+    setSentTo(effectiveEmail.trim());
     setSubmitted(true);
   };
 
@@ -50,7 +69,7 @@ ${message}`);
 
     const text = encodeURIComponent(`*Nordic Group Dental Web Contact*
 *Name:* ${name}
-*Email:* ${email || 'Not specified'}
+*Email:* ${effectiveEmail || 'Not specified'}
 *Phone:* ${phone || 'Not specified'}
 
 *Message:*
@@ -60,7 +79,7 @@ ${message}`);
     const newInquiry = {
       id: `INQ-${Math.floor(4000 + Math.random() * 5900)}`,
       name,
-      email: email || 'not.specified@clinic.com',
+      email: effectiveEmail || 'not.specified@clinic.com',
       phone: phone || 'Not specified',
       message,
       date: new Date().toISOString().split('T')[0],
@@ -112,6 +131,17 @@ ${message}`);
                 <p className="text-xs text-[#3a5c63] leading-relaxed max-w-md">
                   Our team will coordinate with our office in Dubai and respond to you as soon as possible. You may also email us directly at <strong>info@nordicgr.com</strong>.
                 </p>
+                {sentTo && (confirmationSent ? (
+                  <p className="flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg p-2.5">
+                    <CheckCircle className="w-4 h-4 shrink-0" />
+                    <span>A confirmation was emailed to <strong>{sentTo}</strong>.</span>
+                  </p>
+                ) : (
+                  <p className="flex items-start gap-2 text-left text-xs font-semibold text-amber-800 bg-amber-50 border border-amber-200 rounded-lg p-2.5 max-w-md">
+                    <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                    <span>We received your message, but couldn't send the confirmation email. We will still contact you shortly.</span>
+                  </p>
+                ))}
                 <button
                   onClick={() => {
                     setSubmitted(false);
@@ -119,6 +149,9 @@ ${message}`);
                     setEmail('');
                     setPhone('');
                     setMessage('');
+                    setWebsite('');
+                    setSendError('');
+                    setSentTo('');
                   }}
                   className="mt-4 px-5 py-2.5 bg-[#2c8fa0] hover:bg-[#1a6e7e] text-white rounded-[6px] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
                 >
@@ -126,7 +159,7 @@ ${message}`);
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSendEmail} className="space-y-5">
+              <form onSubmit={handleSendEmail} noValidate className="space-y-5">
                 <div>
                   <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                     Name *
@@ -145,15 +178,27 @@ ${message}`);
                   <div>
                     <label className="block text-xs font-bold text-[#3a5c63] uppercase tracking-wider mb-1.5">
                       Email Address *
+                      {accountEmail && <span className="normal-case font-semibold text-gray-400"> (from your account)</span>}
                     </label>
                     <input
                       type="email"
                       required
-                      value={email}
+                      value={effectiveEmail}
                       onChange={(e) => setEmail(e.target.value)}
+                      readOnly={!!accountEmail}
                       placeholder="name@clinic.com"
-                      className="w-full px-4 py-2.5 rounded-lg border border-[#bfc8ca]/40 text-sm focus:outline-none focus:border-[#2c8fa0] focus:ring-1 focus:ring-[#2c8fa0]"
+                      aria-invalid={emailEntered && !emailValid}
+                      className={`w-full px-4 py-2.5 rounded-lg border text-sm focus:outline-none focus:ring-1 ${
+                        accountEmail
+                          ? 'bg-slate-100 text-slate-600 border-[#bfc8ca]/40 cursor-not-allowed'
+                          : emailEntered && !emailValid
+                            ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
+                            : 'border-[#bfc8ca]/40 focus:border-[#2c8fa0] focus:ring-[#2c8fa0]'
+                      }`}
                     />
+                    {emailEntered && !emailValid && (
+                      <p className="text-[11px] text-red-600 font-semibold mt-1">Please enter a valid email address.</p>
+                    )}
                   </div>
 
                   <div>
@@ -184,15 +229,47 @@ ${message}`);
                   />
                 </div>
 
+                {/* Honeypot: hidden from people, bots fill it in */}
+                <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+                  <label>
+                    Website
+                    <input
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                    />
+                  </label>
+                </div>
+
+                {sendError && (
+                  <p role="alert" className="flex items-start gap-2 text-xs font-semibold text-red-700 bg-red-50 border border-red-200 rounded-lg p-3">
+                    <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                    <span>{sendError}</span>
+                  </p>
+                )}
+
                 <div className="h-px bg-[#bfc8ca]/25 my-4" />
 
                 <div className="flex flex-col sm:flex-row gap-3">
                   <button
                     type="submit"
-                    className="flex-1 py-3 bg-[#2c8fa0] hover:bg-[#1a6e7e] text-white rounded-[6px] text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs hover:-translate-y-0.1"
+                    disabled={!canSendEmail || sending}
+                    className="flex-1 py-3 bg-[#2c8fa0] hover:bg-[#1a6e7e] disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed text-white rounded-[6px] text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs hover:-translate-y-0.1"
                   >
-                    <Send className="w-4 h-4" />
-                    <span>Send via Email</span>
+                    {sending ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Sending…</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        <span>{sendError ? 'Try Again' : 'Send via Email'}</span>
+                      </>
+                    )}
                   </button>
                   <button
                     type="button"
