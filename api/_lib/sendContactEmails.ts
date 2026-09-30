@@ -35,7 +35,7 @@ function customerEmailText(msg: ValidContactMessage): string {
     '',
     '----------------------------------------',
     '',
-    `Salaan ${msg.name},`,
+    `Asc ${msg.name},`,
     '',
     'Waad ku mahadsan tahay inaad la soo xiriirtay Nordic Group. Waan helnay fariintaada, waxaana kula soo xiriiri doonnaa dhawaan.',
     '',
