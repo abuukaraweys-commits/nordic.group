@@ -1,5 +1,5 @@
 export default function PrivacyPolicy() {
-  const lastUpdated = 'September 29, 2026';
+  const lastUpdated = 'September 30, 2026';
 
   return (
     <div id="privacy-policy-page" className="bg-white">
@@ -29,9 +29,10 @@ export default function PrivacyPolicy() {
               <li>
                 <strong>Quote request information:</strong> when you submit a quote request
                 through our product catalog, we collect your name, clinic name, phone
-                number, email address (if you give one), any message, and the list of
-                products you are requesting a quote for. We store this in our database. If
-                you are signed in, the request is linked to your account.
+                number, email address, any message, and the list of products you are
+                requesting a quote for. We store this in our database and email you a
+                confirmation. If you are signed in, the request is linked to your account and
+                the confirmation goes to your account email.
               </li>
               <li>
                 <strong>Contact form information:</strong> if you reach out through our
@@ -45,7 +46,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-lg font-bold text-[#1a3a42] mb-2">3. How we use your information</h2>
             <ul className="list-disc pl-5 space-y-1.5">
               <li>To identify you as a returning customer and manage your account.</li>
-              <li>To prepare and send you price quotes for the products you request, via WhatsApp or email.</li>
+              <li>To confirm your quote request by email, and to prepare and send you price quotes for the products you request, via WhatsApp or email.</li>
               <li>To respond to inquiries submitted through our contact form.</li>
               <li>To understand which products our customers are most interested in, so we can improve our catalog and service.</li>
             </ul>
@@ -63,7 +64,7 @@ export default function PrivacyPolicy() {
               <li><strong>Clerk</strong> — for account creation and sign-in (including optional Google sign-in).</li>
               <li><strong>Vercel</strong> — for hosting our website.</li>
               <li><strong>Supabase</strong> — for storing the quote requests you send us.</li>
-              <li><strong>WhatsApp</strong> (Meta) and your email provider — when you choose to send your request through them.</li>
+              <li><strong>Resend</strong> — for sending emails about your quote request: a notification to our team and a confirmation to you.</li>
             </ul>
             <p className="mt-2">
               These providers process data on our behalf and are bound by their own

@@ -1,18 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, FormEvent } from 'react';
 import { 
   X, 
   Trash2, 
   Plus, 
   Minus, 
   ShoppingBag, 
-  Mail, 
-  MessageSquare, 
   CheckCircle2, 
   FileCheck,
   Loader2,
-  AlertCircle
+  AlertCircle,
+  Send
 } from 'lucide-react';
-import { useAuth } from '@clerk/react';
+import { useAuth, useUser } from '@clerk/react';
 import { Product, resolveImageUrl } from '../types';
 import { submitQuoteRequest } from '../lib/submitQuoteRequest';
 import { isValidEmail } from '../lib/quoteRequest';
@@ -40,9 +39,9 @@ export default function CartDrawer({
   onRemoveItem,
   onClearCart
 }: CartDrawerProps) {
-  // Constants for messaging channels as specified by customer
-  const RECIPIENT_EMAIL = 'info@nordicgr.com';
-  const RECIPIENT_WHATSAPP = '+252617453777'; // Somalia recipient contact number
+  // Shown on the success screen as a fallback way to reach us
+  const CONTACT_EMAIL = 'info@nordicgr.com';
+  const CONTACT_WHATSAPP = '+252 61 745 3777';
 
   const [showQuoteForm, setShowQuoteForm] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -51,10 +50,16 @@ export default function CartDrawer({
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [website, setWebsite] = useState(''); // honeypot, stays empty for real people
-  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
-  const [saveError, setSaveError] = useState('');
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState('');
+  const [confirmationSent, setConfirmationSent] = useState(false);
+  const [sentTo, setSentTo] = useState('');
 
   const { isSignedIn, getToken } = useAuth();
+  const { user } = useUser();
+  // Signed-in users get the confirmation at their account email; the field is locked.
+  const accountEmail = isSignedIn ? user?.primaryEmailAddress?.emailAddress ?? '' : '';
+  const effectiveEmail = accountEmail || email;
 
   const formSectionRef = useRef<HTMLDivElement>(null);
 
@@ -63,8 +68,7 @@ export default function CartDrawer({
     if (isOpen) {
       setShowQuoteForm(false);
       setSuccess(false);
-      setSaveStatus('idle');
-      setSaveError('');
+      setSendError('');
     }
   }, [isOpen]);
 
@@ -81,14 +85,7 @@ export default function CartDrawer({
 
   const totalItemsCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
-  // Format cart list items for export
-  const getProductsSummaryString = () => {
-    return cartItems
-      .map((item, idx) => `• ${item.product.name} (Qty: ${item.quantity}, Ref: ${item.product.catalogRef})`)
-      .join('\n');
-  };
-
-  // Log quotation activity to local dashboard state
+  // Log quotation activity to local dashboard state (Admin page)
   const logInquiryToLocalDatabase = () => {
     const productsString = cartItems
       .map(item => `${item.product.name} (x${item.quantity})`)
@@ -97,7 +94,7 @@ export default function CartDrawer({
     const newInquiry = {
       id: `INQ-${Math.floor(4000 + Math.random() * 5900)}`,
       name: `${fullName} ${clinicName ? `(${clinicName})` : ''}`,
-      email: 'not.provided@clinic.com',
+      email: effectiveEmail,
       phone: phoneNumber,
       message: `[Cart Request] Sourced Items: ${productsString}`,
       date: new Date().toISOString().split('T')[0],
@@ -113,17 +110,24 @@ export default function CartDrawer({
     }
   };
 
-  // Save the request to the database. The cart is cleared only once it is saved,
-  // so a failed save can be retried.
-  const saveRequest = async () => {
-    setSaveStatus('saving');
-    setSaveError('');
+  const emailEntered = effectiveEmail.trim() !== '';
+  const emailValid = isValidEmail(effectiveEmail);
+  const requiredFilled = fullName.trim() !== '' && clinicName.trim() !== '' && phoneNumber.trim() !== '';
+  const isFormValid = requiredFilled && emailValid;
+
+  // Save the request and send the emails (both happen on the server).
+  // On failure the form and cart are kept so the customer can try again.
+  const handleSendQuote = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!isFormValid || sending) return;
+    setSending(true);
+    setSendError('');
     const result = await submitQuoteRequest(
       {
         name: fullName,
         company: clinicName,
         phone: phoneNumber,
-        email,
+        email: effectiveEmail,
         website,
         items: cartItems.map((item) => ({
           productId: item.product.id,
@@ -134,69 +138,19 @@ export default function CartDrawer({
       getToken,
       !!isSignedIn
     );
+    setSending(false);
     if (result.ok === false) {
-      setSaveStatus('error');
-      setSaveError(result.error);
-    } else {
-      setSaveStatus('saved');
-      onClearCart?.();
+      setSendError(result.error);
+      return;
     }
-  };
-
-  // Button 1: Send via WhatsApp
-  // The app is opened before saving: browsers block window.open after an await.
-  const handleSendWhatsApp = () => {
-    if (!isFormValid || saveStatus === 'saving') return;
-    
     logInquiryToLocalDatabase();
-
-    const productsLines = getProductsSummaryString();
-    const message = `New Quote Request:
-Customer Name: ${fullName.trim()}
-Clinic Name: ${clinicName.trim() || 'Not Specified'}
-Phone Number: ${phoneNumber.trim()}
-
-Requested Products:
-${productsLines}`;
-
-    // Strip non-numeric helper characters out of the target sender number
-    const numericWhatsApp = RECIPIENT_WHATSAPP.replace(/[^\d]/g, '');
-    const url = `https://wa.me/${numericWhatsApp}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-    
+    setConfirmationSent(result.emailed.customer);
+    setSentTo(effectiveEmail.trim());
     setSuccess(true);
-    saveRequest();
-  };
-
-  // Button 2: Send via Email
-  const handleSendEmail = () => {
-    if (!canSendEmail || saveStatus === 'saving') return;
-
-    logInquiryToLocalDatabase();
-
-    const productsLines = getProductsSummaryString();
-
-    const subject = `Clinical Quote Request - ${clinicName.trim() || fullName.trim()}`;
-    const body = `New Clinical Quote Request
-
-Customer Name: ${fullName.trim()}
-Clinic Name: ${clinicName.trim() || 'Not Specified'}
-Phone Number: ${phoneNumber.trim()}
-
-Products Requisition List:
-${productsLines}
-
-Sent via Nordic Group Dental online portal.`;
-
-    const url = `mailto:${RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = url;
-
-    setSuccess(true);
-    saveRequest();
+    onClearCart?.();
   };
 
   const handleDone = () => {
-    onClearCart?.();
     setShowQuoteForm(false);
     setSuccess(false);
     setFullName('');
@@ -204,17 +158,9 @@ Sent via Nordic Group Dental online portal.`;
     setPhoneNumber('');
     setEmail('');
     setWebsite('');
-    setSaveStatus('idle');
-    setSaveError('');
+    setSendError('');
     onClose();
   };
-
-  // Email is optional, but if something is typed it must be a valid address.
-  const emailEntered = email.trim() !== '';
-  const emailValid = isValidEmail(email);
-  const requiredFilled = fullName.trim() !== '' && clinicName.trim() !== '' && phoneNumber.trim() !== '';
-  const isFormValid = requiredFilled && (!emailEntered || emailValid);
-  const canSendEmail = requiredFilled && emailValid;
 
   return (
     <div
@@ -255,54 +201,37 @@ Sent via Nordic Group Dental online portal.`;
               <div className="w-16 h-16 bg-[#f0f8fa] border border-[#2c8fa0]/25 rounded-full flex items-center justify-center text-[#218090] mx-auto shadow-md">
                 <CheckCircle2 className="w-10 h-10 animate-bounce" />
               </div>
-              <h3 className="text-base font-extrabold text-[#1a3a42] tracking-tight">Your Requisition Dispatch Ready!</h3>
+              <h3 className="text-base font-extrabold text-[#1a3a42] tracking-tight">Quote Request Sent!</h3>
               <p className="text-xs text-[#3a5c63] max-w-sm mx-auto leading-relaxed">
-                The quotation has been compiled automatically. Click clear below to edit your list or start a new requisition session.
+                Thank you. We have received your request and will reply with prices, availability and delivery details.
               </p>
 
-              {saveStatus === 'saving' && (
-                <p className="flex items-center justify-center gap-2 text-xs font-semibold text-[#2c8fa0]">
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Saving your request…
-                </p>
-              )}
-              {saveStatus === 'saved' && (
+              {confirmationSent ? (
                 <p className="flex items-center justify-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg p-2.5">
-                  <CheckCircle2 className="w-4 h-4" />
-                  Your request has been saved. We will get back to you soon.
+                  <CheckCircle2 className="w-4 h-4 shrink-0" />
+                  <span>A confirmation was emailed to <strong>{sentTo}</strong>.</span>
+                </p>
+              ) : (
+                <p className="flex items-start gap-2 text-left text-xs font-semibold text-amber-800 bg-amber-50 border border-amber-200 rounded-lg p-2.5">
+                  <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                  <span>We saved your request, but couldn't send the confirmation email. We will still contact you.</span>
                 </p>
               )}
-              {saveStatus === 'error' && (
-                <div className="text-left text-xs bg-red-50 border border-red-200 rounded-lg p-3 space-y-2">
-                  <p className="flex items-start gap-2 font-semibold text-red-700">
-                    <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-                    <span>{saveError} Your WhatsApp/email message can still reach us.</span>
-                  </p>
-                  <button
-                    type="button"
-                    onClick={saveRequest}
-                    className="px-3 py-1.5 bg-white border border-red-300 text-red-700 rounded-md font-bold hover:bg-red-100 cursor-pointer"
-                  >
-                    Retry saving
-                  </button>
-                </div>
-              )}
-              
+
               <div className="bg-[#f0f8fa] border border-[#2c8fa0]/20 rounded-xl p-4 text-left space-y-2 mt-4">
                 <p className="text-xs text-slate-600 font-medium font-sans">
-                  👩‍💻 If your clinical browser blocks external apps, click or type to contact our logistical administrators:
+                  Questions about your request? Contact us:
                 </p>
-                <p className="text-xs text-slate-700 font-semibold">💬 WhatsApp: <strong className="font-mono text-[#2c8fa0]">{RECIPIENT_WHATSAPP}</strong></p>
-                <p className="text-xs text-slate-700 font-semibold">📧 Email: <strong className="text-[#2c8fa0]">{RECIPIENT_EMAIL}</strong></p>
+                <p className="text-xs text-slate-700 font-semibold">💬 WhatsApp: <strong className="font-mono text-[#2c8fa0]">{CONTACT_WHATSAPP}</strong></p>
+                <p className="text-xs text-slate-700 font-semibold">📧 Email: <strong className="text-[#2c8fa0]">{CONTACT_EMAIL}</strong></p>
               </div>
 
               <div className="pt-4">
                 <button
                   onClick={handleDone}
-                  disabled={saveStatus === 'saving'}
-                  className="w-full disabled:opacity-50 disabled:cursor-not-allowed py-3.5 bg-[#2c8fa0] hover:bg-[#1a6e7e] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
+                  className="w-full py-3.5 bg-[#2c8fa0] hover:bg-[#1a6e7e] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
                 >
-                  Clear Requisition & Close
+                  Close
                 </button>
               </div>
             </div>
@@ -329,7 +258,7 @@ Sent via Nordic Group Dental online portal.`;
                 /* STEP 1: RENDER CART ITEMS LIST COVERED */
                 <div className="space-y-4">
                   <div className="bg-[#f0f8fa] rounded-xl p-3.5 border border-[#2c8fa0]/15 text-xs text-[#1a3a42] font-semibold leading-relaxed">
-                    📦 Add all medical/dental supplies you need, adjust quantities, then request price quotes on WhatsApp or Email instantly with no payment needed.
+                    📦 Add all medical/dental supplies you need, adjust quantities, then send us a quote request. No payment needed.
                   </div>
 
                   {/* Render Current List Items */}
@@ -430,8 +359,8 @@ Sent via Nordic Group Dental online portal.`;
                   </div>
                 </div>
               ) : (
-                /* STEP 2: SHOW QUOTE FORM WITH SIDE-BY-SIDE BUTTONS DIRECTLY BELOW IT */
-                <div className="space-y-5 animate-in slide-in-from-right duration-300">
+                /* STEP 2: QUOTE FORM */
+                <form onSubmit={handleSendQuote} noValidate className="space-y-5 animate-in slide-in-from-right duration-300">
                   <div className="flex items-center justify-between">
                     <button
                       type="button"
@@ -444,7 +373,7 @@ Sent via Nordic Group Dental online portal.`;
                   </div>
 
                   <div className="bg-[#f0f8fa] rounded-xl p-3.5 border border-[#2c8fa0]/15 text-xs text-[#1a3a42] font-semibold leading-relaxed">
-                    📝 Enter your details below. Clicking either dispatch button will instantly launch your preferred app with a draft message of your selected components. No checkout or payment is required.
+                    📝 Enter your details below and send your request. We will reply with a quote, and you will get a confirmation by email. No checkout or payment is required.
                   </div>
 
                   {/* The Request Form */}
@@ -499,16 +428,27 @@ Sent via Nordic Group Dental online portal.`;
 
                     <div>
                       <label className="block text-[10px] font-extrabold text-[#40484a] uppercase tracking-wider mb-1.5">
-                        Email <span className="text-slate-400 normal-case font-semibold">(optional, needed for Send via Email)</span>
+                        Email <span className="text-red-500">*</span>
+                        {accountEmail && (
+                          <span className="text-slate-400 normal-case font-semibold"> (from your account)</span>
+                        )}
                       </label>
                       <input
                         type="email"
-                        value={email}
+                        required
+                        value={effectiveEmail}
                         onChange={(e) => setEmail(e.target.value)}
+                        readOnly={!!accountEmail}
                         placeholder="doctor@clinic.com"
                         aria-invalid={emailEntered && !emailValid}
-                        className={`w-full px-3 py-2 text-xs bg-white rounded-lg border text-slate-800 font-sans focus:outline-none shadow-sm transition-colors ${
-                          emailEntered && !emailValid ? 'border-red-300 focus:border-red-500' : 'border-slate-200 focus:border-[#2c8fa0]'
+                        className={`w-full px-3 py-2 text-xs rounded-lg border text-slate-800 font-sans focus:outline-none shadow-sm transition-colors ${
+                          accountEmail
+                            ? 'bg-slate-100 border-slate-200 text-slate-600 cursor-not-allowed'
+                            : emailEntered && !emailValid
+                              ? 'bg-white border-red-300 focus:border-red-500'
+                              : !emailEntered
+                                ? 'border-amber-300 focus:border-amber-500 bg-amber-50/10'
+                                : 'bg-white border-slate-200 focus:border-[#2c8fa0]'
                         }`}
                       />
                       {emailEntered && !emailValid && (
@@ -532,42 +472,35 @@ Sent via Nordic Group Dental online portal.`;
                     </div>
                   </div>
 
-                  {/* BOTH BUTTONS SIDE-BY-SIDE IMMEDIATELY BELOW THE FORM */}
                   <div className="space-y-3">
-                    <div className="grid grid-cols-2 gap-3.5">
-                      {/* Button 1: Send via WhatsApp (Green) */}
-                      <button
-                        type="button"
-                        onClick={handleSendWhatsApp}
-                        disabled={!isFormValid}
-                        className="py-3.5 px-2 bg-[#25D366] hover:bg-[#20ba59] disabled:bg-slate-100 disabled:text-slate-400 disabled:border-slate-200 text-white hover:-translate-y-0.5 disabled:-translate-y-0 transition-all text-xs font-black uppercase tracking-wider rounded-lg shadow-md disabled:shadow-none flex items-center justify-center gap-1.5 cursor-pointer disabled:cursor-not-allowed text-center border border-transparent"
-                        title={isFormValid ? "Submit Quote via WhatsApp" : "Please fill out Name, Clinic Name and Phone Number"}
-                      >
-                        <MessageSquare className="w-4 h-4 shrink-0" />
-                        <span>Send via WhatsApp</span>
-                      </button>
-
-                      {/* Button 2: Send via Email (Blue) */}
-                      <button
-                        type="button"
-                        onClick={handleSendEmail}
-                        disabled={!canSendEmail}
-                        className="py-3.5 px-2 bg-[#06B6D4] hover:bg-[#05a0bc] disabled:bg-slate-100 disabled:text-slate-400 disabled:border-slate-200 text-white hover:-translate-y-0.5 disabled:-translate-y-0 transition-all text-xs font-black uppercase tracking-wider rounded-lg shadow-md disabled:shadow-none flex items-center justify-center gap-1.5 cursor-pointer disabled:cursor-not-allowed text-center border border-transparent"
-                        title={canSendEmail ? "Submit Quote via Email" : "Please fill out Name, Clinic Name, Phone Number and a valid Email"}
-                      >
-                        <Mail className="w-4 h-4 shrink-0" />
-                        <span>Send via Email</span>
-                      </button>
-                    </div>
-
-                    {!requiredFilled && (
-                      <p className="text-[10px] text-amber-600 text-center font-bold bg-amber-50 p-2.5 border border-amber-200/50 rounded-lg animate-pulse">
-                        ⚠️ Please specify your Full Name, Clinic Name and Phone Number to enable the send channels.
+                    {sendError && (
+                      <p role="alert" className="flex items-start gap-2 text-xs font-semibold text-red-700 bg-red-50 border border-red-200 rounded-lg p-3">
+                        <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                        <span>{sendError}</span>
                       </p>
                     )}
-                    {requiredFilled && !emailEntered && (
-                      <p className="text-[10px] text-slate-500 text-center font-semibold">
-                        To use Send via Email, enter your email address above.
+
+                    <button
+                      type="submit"
+                      disabled={!isFormValid || sending}
+                      className="w-full py-3.5 px-2 bg-[#2c8fa0] hover:bg-[#1a6e7e] disabled:bg-slate-100 disabled:text-slate-400 text-white transition-all text-xs font-black uppercase tracking-wider rounded-lg shadow-md disabled:shadow-none flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+                    >
+                      {sending ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>Sending…</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4" />
+                          <span>{sendError ? 'Try Again' : 'Send Quote Request'}</span>
+                        </>
+                      )}
+                    </button>
+
+                    {!isFormValid && !sending && (
+                      <p className="text-[10px] text-amber-600 text-center font-bold bg-amber-50 p-2.5 border border-amber-200/50 rounded-lg">
+                        ⚠️ Please fill in your Full Name, Clinic Name, Phone Number and a valid Email.
                       </p>
                     )}
                   </div>
@@ -586,7 +519,7 @@ Sent via Nordic Group Dental online portal.`;
                       ))}
                     </div>
                   </div>
-                </div>
+                </form>
               )}
             </div>
           )}
