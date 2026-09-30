@@ -46,6 +46,11 @@ export function isValidEmail(value: string): boolean {
 
 const PHONE_RE = /^[+\d\s()-]{6,30}$/;
 
+export function isValidPhone(value: string): boolean {
+  const phone = value.trim();
+  return PHONE_RE.test(phone) && phone.replace(/\D/g, '').length >= 6;
+}
+
 function text(value: unknown): string {
   return typeof value === 'string' ? value.trim() : '';
 }
@@ -69,7 +74,7 @@ export function validateQuoteRequest(input: unknown): ValidationResult {
   }
 
   const phone = text(body.phone);
-  if (!PHONE_RE.test(phone) || phone.replace(/\D/g, '').length < 6) {
+  if (!isValidPhone(phone)) {
     return { ok: false, error: 'Please enter a valid phone number.' };
   }
 

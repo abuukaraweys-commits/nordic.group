@@ -37,7 +37,9 @@ export default function PrivacyPolicy() {
               <li>
                 <strong>Contact form information:</strong> if you reach out through our
                 contact form, we collect the details you provide, such as your name,
-                contact information, and message.
+                contact information, and message. Messages sent by email are delivered to
+                us through our email provider and are not stored in our database; you
+                receive a confirmation email.
               </li>
             </ul>
           </section>
@@ -64,7 +66,7 @@ export default function PrivacyPolicy() {
               <li><strong>Clerk</strong> — for account creation and sign-in (including optional Google sign-in).</li>
               <li><strong>Vercel</strong> — for hosting our website.</li>
               <li><strong>Supabase</strong> — for storing the quote requests you send us.</li>
-              <li><strong>Resend</strong> — for sending emails about your quote request: a notification to our team and a confirmation to you.</li>
+              <li><strong>Resend</strong> — for sending emails about your quote requests and contact messages: a notification to our team and a confirmation to you.</li>
             </ul>
             <p className="mt-2">
               These providers process data on our behalf and are bound by their own
