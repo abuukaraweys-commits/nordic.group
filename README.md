@@ -32,3 +32,17 @@ After saving, the server emails the request to the team (`QUOTE_TEAM_EMAIL`, def
 info@nordicgr.com) and a confirmation to the customer, through Resend. Set `RESEND_API_KEY`
 and `QUOTE_EMAIL_FROM` (an address on a domain verified in Resend) in Vercel. Without them,
 requests are still saved but no emails are sent.
+
+## Deployment
+
+The site is hosted on Vercel. Vercel builds a **Production** deployment from `main`: every
+merge or push to `main` should create one. Pull request branches get **Preview** deployments.
+
+If the live site doesn't update after a merge:
+1. Vercel → Settings → Git: check that the Production Branch is `main` and that the
+   Ignored Build Step is empty.
+2. Vercel → Deployments → Create Deployment → enter `main`.
+
+Don't use "Redeploy" on an older production deployment: it rebuilds that older code.
+
+The environment variables (Clerk, Supabase, Resend) are listed in `.env.example`.
